@@ -1,0 +1,409 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const benefits = [
+  {
+    title: 'Tidlig opsporing — ikke brandslukning',
+    text: 'Vores kognitive tests fanger stressmønstre, før medarbejdere selv rapporterer dem. Du ser faresignaler i tide til at handle — ikke først, når sygemeldingen lander.',
+  },
+  {
+    title: 'Et dashboard der viser, hvad der tæller',
+    text: 'Overblik på organisations-, team- og individuelt niveau. Udvikling over tid. Aggregerede trends og specifikke faresignaler. Alt samlet ét sted — ikke spredt over APV, spørgeskema og psykolog.',
+  },
+  {
+    title: 'Anbefalede tiltag — ikke bare data',
+    text: 'For hvert datapunkt leverer vi konkrete anbefalinger. Hvad bør du gøre? Hvad bør ledelsen gøre? Hvad kan medarbejderen selv gøre? Du slipper for at tolke tal og kan i stedet handle.',
+  },
+  {
+    title: 'Dokumentation til ledelsen',
+    text: 'Kvartalsrapporter der viser effekten af jeres indsatser. Du kan vise bestyrelsen og direktionen, at trivselsinvesteringen giver målbart afkast — i lavere fravær, højere engagement og bedre fastholdelse.',
+  },
+];
+
+const practical = [
+  {
+    title: 'Implementering',
+    text: 'Vi håndterer opsætningen. Du inviterer medarbejderne. Første måling tager 15 minutter per medarbejder — herefter 5 minutter per kvartal.',
+  },
+  {
+    title: 'Tidsbelastning for HR',
+    text: 'Minimal. Dashboardet opdaterer automatisk. Rapporter genereres kvartalsmæssigt. Du bruger tid på handling, ikke administration.',
+  },
+  {
+    title: 'GDPR',
+    text: 'Alle data behandles GDPR-konformt. Individuelle resultater er kun synlige for medarbejderen selv. HR og ledelse ser kun aggregerede data på teamniveau (minimum 5 medarbejdere).',
+  },
+  {
+    title: 'Integration med eksisterende indsatser',
+    text: 'Well at Work erstatter ikke jeres psykolog eller jeres lederudvikling — det gør dem bedre. Psykologen får dybere indsigt hurtigere. Lederen ved, hvad der skal fokuseres på. Og I kan endelig måle, om det virker.',
+  },
+];
+
+const pricing = [
+  {
+    tier: 'Basis',
+    price: '300 kr.',
+    note: 'per medarbejder/år',
+    features: ['Kognitive tests', 'Selvrapportering', 'Personlig feedback til medarbejdere'],
+  },
+  {
+    tier: 'Standard',
+    price: '365 kr.',
+    note: 'per medarbejder/år',
+    features: ['Alt i Basis', 'HR-dashboard', 'Lederrapporter', 'Workshops'],
+    highlighted: true,
+  },
+  {
+    tier: 'Premium',
+    price: '550 kr.',
+    note: 'per medarbejder/år',
+    features: ['Alt i Standard', 'Prioriteret support', 'Ekstra kvartalsmøder', 'Volumenrabat ved 500+'],
+  },
+];
+---
+
+<Base
+  title="For HR — Well at Work"
+  description="Well at Work giver HR datadrevet grundlag til forebyggelse, tidlige faresignaler og evaluering af tiltag — med minimal tidsbelastning."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="section section--beige hero-section">
+      <div class="container hero-inner">
+        <p class="page-label">For HR</p>
+        <h1 class="hero-headline">Du ved, at trivsel er vigtigt. Nu får du et værktøj der gør det muligt at handle — ikke bare rapportere.</h1>
+        <p class="hero-sub">
+          APV'en giver dig et øjebliksbillede. Pulse checks giver dig overfladiske trends. Well at Work giver dig det, du faktisk har brug for: tidlige faresignaler, konkrete anbefalinger og dokumentation til ledelsen.
+        </p>
+        <a href="/#kontakt" class="btn btn--primary">Book demo</a>
+      </div>
+    </section>
+
+    <!-- Section 1: Vi kender dit problem -->
+    <section class="section section--white">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Vi kender dit problem</h2>
+        <div class="prose">
+          <p>
+            Du har ansvaret for trivsel, men mangler redskaberne. APV'en giver dig et øjebliksbillede en gang om året. Pulse checks giver dig overfladiske trends. Psykologen har dybden, men ikke skalerbarheden. Og når du bringer det op i ledelsen, mangler du data til at gøre det konkret.
+          </p>
+          <p>
+            Du ender med at reagere på symptomer i stedet for at forebygge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Hvad Well at Work giver dig -->
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Hvad Well at Work giver dig</h2>
+        <div class="card-grid">
+          {benefits.map(item => (
+            <article class="card">
+              <h3 class="card-title">{item.title}</h3>
+              <p class="card-text">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: I praksis -->
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">I praksis</h2>
+        <div class="practical-grid">
+          {practical.map(item => (
+            <div class="practical-item">
+              <h3 class="practical-title">{item.title}</h3>
+              <p class="practical-text">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Psykologcitat -->
+    <section class="section section--beige">
+      <div class="container">
+        <div class="quote-block">
+          <svg class="quote-icon" viewBox="0 0 40 32" fill="none" aria-hidden="true">
+            <path d="M0 32V19.2C0 8.533 5.867 2.133 17.6 0l2.133 3.733C13.6 5.333 10.4 9.067 9.6 16H18V32H0ZM22 32V19.2C22 8.533 27.867 2.133 39.6 0L41.733 3.733C35.6 5.333 32.4 9.067 31.6 16H40V32H22Z" fill="currentColor"/>
+          </svg>
+          <blockquote class="quote-text">
+            Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt, som det ellers ville tage mig dage at indsamle.
+          </blockquote>
+          <cite class="quote-cite">— Helge Larsen, Organisationspsykolog, FranQ</cite>
+          <p class="quote-note">
+            Bemærk: Vi erstatter ikke psykologen. Vi giver psykologen et bedre grundlag — og I bruger færre timer på diagnostik og flere på intervention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Priser -->
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Priser</h2>
+        <p class="section-subtitle">Alle pakker inkluderer kognitive tests, selvrapportering og personlig feedback til medarbejdere. Volumenrabat for 500+ medarbejdere.</p>
+        <div class="pricing-grid">
+          {pricing.map(plan => (
+            <div class={`pricing-card${plan.highlighted ? ' pricing-card--highlighted' : ''}`}>
+              <h3 class="pricing-tier">{plan.tier}</h3>
+              <p class="pricing-price">{plan.price}</p>
+              <p class="pricing-note">{plan.note}</p>
+              <ul class="pricing-features">
+                {plan.features.map(f => (
+                  <li class="pricing-feature">
+                    <span class="pricing-check" aria-hidden="true">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 class="cta-heading">Se dashboardet med rigtige eksempeldata</h2>
+        <p class="cta-sub">
+          Book en demo, og vi viser dig dashboardet med eksempeldata fra en virkelig organisation.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .hero-section {
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+  }
+
+  .hero-inner {
+    max-width: 800px;
+  }
+
+  .page-label {
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: var(--text-hero);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+  }
+
+  .content-section {
+    max-width: 760px;
+  }
+
+  .left-aligned {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .prose p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--navy);
+  }
+
+  /* Practical grid */
+  .practical-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 1rem;
+  }
+
+  .practical-item {
+    padding: 1.75rem 2rem;
+    background: var(--warm-beige);
+    border-radius: var(--card-radius);
+    border-left: 4px solid var(--steel-blue);
+  }
+
+  .practical-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .practical-text {
+    font-size: var(--text-body);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  /* Quote */
+  .quote-block {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .quote-icon {
+    width: 32px;
+    height: auto;
+    color: var(--lavender);
+    margin: 0 auto 1.5rem;
+  }
+
+  .quote-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--navy);
+    line-height: 1.4;
+    font-style: normal;
+    margin-bottom: 1rem;
+  }
+
+  .quote-cite {
+    display: block;
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 1.25rem;
+    font-style: normal;
+  }
+
+  .quote-note {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 1rem;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--blush);
+    border-radius: var(--card-radius);
+    padding: 2rem 1.75rem;
+    box-shadow: var(--card-shadow);
+    border-top: 4px solid var(--lavender);
+  }
+
+  .pricing-card--highlighted {
+    background: var(--navy);
+    border-top-color: var(--steel-blue);
+    color: var(--white);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(47, 47, 85, 0.18);
+  }
+
+  .pricing-tier {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card:not(.pricing-card--highlighted) .pricing-tier {
+    color: var(--forest-green);
+  }
+
+  .pricing-price {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--plum);
+    margin-bottom: 0.2rem;
+    line-height: 1;
+  }
+
+  .pricing-card--highlighted .pricing-price {
+    color: var(--blush);
+  }
+
+  .pricing-note {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card--highlighted .pricing-note {
+    color: var(--lavender);
+  }
+
+  .pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
+
+  .pricing-check {
+    color: var(--forest-green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing-card--highlighted .pricing-check {
+    color: var(--steel-blue);
+  }
+
+  /* CTA section */
+  .cta-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .cta-sub {
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    color: var(--white);
+  }
+</style>

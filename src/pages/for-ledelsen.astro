@@ -1,0 +1,236 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const benefits = [
+  {
+    title: 'Et røntgenbillede — ikke et spørgeskema',
+    text: 'Vi kombinerer selvrapportering med objektive kognitive tests der afslører stressmønstre, før de bliver til sygefravær, opsigelser eller performancefald. Over 300 datapunkter per medarbejder, aggregeret til team- og organisationsniveau.',
+  },
+  {
+    title: 'Konkrete prioriteringer — ikke generelle anbefalinger',
+    text: 'Du får en rapport der viser, hvilke teams der er under pres, hvilke faktorer der driver det, og hvilke tiltag der har størst effekt. Ikke en trivselsscore, men et handlingsgrundlag.',
+  },
+  {
+    title: 'Dokumenterbar effekt',
+    text: 'Kvartalsvise målinger viser, om jeres indsatser virker. Du kan dokumentere ROI over for bestyrelsen, og du kan justere retning baseret på data frem for fornemmelse.',
+  },
+];
+
+const costs = [
+  { stat: '56 mia. kr.', label: 'Stress koster dansk erhvervsliv årligt' },
+  { stat: '1–4 mio. kr.', label: 'Koster en medarbejder på stressbetinget sygeorlov' },
+  { stat: '30–100 %', label: 'Af en årsløn for at erstatte en medarbejder der opsiger' },
+  { stat: '30 %', label: 'Reduktion i hele teamets performance ved ét udbrændt teammedlem' },
+];
+---
+
+<Base
+  title="For ledelsen — Well at Work"
+  description="Dine medarbejdere fortæller dig ikke det hele. Well at Work giver ledelsen et datadrevet grundlag til at træffe strategiske beslutninger om trivsel og performance."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="section section--beige hero-section">
+      <div class="container hero-inner">
+        <p class="page-label">For ledelsen</p>
+        <h1 class="hero-headline">Dine medarbejdere fortæller dig ikke det hele. Det er ikke deres skyld — det er systemets.</h1>
+        <p class="hero-sub">
+          Forskning viser, at ledere systematisk overvurderer medarbejdernes trivsel med over 20 procentpoint. Well at Work giver dig det grundlag du reelt mangler.
+        </p>
+        <a href="/#kontakt" class="btn btn--primary">Book demo</a>
+      </div>
+    </section>
+
+    <!-- Section 1: Problemet set fra toppen -->
+    <section class="section section--white">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Problemet set fra toppen</h2>
+        <div class="prose">
+          <p>
+            Du har sandsynligvis et overblik over trivsel baseret på APV, MUS-samtaler og din egen fornemmelse. Men forskningen viser, at ledere systematisk overvurderer medarbejdernes trivsel — med over 20 procentpoint i gennemsnit.
+          </p>
+          <p>
+            Det skyldes ikke dårlig ledelse. Det skyldes, at stress er usynlig i de tidlige stadier, at kultur belønner fasaden, og at traditionelle målinger kun fanger det, folk er bevidste om og villige til at sige højt.
+          </p>
+          <p>
+            Det betyder, at du træffer strategiske beslutninger om teams, ressourcer og forandringer på et ufuldstændigt grundlag.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Hvad du får -->
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Hvad du får med Well at Work</h2>
+        <div class="card-grid">
+          {benefits.map(item => (
+            <article class="card">
+              <h3 class="card-title">{item.title}</h3>
+              <p class="card-text">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Det dobbelte afkast -->
+    <section class="section section--white">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Det dobbelte afkast</h2>
+        <div class="prose">
+          <p>
+            De fleste trivselsløsninger sælger risikostyring: "undgå sygefravær, undgå opsigelser."
+          </p>
+          <p>
+            Well at Work leverer også det andet ben: De faktorer der forebygger stress — autonomi, mening, støtte, anerkendelse, retfærdighed — er ifølge forskningen de <em>samme</em> faktorer der driver engagement, motivation og høj performance (Job Demands-Resources modellen, Bakker &amp; Demerouti).
+          </p>
+          <p>
+            Det betyder, at investering i trivsel ikke er en omkostning. Det er en performance-investering med dobbelt afkast.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Hvad det koster at vente -->
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Hvad det koster at vente</h2>
+        <div class="cost-grid">
+          {costs.map(item => (
+            <div class="cost-card">
+              <span class="cost-stat">{item.stat}</span>
+              <p class="cost-label">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 class="cta-heading">Se hvad jeres data kunne afsløre</h2>
+        <p class="cta-sub">
+          Book en 20-minutters demo, og vi viser dig hvad jeres data kunne afsløre.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .hero-section {
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+  }
+
+  .hero-inner {
+    max-width: 800px;
+  }
+
+  .page-label {
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: var(--text-hero);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+  }
+
+  .content-section {
+    max-width: 760px;
+  }
+
+  .left-aligned {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .prose p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--navy);
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  /* Cost stats */
+  .cost-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 1rem;
+  }
+
+  .cost-card {
+    background: var(--white);
+    border-radius: var(--card-radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--card-shadow);
+    border-top: 4px solid var(--plum);
+    text-align: center;
+  }
+
+  .cost-stat {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--plum);
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+
+  .cost-label {
+    font-size: var(--text-body);
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  /* CTA section */
+  .cta-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .cta-sub {
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    color: var(--white);
+  }
+</style>

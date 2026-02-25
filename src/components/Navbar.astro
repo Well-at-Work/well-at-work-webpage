@@ -1,6 +1,14 @@
 ---
 const navLinks = [
-  { label: 'Platform', href: '/platform' },
+  {
+    label: 'Platform',
+    href: '/platform',
+    children: [
+      { label: 'For ledelsen', href: '/for-ledelsen' },
+      { label: 'For HR', href: '/for-hr' },
+      { label: 'For medarbejdere', href: '/for-medarbejdere' },
+    ],
+  },
   { label: 'Forskning', href: '/forskning' },
   { label: 'Resultater', href: '/resultater' },
   { label: 'Om os', href: '/om-os' },
@@ -19,7 +27,23 @@ const navLinks = [
 
     <div class="navbar__links" id="nav-links">
       {navLinks.map(link => (
-        <a href={link.href} class="navbar__link">{link.label}</a>
+        link.children ? (
+          <div class="navbar__dropdown">
+            <a href={link.href} class="navbar__link navbar__link--has-dropdown">
+              {link.label}
+              <svg class="navbar__chevron" viewBox="0 0 12 8" width="10" height="10" aria-hidden="true">
+                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="navbar__dropdown-menu">
+              {link.children.map(child => (
+                <a href={child.href} class="navbar__dropdown-item">{child.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={link.href} class="navbar__link">{link.label}</a>
+        )
       ))}
       <a href="#kontakt" class="btn btn--primary navbar__mobile-cta">Book demo</a>
     </div>
@@ -96,6 +120,73 @@ const navLinks = [
     display: none;
   }
 
+  /* Dropdown */
+  .navbar__dropdown {
+    position: relative;
+  }
+
+  .navbar__link--has-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .navbar__chevron {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .navbar__dropdown:hover .navbar__chevron,
+  .navbar__dropdown:focus-within .navbar__chevron {
+    transform: rotate(180deg);
+  }
+
+  .navbar__dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0.75rem;
+    min-width: 190px;
+    z-index: 100;
+  }
+
+  .navbar__dropdown-menu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.75rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 24px rgba(47, 47, 85, 0.12);
+    border: 1px solid var(--border-light);
+    z-index: -1;
+  }
+
+  .navbar__dropdown:hover .navbar__dropdown-menu,
+  .navbar__dropdown:focus-within .navbar__dropdown-menu {
+    display: block;
+  }
+
+  .navbar__dropdown-item {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--navy);
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .navbar__dropdown-item:hover {
+    background: var(--warm-beige);
+    color: var(--plum);
+  }
+
   .navbar__hamburger {
     display: none;
     flex-direction: column;
@@ -161,6 +252,34 @@ const navLinks = [
     }
     .navbar__hamburger--open .navbar__hamburger-line:nth-child(3) {
       transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Dropdown on mobile: show sub-links inline below parent */
+    .navbar__dropdown-menu {
+      display: block;
+      position: static;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      padding-left: 1rem;
+      margin-top: -0.5rem;
+    }
+
+    .navbar__dropdown-item {
+      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      color: var(--text-muted);
+    }
+
+    .navbar__dropdown-item:hover {
+      background: transparent;
+      color: var(--plum);
+    }
+
+    .navbar__chevron {
+      display: none;
     }
   }
 </style>

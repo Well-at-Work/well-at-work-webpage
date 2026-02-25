@@ -1,0 +1,426 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const benefits = [
+  {
+    title: 'Personlig feedback — med det samme',
+    text: 'Umiddelbart efter testen får du en personlig rapport med indsigt i dit trivselsniveau, din motivationsprofil og dine kognitive styrker.',
+  },
+  {
+    title: 'Skræddersyede øvelser',
+    text: 'Baseret på din profil får du konkrete, evidensbaserede mikro-øvelser — korte, daglige aktiviteter designet til at styrke din mentale trivsel. Ikke generiske tips, men øvelser tilpasset præcis din situation.',
+  },
+  {
+    title: 'Udvikling over tid',
+    text: 'Kvartal for kvartal kan du følge din egen udvikling. Du kan se, hvad der virker for dig, og justere.',
+  },
+];
+
+const steps = [
+  'Du modtager en invitation med et link fra HR',
+  'Du logger ind og gennemfører testen (15 min.)',
+  'Du får øjeblikkelig feedback og en personlig plan',
+  'Hver kvartal gennemfører du en kort opfølgning (5 min.)',
+  'Du kan til enhver tid se din profil og dine øvelser',
+];
+
+const notList = [
+  { label: 'Det er IKKE en performancevurdering' },
+  { label: 'Det er IKKE en test, du kan "bestå" eller "dumpe"' },
+  { label: 'Det er IKKE synligt for din leder' },
+  { label: 'Det ER et redskab, der er bygget til at hjælpe dig', positive: true },
+];
+
+const quotes = [
+  {
+    text: 'Grundig, sjov og betydningsfuld.',
+    cite: 'Medarbejder i pilotforløb',
+  },
+  {
+    text: 'Spillene var overraskende engagerende, og den personlige feedback var mere konkret end noget, jeg har fået fra en APV.',
+    cite: 'Medarbejder, Tandlægeforeningen-pilotprojekt',
+  },
+];
+---
+
+<Base
+  title="For medarbejdere — Well at Work"
+  description="15 minutter der giver dig et klart billede af, hvordan du reelt har det — og hvad du kan gøre ved det. Dine svar er kun dine egne."
+>
+  <Navbar />
+  <main>
+
+    <!-- Hero -->
+    <section class="section hero-section">
+      <div class="container hero-inner">
+        <p class="page-label">For medarbejdere</p>
+        <h1 class="hero-headline">15 minutter der giver dig et klart billede af, hvordan du reelt har det — og hvad du kan gøre ved det.</h1>
+        <p class="hero-sub">
+          En kort kombination af spørgsmål og små spil — og du får personlig feedback og øvelser der er tilpasset præcis dig. Ikke HR. Ikke din leder. Dig.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 1: Hvad er det her? -->
+    <section class="section section--white">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Hvad er det her?</h2>
+        <div class="prose">
+          <p>
+            Din arbejdsplads har valgt at bruge Well at Work til at forstå og forbedre trivsel. Det betyder, at du bliver bedt om at gennemføre en kort test — en kombination af spørgsmål og små spil — der tilsammen giver et billede af, hvordan du har det, hvad der motiverer dig, og hvor du kan styrke din trivsel.
+          </p>
+          <p>
+            Det tager ca. <strong>15 minutter</strong> første gang. Herefter ca. <strong>5 minutter</strong> per kvartal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Er det fortroligt? -->
+    <section class="section section--beige">
+      <div class="container">
+        <div class="privacy-callout">
+          <h2 class="privacy-heading">Er det fortroligt?</h2>
+          <p class="privacy-lead"><strong>Ja. Dine individuelle svar er dine egne.</strong></p>
+          <ul class="privacy-list">
+            <li class="privacy-item">
+              <span class="privacy-check" aria-hidden="true">✓</span>
+              Din leder og HR ser <em>aldrig</em> dine individuelle resultater
+            </li>
+            <li class="privacy-item">
+              <span class="privacy-check" aria-hidden="true">✓</span>
+              De ser kun anonyme, aggregerede data på teamniveau — og kun når der er mindst 5 besvarelser i teamet
+            </li>
+            <li class="privacy-item">
+              <span class="privacy-check" aria-hidden="true">✓</span>
+              Du kan ikke identificeres i rapporter eller dashboards
+            </li>
+            <li class="privacy-item">
+              <span class="privacy-check" aria-hidden="true">✓</span>
+              Alle data behandles i overensstemmelse med GDPR
+            </li>
+          </ul>
+          <p class="privacy-note">
+            Vi forstår, at tillid er afgørende. Fortroligheden er ikke bare et løfte, men en teknisk realitet: vi har bygget systemet, så individuel identifikation simpelthen ikke er mulig for din arbejdsgiver.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Hvad får du ud af det? -->
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Hvad får du ud af det?</h2>
+        <div class="card-grid">
+          {benefits.map(item => (
+            <article class="card card--warm">
+              <h3 class="card-title">{item.title}</h3>
+              <p class="card-text">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Hvad oplever andre? -->
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Hvad oplever andre?</h2>
+        <div class="quotes-grid">
+          {quotes.map(q => (
+            <figure class="emp-quote">
+              <blockquote class="emp-quote__text">"{q.text}"</blockquote>
+              <figcaption class="emp-quote__cite">— {q.cite}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Sådan foregår det -->
+    <section class="section section--white">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Sådan foregår det</h2>
+        <ol class="steps-list">
+          {steps.map((step, i) => (
+            <li class="steps-item">
+              <span class="steps-number" aria-hidden="true">{i + 1}</span>
+              <span class="steps-text">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Section 6: Hvad det ikke er -->
+    <section class="section section--beige">
+      <div class="container content-section">
+        <h2 class="section-title left-aligned">Hvad det ikke er</h2>
+        <ul class="not-list">
+          {notList.map(item => (
+            <li class={`not-item${item.positive ? ' not-item--positive' : ''}`}>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container" style="text-align:center;">
+        <h2 class="cta-heading">Har du spørgsmål?</h2>
+        <p class="cta-sub">
+          Skriv til din HR-kontakt, eller kontakt os direkte — vi svarer gerne.
+        </p>
+        <a href="mailto:info@bewellatwork.dk" class="btn btn--primary">info@bewellatwork.dk</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* Hero — warmer, softer */
+  .hero-section {
+    background: linear-gradient(135deg, var(--blush) 0%, var(--warm-beige) 100%);
+    padding-bottom: clamp(3rem, 6vw, 6rem);
+  }
+
+  .hero-inner {
+    max-width: 800px;
+  }
+
+  .page-label {
+    font-size: var(--text-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-size: var(--text-hero);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.7;
+    max-width: 620px;
+    opacity: 0.85;
+  }
+
+  /* Content sections */
+  .content-section {
+    max-width: 720px;
+  }
+
+  .left-aligned {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .prose p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--navy);
+  }
+
+  /* Privacy callout */
+  .privacy-callout {
+    background: var(--plum-light);
+    border: 2px solid var(--plum);
+    border-radius: var(--card-radius);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .privacy-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--plum);
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  .privacy-lead {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+
+  .privacy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .privacy-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .privacy-item em {
+    font-style: italic;
+  }
+
+  .privacy-check {
+    color: var(--plum);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .privacy-note {
+    font-size: var(--text-body);
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Cards — warmer variant */
+  .card--warm {
+    border-top-color: var(--plum);
+  }
+
+  /* Quotes */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 1rem;
+  }
+
+  .emp-quote {
+    background: var(--white);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .emp-quote__text {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--navy);
+    line-height: 1.5;
+    font-style: normal;
+    margin-bottom: 1rem;
+  }
+
+  .emp-quote__cite {
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--plum);
+  }
+
+  /* Steps list */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    list-style: none;
+  }
+
+  .steps-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .steps-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--plum-light);
+    border: 2px solid var(--plum);
+    font-size: var(--text-small);
+    font-weight: 700;
+    color: var(--plum);
+  }
+
+  .steps-text {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.6;
+    padding-top: 0.3rem;
+  }
+
+  /* Not-list */
+  .not-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  .not-item {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .not-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  .not-item--positive {
+    font-weight: 600;
+    color: var(--forest-green);
+  }
+
+  .not-item--positive::before {
+    content: '✓';
+    color: var(--forest-green);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--plum-light);
+    border-top: 2px solid var(--plum);
+  }
+
+  .cta-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .cta-sub {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    color: var(--navy);
+    opacity: 0.85;
+  }
+</style>

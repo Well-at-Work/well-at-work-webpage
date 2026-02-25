@@ -1,8 +1,8 @@
 ---
 const audiences = [
-  { title: 'Ledelsen', text: 'Strategisk overblik, konkrete prioriteringer, dokumenteret effekt af indsatser.' },
-  { title: 'HR', text: 'Datadrevet grundlag til forebyggelse, tidlige faresignaler, evaluering af tiltag.' },
-  { title: 'Medarbejderen', text: 'Personlig feedback, motivationsprofil, skræddersyede mikro-øvelser.' },
+  { title: 'Ledelsen', text: 'Strategisk overblik, konkrete prioriteringer, dokumenteret effekt af indsatser.', href: '/for-ledelsen' },
+  { title: 'HR', text: 'Datadrevet grundlag til forebyggelse, tidlige faresignaler, evaluering af tiltag.', href: '/for-hr' },
+  { title: 'Medarbejderen', text: 'Personlig feedback, motivationsprofil, skræddersyede mikro-øvelser.', href: '/for-medarbejdere' },
 ];
 ---
 
@@ -11,11 +11,43 @@ const audiences = [
     <h2 class="section-title">Indsigt tilpasset hvert niveau</h2>
     <div class="card-grid">
       {audiences.map(item => (
-        <article class="card">
+        <a class="card audience-card" href={item.href}>
           <h3 class="card-title">{item.title}</h3>
           <p class="card-text">{item.text}</p>
-        </article>
+          <span class="audience-card__link" aria-hidden="true">Læs mere →</span>
+        </a>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .audience-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .audience-card:hover {
+    box-shadow: 0 6px 20px rgba(47, 47, 85, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .audience-card .card-text {
+    flex: 1;
+  }
+
+  .audience-card__link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: var(--text-small);
+    font-weight: 600;
+    color: var(--plum);
+    letter-spacing: 0.02em;
+  }
+
+  .audience-card:hover .audience-card__link {
+    text-decoration: underline;
+  }
+</style>
