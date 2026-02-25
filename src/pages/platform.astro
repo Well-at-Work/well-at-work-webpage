@@ -1,0 +1,282 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  { number: '01', title: 'Mål', description: 'Subjektive spørgsmål + objektive kognitive tests. 300+ variable. 15 minutter. Medarbejderen oplever det som en engagerende oplevelse — ikke et spørgeskema.' },
+  { number: '02', title: 'Forstå', description: 'Algoritmer identificerer tidlige mønstre, skjulte kognitive markører, motivationsprofiler og personlighedstyper. Indsigt der ligger langt ud over, hvad selvrapportering kan afdække.' },
+  { number: '03', title: 'Handl', description: 'Skræddersyede interventioner til medarbejder, team og organisation. Fra personlige mikro-øvelser til strategiske anbefalinger for ledelsen.' },
+  { number: '04', title: 'Følg op', description: 'Kvartalsvise målinger. Evaluér indsatser. Justér kursen. Dokumentér effekt over tid — og vis ROI til bestyrelsen.' },
+];
+
+const dashboards = [
+  {
+    title: 'Medarbejderen',
+    description: 'Personlig feedback, motivationsprofil, kognitive styrker og skræddersyede mikro-øvelser baseret på individuelle resultater.',
+  },
+  {
+    title: 'HR & Ledere',
+    description: 'Datadrevet overblik over teams, tidlige faresignaler, evaluering af tiltag og konkrete anbefalinger til forebyggende indsatser.',
+  },
+  {
+    title: 'Ledelsen',
+    description: 'Strategisk overblik, prioriterede indsatsområder, dokumenteret effekt af initiativer og benchmark mod tidligere målinger.',
+  },
+];
+
+const features = [
+  {
+    title: 'Dobbelt måling',
+    text: 'Kombination af selvrapportering og kognitive spil giver et komplet billede. Spørgsmål fanger den bevidste oplevelse — kognitive tests afslører det, hjernen ved, men medarbejderen ikke fortæller.',
+  },
+  {
+    title: 'Fra data til handling',
+    text: '300+ variable omsættes til konkrete anbefalinger via vores algoritmer. Ikke rå data — men prioriterede handlinger tilpasset jeres organisations kontekst.',
+  },
+  {
+    title: 'Interventioner der virker',
+    text: 'Evidensbaserede mikro-øvelser designet af forfatter og interventionsdesigner Lisa Beuschau. Personlige programmer der møder medarbejderen, hvor de er — ikke generiske tips.',
+  },
+  {
+    title: 'Vi gør psykologer mere effektive',
+    text: 'Well at Work erstatter ikke jeres organisationspsykolog — vi giver dem superkræfter. Minutter i stedet for dage til dyb indsigt. Augmentation, ikke erstatning.',
+  },
+];
+---
+
+<Base title="Platform — Well at Work" description="Sådan virker Well at Work: fra kognitive tests og selvrapportering til handlingsbare anbefalinger for medarbejder, HR og ledelse.">
+  <Navbar />
+  <main>
+    <section class="section section--beige">
+      <div class="container" style="text-align:center;">
+        <h1 class="section-title">Sådan virker det</h1>
+        <p class="section-subtitle">
+          Well at Work er den centrale motor, der forbinder måling, indsigt, handling og opfølgning i ét samlet system — ikke endnu et fragmenteret værktøj.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Fire trin — fra data til dokumenteret effekt</h2>
+        <div class="platform-pipeline">
+          {steps.map((step, i) => (
+            <div class="platform-step">
+              <span class="platform-step__number">{step.number}</span>
+              <h3 class="platform-step__title">{step.title}</h3>
+              <p class="platform-step__desc">{step.description}</p>
+              {i < steps.length - 1 && <div class="platform-step__connector" aria-hidden="true" />}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Hvad der gør os anderledes</h2>
+        <p class="section-subtitle">
+          Ikke endnu en survey — men et integreret system der kombinerer neurovidenskab med organisationspsykologi.
+        </p>
+        <div class="card-grid">
+          {features.map(feature => (
+            <article class="card">
+              <h3 class="card-title">{feature.title}</h3>
+              <p class="card-text">{feature.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Indsigt tilpasset hvert niveau</h2>
+        <p class="section-subtitle">
+          Tre dashboards — hver designet til den kontekst, modtageren arbejder i.
+        </p>
+        <div class="platform-dashboards">
+          {dashboards.map(db => (
+            <div class="platform-dashboard">
+              <div class="platform-dashboard__preview" aria-hidden="true">
+                <span>Dashboard</span>
+              </div>
+              <h3 class="platform-dashboard__title">{db.title}</h3>
+              <p class="platform-dashboard__desc">{db.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Datasikkerhed & GDPR</h2>
+        <div class="platform-gdpr">
+          <div class="card">
+            <h3 class="card-title">GDPR-kompatibelt fra dag ét</h3>
+            <p class="card-text">
+              Alle data behandles i overensstemmelse med GDPR. Individuelle resultater er kun tilgængelige for medarbejderen selv.
+              Ledelse og HR modtager kun aggregerede indsigter — aldrig personhenførbare data.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Sikker databehandling</h3>
+            <p class="card-text">
+              Data krypteres under overførsel og opbevaring. Vores infrastruktur er bygget med samme sikkerhedsprincipper
+              som teamets FDA-godkendte medicinsk AI-løsninger.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Fuld gennemsigtighed</h3>
+            <p class="card-text">
+              Medarbejdere informeres altid om, hvad der måles, og hvordan data bruges. Ingen skjulte metrikker.
+              Tillid er fundamentet for valid data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Se platformen i aktion</h2>
+        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
+          Book en demo og oplev, hvordan 15 minutters test kan give jeres organisation et helt nyt grundlag for trivsel og performance.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* Pipeline */
+  .platform-pipeline {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 3rem 0;
+    position: relative;
+  }
+
+  .platform-step {
+    flex: 1;
+    text-align: center;
+    padding: 0 1.25rem;
+    position: relative;
+    max-width: 280px;
+  }
+
+  .platform-step__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--blush);
+    border: 2px solid var(--lavender);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .platform-step__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--forest-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .platform-step__desc {
+    font-size: var(--text-small);
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  .platform-step__connector {
+    position: absolute;
+    top: 24px;
+    right: -2px;
+    width: calc(100% - 96px);
+    height: 2px;
+    background-color: var(--lavender);
+    transform: translateX(calc(50% + 48px));
+    pointer-events: none;
+  }
+
+  /* Dashboards */
+  .platform-dashboards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+  }
+
+  .platform-dashboard {
+    text-align: center;
+  }
+
+  .platform-dashboard__preview {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--blush);
+    border: 2px dashed var(--lavender);
+    border-radius: var(--card-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .platform-dashboard__preview span {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .platform-dashboard__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--forest-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .platform-dashboard__desc {
+    font-size: var(--text-body);
+    color: var(--navy);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* GDPR grid */
+  .platform-gdpr {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .platform-pipeline {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .platform-step {
+      max-width: 400px;
+      padding: 0;
+    }
+
+    .platform-step__connector {
+      display: none;
+    }
+  }
+</style>

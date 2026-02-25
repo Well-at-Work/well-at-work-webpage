@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const testimonials = [
+  {
+    quote: 'Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt, som det ellers ville tage mig dage at indsamle.',
+    name: 'Helge Larsen',
+    role: 'Organisationspsykolog, FranQ',
+  },
+  {
+    quote: 'Med 60% udbrændthed blandt tandlæger vidste vi, at vi havde brug for noget mere end traditionelle trivselsmålinger. Partnerskabet med Well at Work har ført til, at vores medlemmer nu indgår bilaterale aftaler.',
+    name: 'Noa Jankovic',
+    role: 'Vicedirektør, Tandlægeforeningen',
+  },
+  {
+    quote: 'Well at Work gav os et helt nyt grundlag for at forstå, hvad der virkelig foregår i organisationen — og handlekraft til at gøre noget ved det. Vi har forlænget vores samarbejde efter den indledende kriseindsats.',
+    name: 'Morten E. G. J. Brautsch',
+    role: 'Særlig rådgiver for udenrigsministeren',
+  },
+  {
+    quote: 'Med 130 ansatte i omsorgssektoren havde vi brug for et værktøj, der kunne give os indsigt på tværs af teams — ikke bare individuelle samtaler. Well at Work leverede præcis det.',
+    name: 'Pia Saaby Sørensen',
+    role: 'PS Contact, 130 ansatte',
+  },
+  {
+    quote: 'Som ingeniørvirksomhed med 125 medarbejdere var trivsel ikke noget, vi traditionelt målte på. Well at Work viste os, hvad vi ikke vidste — og gav os konkrete redskaber til at handle.',
+    name: 'Henrik Nielsen',
+    role: 'Stiesdal, 125 ansatte',
+  },
+];
+
+const stories = [
+  {
+    client: 'Tandlægeforeningen',
+    headline: 'Fra 60% udbrændthed til bilateral aftale',
+    text: 'Tandlægeforeningen opdagede, at 60% af danske tandlæger viste tegn på udbrændthed. Et pilotprojekt med Well at Work gav dybere indsigt end traditionelle målinger — og førte til, at medlemmer nu indgår bilaterale aftaler om løbende trivselsmåling.',
+  },
+  {
+    client: 'Colosseum Dental',
+    headline: '30+ klinikker i Danmark — pathway til 650+ i EU',
+    text: 'Efter succesfuld implementering på tværs af 30+ danske klinikker baner Colosseum Dental vejen for udrulning til 650+ klinikker i Europa. Well at Work skalerer med dem.',
+  },
+  {
+    client: 'Stiesdal',
+    headline: 'Pilotprojekt i en ingeniørvirksomhed med 125 ansatte',
+    text: 'Stiesdal — kendt for innovation inden for vedvarende energi — brugte Well at Work til at kortlægge trivsel og kognitive mønstre blandt 125 medarbejdere. Indsigten skabte grundlag for målrettede organisatoriske forandringer.',
+  },
+  {
+    client: 'Moderaterne',
+    headline: 'Fra kriseindsats til udvidet partnerskab',
+    text: 'Moderaternes partisekretariat henvendte sig til Well at Work i forbindelse med en krisesituation. Den indledende indsats var så værdifuld, at samarbejdet blev udvidet til et løbende partnerskab om trivsel og organisationsudvikling.',
+  },
+];
+
+const logos = [
+  'Tandlægeforeningen',
+  'Colosseum Dental',
+  'Stiesdal',
+  'Velliv',
+  'PS Contact',
+  'Moderaterne',
+];
+---
+
+<Base title="Resultater — Well at Work" description="Cases og testimonials fra organisationer der bruger Well at Work til at skabe målbar forbedring i trivsel og performance.">
+  <Navbar />
+  <main>
+    <section class="section section--beige">
+      <div class="container" style="text-align:center;">
+        <h1 class="section-title">Resultater</h1>
+        <p class="section-subtitle">
+          Fra pilotprojekter til langvarige partnerskaber — se hvordan organisationer bruger Well at Work til at skabe reel forandring.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Hvad vores kunder siger</h2>
+        <div class="resultater-testimonials">
+          {testimonials.map(t => (
+            <article class="resultater-card">
+              <div class="resultater-card__avatar" aria-hidden="true"></div>
+              <blockquote class="resultater-card__quote">
+                <p>&ldquo;{t.quote}&rdquo;</p>
+              </blockquote>
+              <footer class="resultater-card__attribution">
+                <strong>{t.name}</strong>
+                <span>{t.role}</span>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Kundehistorier</h2>
+        <p class="section-subtitle">
+          Konkrete eksempler på, hvordan organisationer har brugt Well at Work — og hvad det har ført til.
+        </p>
+        <div class="resultater-stories">
+          {stories.map(story => (
+            <article class="card">
+              <p class="resultater-story__client">{story.client}</p>
+              <h3 class="card-title">{story.headline}</h3>
+              <p class="card-text">{story.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container" style="text-align:center;">
+        <blockquote class="resultater-pullquote">
+          <p>&ldquo;Grundig, sjov, betydningsfuld&rdquo;</p>
+          <footer>— Tilbagemelding fra pilotrespondenter</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="resultater-logos section section--beige">
+      <div class="container">
+        <p class="resultater-logos__label">Organisationer der bruger Well at Work</p>
+        <div class="resultater-logos__strip">
+          {logos.map(name => (
+            <span class="resultater-logos__item">{name}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Klar til at se resultater i jeres organisation?</h2>
+        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
+          Book en uforpligtende demo — vi viser jer, hvad 15 minutter kan afsløre.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .resultater-testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 2rem;
+  }
+
+  .resultater-card {
+    background: var(--white);
+    border-left: 4px solid var(--plum);
+    border-radius: 0 var(--card-radius) var(--card-radius) 0;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .resultater-card__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--lavender);
+    flex-shrink: 0;
+  }
+
+  .resultater-card__quote p {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--navy);
+  }
+
+  .resultater-card__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .resultater-card__attribution strong {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .resultater-card__attribution span {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+  }
+
+  /* Customer stories */
+  .resultater-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+  }
+
+  .resultater-story__client {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Pull quote */
+  .resultater-pullquote {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem;
+  }
+
+  .resultater-pullquote p {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .resultater-pullquote footer {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Logo strip */
+  .resultater-logos {
+    text-align: center;
+  }
+
+  .resultater-logos__label {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .resultater-logos__strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+  }
+
+  .resultater-logos__item {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    opacity: 0.45;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -1,0 +1,44 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <svg class="footer__logo-icon" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M4 20 Q8 10, 16 16 Q24 22, 28 12" stroke="#b0a9b9" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="footer__brand-name">Well at Work</span>
+    </div>
+    <p class="footer__copy">&copy; {new Date().getFullYear()} Well at Work. Alle rettigheder forbeholdes.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--navy-dark);
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer__brand-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer__copy {
+    font-size: var(--text-small);
+    color: rgba(255, 255, 255, 0.4);
+  }
+</style>

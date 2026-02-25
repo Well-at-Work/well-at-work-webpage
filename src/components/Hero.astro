@@ -1,0 +1,104 @@
+---
+const logos = [
+  'Tandlægeforeningen',
+  'Colosseum Dental',
+  'Moderaterne',
+  'PS Contact',
+  'Stiesdal',
+  'Velliv',
+];
+---
+
+<section class="hero section section--beige" id="hero">
+  <div class="container hero__inner">
+    <h1 class="hero__headline">
+      I investerer allerede i trivsel.<br />Vi sørger for, at det virker.
+    </h1>
+    <p class="hero__sub">
+      Traditionelle målinger fanger stress for sent, og individuelle indsatser mister effekten inden for et år.
+      Well at Work kombinerer neurovidenskabelige tests med organisationspsykologi — så I handler på det rigtige, til tiden.
+    </p>
+    <div class="hero__ctas">
+      <a href="#kontakt" class="btn btn--primary">Book demo</a>
+      <a href="#problem" class="btn btn--secondary">Se hvordan</a>
+    </div>
+  </div>
+
+  <div class="hero__logos container">
+    <p class="hero__logos-label">Brugt af blandt andre</p>
+    <div class="hero__logos-strip">
+      {logos.map(name => (
+        <span class="hero__logo-item">{name}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(4rem, 10vw, 8rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .hero__inner {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero__headline {
+    font-family: var(--font-heading);
+    font-size: var(--text-hero);
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__sub {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Logo strip */
+  .hero__logos {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    text-align: center;
+  }
+
+  .hero__logos-label {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__logos-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+  }
+
+  .hero__logo-item {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    opacity: 0.45;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+</style>

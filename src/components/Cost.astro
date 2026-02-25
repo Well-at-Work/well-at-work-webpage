@@ -1,0 +1,127 @@
+---
+const stats = [
+  { number: '56 mia. kr.', description: 'Stress koster dansk erhvervsliv årligt.' },
+  { number: '70%', description: 'Flere sygedage blandt medarbejdere med højt stressniveau.' },
+  { number: '30–100%', description: 'Af en årsløn — omkostningen ved at erstatte en medarbejder, når rekruttering, oplæring og tabt viden medregnes.' },
+];
+---
+
+<section class="cost section section--beige" id="cost">
+  <div class="container">
+    <h2 class="section-title">Prisen for at vente — og gevinsten ved at handle</h2>
+
+    <div class="cost__grid">
+      <div class="cost__left">
+        <h3 class="cost__column-label">Omkostningen</h3>
+        {stats.map(stat => (
+          <div class="cost__stat">
+            <span class="cost__number">{stat.number}</span>
+            <p class="cost__desc">{stat.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="cost__right">
+        <h3 class="cost__column-label">Potentialet</h3>
+        <p class="cost__potential-text">
+          De faktorer der forebygger stress — mening, støtte, autonomi, anerkendelse — er de <em>samme</em> der driver engagement og høj performance.
+        </p>
+        <p class="cost__potential-text">
+          Organisationer der handler tidligt på trivsel undgår ikke kun omkostninger. De frigør det potentiale, der allerede er der.
+        </p>
+      </div>
+    </div>
+
+    <div class="cost__roi">
+      <div class="cost__roi-inner">
+        <span class="cost__roi-icon" aria-hidden="true">&#128161;</span>
+        <div>
+          <strong>ROI-eksempel:</strong> En virksomhed med 200 medarbejdere og gennemsnitligt sygefravær på 12 dage/år kan typisk spare 400.000–800.000 kr. årligt ved at reducere stressrelateret fravær med 25%. Dertil kommer øget produktivitet og lavere personaleomsætning.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cost__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .cost__column-label {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--navy);
+    margin-bottom: 2rem;
+  }
+
+  .cost__stat {
+    margin-bottom: 2rem;
+  }
+
+  .cost__number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-stat);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+
+  .cost__desc {
+    font-size: var(--text-body);
+    color: var(--navy);
+    line-height: 1.6;
+    max-width: 400px;
+  }
+
+  .cost__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .cost__potential-text {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .cost__potential-text em {
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .cost__roi {
+    margin-top: 3rem;
+  }
+
+  .cost__roi-inner {
+    background: var(--blush);
+    border: 1px solid var(--lavender);
+    border-radius: var(--card-radius);
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    line-height: 1.7;
+  }
+
+  .cost__roi-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .cost__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

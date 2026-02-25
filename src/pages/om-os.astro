@@ -1,0 +1,260 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const team = [
+  {
+    name: 'Nikolas Nemeth',
+    title: 'CEO',
+    bio: '15+ års erfaring med strategi, offentlige anliggender og organisationsudvikling.',
+  },
+  {
+    name: 'Kim Mouridsen',
+    title: 'CTO & medstifter',
+    bio: 'Professor i neurovidenskab, Aarhus Universitet. 20+ forskningsmæssige priser. 13 millioner brugere på tværs af tidligere platforme. FDA-godkendte medicinsk AI-løsninger (Cercare Medical, Mindway AI). Tidligere forsker i Karl Fristons laboratorium, University College London.',
+  },
+  {
+    name: 'Kenneth Kjær Jensen',
+    title: 'CTO',
+    bio: 'PhD i matematik og økonomi. Specialiseret i AI, algoritmeudvikling og dataanalyse.',
+  },
+  {
+    name: 'Lisa Beuschau',
+    title: 'Interventionsdesigner',
+    bio: 'Forfatter til "1-Minut Metoden." Designer af evidensbaserede mikro-øvelser og personlige interventionsprogrammer.',
+  },
+  {
+    name: 'Helge Larsen',
+    title: 'Organisationspsykolog',
+    bio: 'Specialiseret i arbejdspladstrivsel, organisatorisk forandring og ledelsesrådgivning.',
+  },
+];
+
+const board = [
+  {
+    name: 'Niels Ankerstjerne',
+    role: 'DLA Piper, VC/PE',
+    focus: 'Juridisk og corporate governance',
+  },
+  {
+    name: 'Bjarne Schøn',
+    role: 'Microsoft, Hasbro, Nilfisk',
+    focus: 'Corporate innovation og skalering',
+  },
+];
+---
+
+<Base title="Om os — Well at Work" description="Mød teamet bag Well at Work — grundlagt i neurovidenskab, bygget til at skabe reel forandring i organisationers trivsel.">
+  <Navbar />
+  <main>
+    <section class="section section--beige">
+      <div class="container" style="text-align:center;">
+        <h1 class="section-title">Om os</h1>
+        <p class="section-subtitle">
+          Well at Work er grundlagt af et team, der har brugt årtier på at forstå hjernen — og nu bruger den viden til at forandre,
+          hvordan organisationer arbejder med trivsel.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Teamet</h2>
+        <div class="om-team">
+          {team.map(person => (
+            <article class="om-person">
+              <div class="om-person__avatar" aria-hidden="true">
+                <span>{person.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <h3 class="om-person__name">{person.name}</h3>
+              <p class="om-person__title">{person.title}</p>
+              <p class="om-person__bio">{person.bio}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Bestyrelse</h2>
+        <div class="om-board">
+          {board.map(member => (
+            <article class="om-board-card">
+              <div class="om-board-card__avatar" aria-hidden="true">
+                <span>{member.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <h3 class="om-board-card__name">{member.name}</h3>
+              <p class="om-board-card__role">{member.role}</p>
+              <p class="om-board-card__focus">{member.focus}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Vores historie</h2>
+        <div class="om-story">
+          <p>
+            Well at Work udspringer af 20 års neurovidenskabelig forskning på Aarhus Universitet og University College London.
+            Vores medstifter, professor Kim Mouridsen, har dedikeret sin karriere til at forstå, hvordan hjernen fungerer under pres
+            — og hvordan tidlige kognitive forandringer kan afsløres, før de bliver til kliniske problemer.
+          </p>
+          <p>
+            Det samme team har tidligere bygget Cercare Medical — en FDA-godkendt medicinsk AI-platform til hjerneskanning
+            — og Mindway AI, der i dag bruges af over 13 millioner mennesker. Well at Work anvender den samme videnskabelige stringens
+            og teknologiske tilgang, men rettet mod et andet problem: hvordan vi kan forstå og forbedre trivsel i organisationer
+            på en måde, der faktisk virker.
+          </p>
+          <p>
+            Vi mener, at de traditionelle trivselsmålinger har nået deres grænse. Spørgeskemaer fanger kun det bevidste.
+            Vores tilgang kombinerer subjektiv selvrapportering med objektive kognitive tests — og skaber dermed et helt nyt grundlag
+            for at forstå, handle og dokumentere effekt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Lad os tale sammen</h2>
+        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
+          Vi elsker at tale om neurovidenskab, trivsel og hvad jeres organisation kan opnå. Book en uforpligtende demo.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* Team grid */
+  .om-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 2rem;
+  }
+
+  .om-person {
+    background: var(--blush);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border-top: 4px solid var(--lavender);
+    text-align: center;
+  }
+
+  .om-person__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: var(--navy-dark);
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .om-person__avatar span {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .om-person__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .om-person__title {
+    font-size: var(--text-small);
+    color: var(--plum);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .om-person__bio {
+    font-size: var(--text-small);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  /* Board */
+  .om-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+    max-width: 700px;
+    margin: 2rem auto 0;
+  }
+
+  .om-board-card {
+    background: var(--white);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+  }
+
+  .om-board-card__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--steel-blue);
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .om-board-card__avatar span {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .om-board-card__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .om-board-card__role {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .om-board-card__focus {
+    font-size: var(--text-small);
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* Company story */
+  .om-story {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .om-story p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--navy);
+  }
+</style>

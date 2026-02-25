@@ -1,0 +1,21 @@
+---
+const audiences = [
+  { title: 'Ledelsen', text: 'Strategisk overblik, konkrete prioriteringer, dokumenteret effekt af indsatser.' },
+  { title: 'HR', text: 'Datadrevet grundlag til forebyggelse, tidlige faresignaler, evaluering af tiltag.' },
+  { title: 'Medarbejderen', text: 'Personlig feedback, motivationsprofil, skræddersyede mikro-øvelser.' },
+];
+---
+
+<section class="section section--beige" id="audiences">
+  <div class="container">
+    <h2 class="section-title">Indsigt tilpasset hvert niveau</h2>
+    <div class="card-grid">
+      {audiences.map(item => (
+        <article class="card">
+          <h3 class="card-title">{item.title}</h3>
+          <p class="card-text">{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,120 @@
+---
+const testimonials = [
+  {
+    quote: 'Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt, som det ellers ville tage mig dage at indsamle.',
+    name: 'Helge Larsen',
+    role: 'Organisationspsykolog, FranQ',
+  },
+  {
+    quote: 'Med 60% udbrændthed blandt tandlæger vidste vi, at vi havde brug for noget mere end traditionelle trivselsmålinger. Partnerskabet med Well at Work har ført til, at vores medlemmer nu indgår bilaterale aftaler.',
+    name: 'Noa Jankovic',
+    role: 'Vicedirektør, Tandlægeforeningen',
+  },
+];
+
+const logos = [
+  'Tandlægeforeningen',
+  'Colosseum Dental',
+  'Stiesdal',
+  'Velliv',
+  'PS Contact',
+  'Moderaterne',
+];
+---
+
+<section class="proof section section--white" id="proof">
+  <div class="container">
+    <h2 class="section-title">Hvad vores kunder oplever</h2>
+
+    <div class="proof__testimonials">
+      {testimonials.map(t => (
+        <article class="proof__card">
+          <div class="proof__avatar" aria-hidden="true"></div>
+          <blockquote class="proof__quote">
+            <p>&ldquo;{t.quote}&rdquo;</p>
+          </blockquote>
+          <footer class="proof__attribution">
+            <strong>{t.name}</strong>
+            <span>{t.role}</span>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <div class="proof__logos">
+      {logos.map(name => (
+        <span class="proof__logo-item">{name}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof__testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 3rem;
+  }
+
+  .proof__card {
+    background: var(--white);
+    border-left: 4px solid var(--plum);
+    border-radius: 0 var(--card-radius) var(--card-radius) 0;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .proof__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--lavender);
+    flex-shrink: 0;
+  }
+
+  .proof__quote p {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--navy);
+  }
+
+  .proof__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .proof__attribution strong {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .proof__attribution span {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+  }
+
+  .proof__logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .proof__logo-item {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    opacity: 0.4;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+</style>

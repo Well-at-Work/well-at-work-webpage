@@ -1,0 +1,127 @@
+---
+const steps = [
+  { number: '01', title: 'Mål', description: 'Subjektive spørgsmål + objektive kognitive tests. 300+ variable. 15 minutter.' },
+  { number: '02', title: 'Forstå', description: 'Tidlige mønstre, skjulte kognitive markører, motivation og personlighedsprofil.' },
+  { number: '03', title: 'Handl', description: 'Skræddersyede interventioner til medarbejder, team og organisation.' },
+  { number: '04', title: 'Følg op', description: 'Kvartalsvise målinger. Evaluér indsatser. Justér. Dokumentér effekt.' },
+];
+---
+
+<section class="approach section section--white" id="approach">
+  <div class="container">
+    <h2 class="section-title">Én samlet motor — ikke endnu et værktøj</h2>
+    <p class="section-subtitle">
+      De fleste organisationer har disconnected elementer: en APV, en trivselsmåling, en psykolog, en wellbeing-app, et lederkursus.
+      Hvert element opererer på ufuldstændig information. Ingen vidensoverførsel. Ingen ved, hvad der faktisk virker.
+    </p>
+
+    <div class="approach__pipeline">
+      {steps.map((step, i) => (
+        <div class="approach__step">
+          <span class="approach__step-number">{step.number}</span>
+          <h3 class="approach__step-title">{step.title}</h3>
+          <p class="approach__step-desc">{step.description}</p>
+          {i < steps.length - 1 && <div class="approach__connector" aria-hidden="true" />}
+        </div>
+      ))}
+    </div>
+
+    <blockquote class="approach__quote">
+      <p>
+        Vi giver medarbejderen indsigt og konkrete øvelser. Og vi giver ledelsen det overblik og de anbefalinger,
+        der gør det muligt at handle på det, der tæller mest.
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+<style>
+  .approach__pipeline {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 3rem 0;
+    position: relative;
+  }
+
+  .approach__step {
+    flex: 1;
+    text-align: center;
+    padding: 0 1.25rem;
+    position: relative;
+    max-width: 280px;
+  }
+
+  .approach__step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--blush);
+    border: 2px solid var(--lavender);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .approach__step-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--forest-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .approach__step-desc {
+    font-size: var(--text-small);
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  .approach__connector {
+    position: absolute;
+    top: 24px;
+    right: -2px;
+    width: calc(100% - 96px);
+    height: 2px;
+    background-color: var(--lavender);
+    transform: translateX(calc(50% + 48px));
+    pointer-events: none;
+  }
+
+  .approach__quote {
+    max-width: 740px;
+    margin: 3rem auto 0;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--plum);
+    background: var(--blush);
+    border-radius: 0 var(--card-radius) var(--card-radius) 0;
+  }
+
+  .approach__quote p {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .approach__pipeline {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .approach__step {
+      max-width: 400px;
+      padding: 0;
+    }
+
+    .approach__connector {
+      display: none;
+    }
+  }
+</style>

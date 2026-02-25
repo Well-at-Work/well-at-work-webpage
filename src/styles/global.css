@@ -1,0 +1,222 @@
+/* ===== DESIGN TOKENS ===== */
+:root {
+  /* Primary Colors */
+  --navy: #2f2f55;
+  --navy-dark: #2d2e5a;
+  --steel-blue: #7f96cc;
+  --warm-beige: #ebe6e2;
+  --white: #ffffff;
+
+  /* Secondary / Accent */
+  --forest-green: #404f3c;
+  --blush: #fff3f3;
+  --lavender: #b0a9b9;
+  --plum: #5c3048;
+  --plum-light: #ffe9f1;
+
+  /* Utility */
+  --text-on-blue: #f0f0f8;
+  --text-muted: #6b6b7f;
+  --border-light: #d9d4cf;
+
+  /* Typography */
+  --font-heading: 'DM Serif Display', 'Georgia', serif;
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+
+  /* Type Scale */
+  --text-hero: clamp(2.5rem, 5vw, 4rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2rem);
+  --text-h3: clamp(1.1rem, 2vw, 1.4rem);
+  --text-body: 1rem;
+  --text-body-lg: 1.1rem;
+  --text-small: 0.875rem;
+  --text-stat: clamp(3rem, 6vw, 5rem);
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+  --card-gap: 2rem;
+  --element-gap: 1.5rem;
+
+  /* Cards */
+  --card-radius: 10px;
+  --card-shadow: 0 2px 8px rgba(47, 47, 85, 0.06);
+
+  /* Buttons */
+  --btn-radius: 8px;
+  --btn-padding: 16px 32px;
+}
+
+/* ===== RESET & BASE ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--navy);
+  background-color: var(--warm-beige);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ===== SHARED UTILITIES ===== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.section--beige {
+  background-color: var(--warm-beige);
+}
+
+.section--white {
+  background-color: var(--white);
+}
+
+.section--navy {
+  background-color: var(--navy-dark);
+  color: var(--white);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: var(--text-body-lg);
+  color: var(--navy);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--card-gap);
+}
+
+.card {
+  background: var(--blush);
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  border-top: 4px solid var(--lavender);
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  color: var(--forest-green);
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: var(--navy);
+  line-height: 1.7;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: var(--text-body);
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn--primary {
+  background-color: var(--navy-dark);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background-color: #24254a;
+  box-shadow: 0 4px 12px rgba(45, 46, 90, 0.25);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+
+.btn--secondary:hover {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.btn--white {
+  background-color: var(--white);
+  color: var(--navy-dark);
+}
+
+.btn--white:hover {
+  background-color: var(--warm-beige);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Visually hidden (screen reader only) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

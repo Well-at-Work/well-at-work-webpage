@@ -1,0 +1,33 @@
+---
+const cards = [
+  {
+    title: 'Hjernen ved det, før medarbejderen gør',
+    text: 'Kognitiv performance — arbejdshukommelse, opmærksomhed, mental fleksibilitet — falder under mild stress, før medarbejderen selv oplever det. Spørgeskemaer kan kun fange det, man er bevidst om. Derfor opdages stress typisk for sent.',
+  },
+  {
+    title: 'Ledere overvurderer trivslen — markant',
+    text: 'Forskning viser en systematisk kløft på over 20 procentpoint mellem lederes vurdering af medarbejdernes trivsel og medarbejdernes egen oplevelse. Ikke af ond vilje — men fordi stress er usynlig, og kulturen holder den skjult.',
+  },
+  {
+    title: 'Individuelle indsatser alene holder ikke',
+    text: 'Mindfulness, resiliens-træning og stresshåndtering kan reducere symptomer på kort sigt — men effekten forsvinder typisk inden for 12 måneder, medmindre indsatsen kombineres med organisatoriske forandringer. Derfor giver fragmenterede løsninger svag ROI.',
+  },
+];
+---
+
+<section class="section section--white" id="problem">
+  <div class="container">
+    <h2 class="section-title">Det skjulte problem</h2>
+    <p class="section-subtitle">
+      De fleste virksomheder gør det rigtige. Men trivselsdata giver dem et ufuldstændigt billede.
+    </p>
+    <div class="card-grid">
+      {cards.map(card => (
+        <article class="card">
+          <h3 class="card-title">{card.title}</h3>
+          <p class="card-text">{card.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,182 @@
+---
+const navLinks = [
+  { label: 'Platform', href: '/platform' },
+  { label: 'Forskning', href: '/forskning' },
+  { label: 'Resultater', href: '/resultater' },
+  { label: 'Om os', href: '/om-os' },
+  { label: 'Priser', href: '/priser' },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="navbar__inner container">
+    <a href="/" class="navbar__logo" aria-label="Well at Work — forside">
+      <svg class="navbar__logo-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+        <path d="M4 20 Q8 10, 16 16 Q24 22, 28 12" stroke="#5c3048" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="navbar__logo-text">Well at Work</span>
+    </a>
+
+    <div class="navbar__links" id="nav-links">
+      {navLinks.map(link => (
+        <a href={link.href} class="navbar__link">{link.label}</a>
+      ))}
+      <a href="#kontakt" class="btn btn--primary navbar__mobile-cta">Book demo</a>
+    </div>
+
+    <a href="#kontakt" class="btn btn--primary navbar__cta">Book demo</a>
+
+    <button class="navbar__hamburger" id="nav-toggle" aria-label="Åbn menu" aria-expanded="false">
+      <span class="navbar__hamburger-line"></span>
+      <span class="navbar__hamburger-line"></span>
+      <span class="navbar__hamburger-line"></span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--warm-beige);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .navbar--scrolled {
+    box-shadow: 0 2px 12px rgba(47, 47, 85, 0.08);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 2rem;
+  }
+
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--navy);
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar__link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .navbar__link:hover {
+    color: var(--plum);
+  }
+
+  .navbar__cta {
+    font-size: 0.9rem;
+    padding: 10px 24px;
+    flex-shrink: 0;
+  }
+
+  .navbar__mobile-cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+  }
+
+  .navbar__hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .navbar__links {
+      display: none;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: var(--warm-beige);
+      padding: 1.5rem var(--container-padding) 2rem;
+      gap: 1.25rem;
+      box-shadow: 0 8px 16px rgba(47, 47, 85, 0.08);
+    }
+
+    .navbar__links--open {
+      display: flex;
+    }
+
+    .navbar__link {
+      font-size: 1.05rem;
+    }
+
+    .navbar__cta {
+      display: none;
+    }
+
+    .navbar__mobile-cta {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.95rem;
+    }
+
+    .navbar__hamburger {
+      display: flex;
+    }
+
+    /* Animated X */
+    .navbar__hamburger--open .navbar__hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .navbar__hamburger--open .navbar__hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .navbar__hamburger--open .navbar__hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('navbar--scrolled', window.scrollY > 10);
+  });
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.toggle('navbar__links--open');
+    toggle.classList.toggle('navbar__hamburger--open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

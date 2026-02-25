@@ -1,0 +1,248 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const tiers = [
+  {
+    name: 'Basis',
+    price: '300',
+    features: [
+      { label: 'Kognitive tests + selvrapportering', included: true },
+      { label: 'Personlig feedback + mikro-øvelser', included: true },
+      { label: 'Leder-/HR-rapport', included: false },
+      { label: 'Dashboard', included: false },
+      { label: 'Faciliteret workshop', included: false },
+      { label: 'Dedikeret kontaktperson', included: false },
+    ],
+  },
+  {
+    name: 'Standard',
+    price: '365',
+    highlighted: true,
+    features: [
+      { label: 'Kognitive tests + selvrapportering', included: true },
+      { label: 'Personlig feedback + mikro-øvelser', included: true },
+      { label: 'Leder-/HR-rapport', included: true },
+      { label: 'Dashboard', included: true },
+      { label: 'Faciliteret workshop', included: false },
+      { label: 'Dedikeret kontaktperson', included: false },
+    ],
+  },
+  {
+    name: 'Premium',
+    price: '550',
+    features: [
+      { label: 'Kognitive tests + selvrapportering', included: true },
+      { label: 'Personlig feedback + mikro-øvelser', included: true },
+      { label: 'Leder-/HR-rapport', included: true },
+      { label: 'Dashboard', included: true },
+      { label: 'Faciliteret workshop', included: true },
+      { label: 'Dedikeret kontaktperson', included: true },
+    ],
+  },
+];
+---
+
+<Base title="Priser — Well at Work" description="Tre fleksible prisplaner for Well at Work — fra 300 kr./medarbejder/år. Volumenrabat for 500+ medarbejdere.">
+  <Navbar />
+  <main>
+    <section class="section section--beige">
+      <div class="container" style="text-align:center;">
+        <h1 class="section-title">Priser</h1>
+        <p class="section-subtitle">
+          Enkel prissætning. Ingen skjulte omkostninger. Vælg den plan, der passer til jeres organisation.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <div class="priser-grid">
+          {tiers.map(tier => (
+            <article class:list={['priser-card', { 'priser-card--highlighted': tier.highlighted }]}>
+              {tier.highlighted && <div class="priser-card__badge">Mest populær</div>}
+              <h3 class="priser-card__name">{tier.name}</h3>
+              <div class="priser-card__price">
+                <span class="priser-card__amount">{tier.price}</span>
+                <span class="priser-card__unit">kr./medarbejder/år</span>
+              </div>
+              <ul class="priser-card__features">
+                {tier.features.map(f => (
+                  <li class:list={['priser-card__feature', { 'priser-card__feature--excluded': !f.included }]}>
+                    <span class="priser-card__feature-icon" aria-hidden="true">{f.included ? '✓' : '—'}</span>
+                    <span>{f.label}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="/#kontakt" class:list={['btn', tier.highlighted ? 'btn--primary' : 'btn--secondary', 'priser-card__cta']}>
+                Kom i gang
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container" style="text-align:center;">
+        <div class="priser-volume">
+          <h2 class="priser-volume__title">500+ medarbejdere?</h2>
+          <p class="priser-volume__text">
+            Vi tilbyder volumenrabat og skræddersyede løsninger til større organisationer.
+            Kontakt os for et uforpligtende tilbud.
+          </p>
+          <a href="/#kontakt" class="btn btn--primary">Kontakt os</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Ikke sikker på, hvilken plan der passer?</h2>
+        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
+          Book en uforpligtende demo — vi hjælper jer med at finde den rigtige løsning.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .priser-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--card-gap);
+    align-items: start;
+  }
+
+  .priser-card {
+    background: var(--white);
+    border-radius: var(--card-radius);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--border-light);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .priser-card--highlighted {
+    border-color: var(--navy-dark);
+    box-shadow: 0 8px 24px rgba(47, 47, 85, 0.12);
+    transform: scale(1.03);
+  }
+
+  .priser-card__badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--navy-dark);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .priser-card__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .priser-card__price {
+    margin-bottom: 2rem;
+  }
+
+  .priser-card__amount {
+    font-family: var(--font-heading);
+    font-size: var(--text-stat);
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  .priser-card__unit {
+    display: block;
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .priser-card__features {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .priser-card__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--navy);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .priser-card__feature:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .priser-card__feature--excluded {
+    color: var(--text-muted);
+  }
+
+  .priser-card__feature-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .priser-card__feature:not(.priser-card__feature--excluded) .priser-card__feature-icon {
+    color: var(--forest-green);
+  }
+
+  .priser-card__cta {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  /* Volume section */
+  .priser-volume {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .priser-volume__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .priser-volume__text {
+    font-size: var(--text-body-lg);
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .priser-card--highlighted {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,289 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const articles = [
+  {
+    title: 'Din hjerne ved det, før du gør',
+    text: 'Præfrontal cortex — arbejdshukommelse, opmærksomhed og mental fleksibilitet — begynder at underperformere under mild stress, længe før du bevidst registrerer det. Traditionelle spørgeskemaer fanger kun det, du selv er klar over. Kognitive tests måler, hvordan hjernen faktisk fungerer — og afslører mønstre, som selvrapportering overser helt.',
+    sources: 'Qin et al. 2009, Liston et al. 2009, Dolcos & McCarthy, Lupien et al. 1999',
+  },
+  {
+    title: 'Hvorfor trivselsmålinger kan gøre mere skade end gavn',
+    text: 'Målereaktivitet er et veldokumenteret fænomen: selve handlingen at besvare spørgsmål om stress og trivsel kan forstærke rumination og øge opmærksomheden på negative følelser. Uden opfølgende handling risikerer trivselsmålinger at gøre problemet værre i stedet for bedre.',
+    sources: 'Conner & Lehman 2012',
+  },
+  {
+    title: 'Ledere overvurderer trivslen — med over 20%',
+    text: 'Forskning dokumenterer en systematisk kløft på over 20 procentpoint mellem lederes vurdering af medarbejdernes trivsel og medarbejdernes egen oplevelse. Det skyldes ikke ond vilje — men at stress er usynlig, og at kulturen i mange organisationer holder den skjult.',
+    sources: 'McKinsey 2022, Gallup 2022, CIPD',
+  },
+  {
+    title: 'Individuelle indsatser holder ikke alene',
+    text: 'Mindfulness, resiliens-træning og stresshåndtering kan reducere symptomer på kort sigt — men effekten forsvinder typisk inden for 12 måneder, medmindre indsatsen kombineres med organisatoriske forandringer. Fragmenterede løsninger giver svag ROI, fordi de kun adresserer symptomer, ikke årsager.',
+    sources: 'MDPI 2024, JD-R-modellen, Bakker & Demerouti',
+  },
+  {
+    title: 'Det dobbelte afkast',
+    text: 'De ressourcer der forebygger udbrændthed — mening, støtte, autonomi, anerkendelse — er de samme, der driver engagement og høj performance. JD-R-modellens dobbelte pathway viser, at investering i trivsel ikke kun reducerer omkostninger, men samtidig frigør uudnyttet potentiale.',
+    sources: 'JD-R dual pathway model, Bakker & Demerouti',
+  },
+];
+
+const stats = [
+  { number: '20+', label: 'Internationale forskningsmæssige priser' },
+  { number: '20 år', label: 'Forskning fra Aarhus Universitet og UCL' },
+  { number: '1.100+', label: 'Respondenter fra 30+ lande i validering' },
+  { number: '13 mio.', label: 'Brugere på tværs af tidligere platforme' },
+];
+---
+
+<Base title="Forskning — Well at Work" description="Videnskaben bag Well at Work: neurovidenskabelige kognitive tests, der fanger stress før traditionelle målinger.">
+  <Navbar />
+  <main>
+    <section class="section section--beige">
+      <div class="container forskning-hero">
+        <h1 class="section-title">Videnskaben bag Well at Work</h1>
+        <p class="section-subtitle">Hvorfor spørgsmål ikke er nok</p>
+        <div class="forskning-hero__body">
+          <p>
+            Når du er stresset, begynder din præfrontale cortex — arbejdshukommelse, opmærksomhed, fleksibel tænkning — at underperformere,
+            <strong>før du bevidst føler dig stresset</strong>. Traditionelle trivselsmålinger fanger kun det, du selv er klar over.
+          </p>
+          <p>
+            Vores kognitive tests måler, hvordan hjernen faktisk fungerer — og afslører mønstre,
+            som selvrapportering aldrig kan fange. Det er forskellen mellem at spørge, hvordan du har det,
+            og at måle, hvordan du faktisk performer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Evidensen</h2>
+        <p class="section-subtitle">
+          Hver indsigt bygger på peer-reviewed forskning. Ikke buzzwords — men dokumenterede mekanismer.
+        </p>
+        <div class="forskning-articles">
+          {articles.map((article, i) => (
+            <article class="forskning-article">
+              <div class="forskning-article__number">{String(i + 1).padStart(2, '0')}</div>
+              <div class="forskning-article__content">
+                <h3 class="card-title">{article.title}</h3>
+                <p class="card-text">{article.text}</p>
+                <p class="forskning-article__sources">{article.sources}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--beige">
+      <div class="container">
+        <h2 class="section-title">Vores fundament</h2>
+        <p class="section-subtitle">
+          Udviklet af et team med dybe rødder i neurovidenskab, klinisk AI og organisationspsykologi.
+        </p>
+        <div class="forskning-stats">
+          {stats.map(stat => (
+            <div class="forskning-stat">
+              <span class="forskning-stat__number">{stat.number}</span>
+              <span class="forskning-stat__label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="section-title">Hvordan vi måler</h2>
+        <p class="section-subtitle">
+          Tre visuelle modeller der illustrerer, hvorfor vores tilgang fanger det, andre overser.
+        </p>
+        <div class="forskning-visuals">
+          <div class="forskning-visual">
+            <div class="forskning-visual__placeholder" aria-hidden="true">
+              <span>Radar-diagram</span>
+            </div>
+            <h3 class="forskning-visual__title">Samme WHO-score, forskellige profiler</h3>
+            <p class="forskning-visual__desc">To medarbejdere med identisk selvrapporteret trivsel kan have vidt forskellige kognitive profiler. Radardiagrammet viser dybden under overfladen.</p>
+          </div>
+          <div class="forskning-visual">
+            <div class="forskning-visual__placeholder" aria-hidden="true">
+              <span>Positioneringsmatrix</span>
+            </div>
+            <h3 class="forskning-visual__title">Handlingsbar indsigt vs. indgribende metode</h3>
+            <p class="forskning-visual__desc">Well at Work placerer sig i feltet med høj handlingsbarhed og lav indgriben — i modsætning til traditionelle surveys eller kliniske tests.</p>
+          </div>
+          <div class="forskning-visual">
+            <div class="forskning-visual__placeholder" aria-hidden="true">
+              <span>Dobbelt måling</span>
+            </div>
+            <h3 class="forskning-visual__title">Subjektiv + objektiv = komplet billede</h3>
+            <p class="forskning-visual__desc">Kombination af selvrapportering og kognitive tests giver et billede, som ingen af delene kan levere alene.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Vil du vide mere?</h2>
+        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
+          Book en demo og se, hvordan neurovidenskaben bag Well at Work kan give jeres organisation et helt nyt grundlag for trivsel.
+        </p>
+        <a href="/#kontakt" class="btn btn--white">Book demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .forskning-hero {
+    text-align: center;
+  }
+
+  .forskning-hero__body {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .forskning-hero__body p {
+    font-size: var(--text-body-lg);
+    line-height: 1.8;
+    color: var(--navy);
+  }
+
+  /* Evidence articles */
+  .forskning-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .forskning-article {
+    display: flex;
+    gap: 2rem;
+    background: var(--blush);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border-left: 4px solid var(--lavender);
+  }
+
+  .forskning-article__number {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--lavender);
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 3rem;
+  }
+
+  .forskning-article__content {
+    flex: 1;
+  }
+
+  .forskning-article__sources {
+    margin-top: 0.75rem;
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Credibility stats */
+  .forskning-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--card-gap);
+    margin-top: 2rem;
+  }
+
+  .forskning-stat {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--white);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+  }
+
+  .forskning-stat__number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: var(--text-stat);
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .forskning-stat__label {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Visual placeholders */
+  .forskning-visuals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--card-gap);
+    margin-top: 2rem;
+  }
+
+  .forskning-visual {
+    text-align: center;
+  }
+
+  .forskning-visual__placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--blush);
+    border: 2px dashed var(--lavender);
+    border-radius: var(--card-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .forskning-visual__placeholder span {
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .forskning-visual__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--forest-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .forskning-visual__desc {
+    font-size: var(--text-small);
+    color: var(--navy);
+    line-height: 1.6;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    .forskning-article {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .forskning-article__number {
+      font-size: var(--text-h2);
+    }
+  }
+</style>
