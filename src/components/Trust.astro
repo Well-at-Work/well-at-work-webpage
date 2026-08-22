@@ -1,0 +1,77 @@
+<section class="section section--white" id="trovaerdighed">
+  <div class="container">
+    <h2 class="section-title">Bygget af et team, der har gjort det før —<br />og med respekt for den enkelte.</h2>
+    <p class="section-subtitle">
+      Samme team står bag <strong>Cercare Medical</strong> (AI-beslutningsstøtte på 120+ hospitaler
+      i 18 lande — CE-mærket og FDA-godkendt) og <strong>Mindway AI</strong> (beskytter 15 mio.+
+      brugere på fire kontinenter). Forankret i neurovidenskab fra Aarhus Universitet
+      og University College London.
+    </p>
+
+    <div class="trust__grid">
+      <div class="card trust__exp">
+        <h3 class="card-title">Cercare Medical</h3>
+        <p class="trust__meta">Medicinsk AI · 2013–</p>
+        <p class="card-text">120+ hospitaler · 18 lande · CE-mærket &amp; FDA-godkendt · 90+ fagfællebedømte publikationer.</p>
+      </div>
+      <div class="card trust__exp">
+        <h3 class="card-title">Mindway AI</h3>
+        <p class="trust__meta">Forbrugerbeskyttelse · 2019–</p>
+        <p class="card-text">15 mio.+ beskyttede brugere · 61 jurisdiktioner · 4 kontinenter.</p>
+      </div>
+      <div class="card trust__privacy">
+        <h3 class="card-title">Indsigt — ikke overvågning.</h3>
+        <p class="card-text" style="margin-bottom: 0.9rem;">Atlas læser ikke mails, kalendere eller chats.</p>
+        <ul class="trust__list">
+          <li>Den enkeltes svar er kun den enkeltes.</li>
+          <li>Ledelsen ser kun anonymiserede mønstre — minimum 5 personer.</li>
+          <li>Alle data opbevares i EU. Ingen personhenførbare oplysninger sendes til AI.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr;
+    gap: var(--card-gap);
+  }
+
+  .trust__meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 0.75rem;
+  }
+
+  .trust__privacy {
+    border-color: #cfe0d4;
+  }
+
+  .trust__list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.88;
+  }
+
+  .trust__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--sage-deep);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .trust__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

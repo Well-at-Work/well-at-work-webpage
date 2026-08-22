@@ -1,0 +1,55 @@
+---
+const cards = [
+  {
+    number: '1',
+    title: 'Stress viser sig i hjernen, før den viser sig i svarene.',
+    text: 'Kognitiv funktion svækkes under pres, før man selv mærker det. Et spørgeskema fanger kun det, man er bevidst om.',
+  },
+  {
+    number: '2',
+    title: 'Et tal uden årsag kan I ikke handle på.',
+    text: 'At vide, at trivslen er lav, hjælper ikke, hvis I ikke ved hvor — eller hvorfor.',
+  },
+  {
+    number: '3',
+    title: 'Data uden handling er bare støj.',
+    text: 'De fleste værktøjer stopper ved rapporten. Det er der, vi begynder.',
+  },
+];
+---
+
+<section class="section section--white" id="tese">
+  <div class="container">
+    <h2 class="section-title">Andre måler trivsel.<br />Vi forbedrer den.</h2>
+    <p class="section-subtitle">
+      At måle er nemt. At ændre noget er svært — og det er kun der, det tæller.
+      Atlas er bygget til forandringen: vi viser jer præcis, hvor og hvorfor presset
+      bygger sig op, og så hjælper vi hver medarbejder og hver leder med at handle på det.
+    </p>
+    <div class="card-grid">
+      {cards.map(card => (
+        <article class="card">
+          <span class="thesis__number" aria-hidden="true">{card.number}</span>
+          <h3 class="card-title">{card.title}</h3>
+          <p class="card-text">{card.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .thesis__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--coral-soft);
+    color: var(--coral);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+</style>

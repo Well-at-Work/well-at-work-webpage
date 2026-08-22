@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
+
+const videos = [
+  {
+    id: 'atlas',
+    title: 'Atlas — kort fortalt',
+    duration: '1:18',
+    src: '/videos/atlas-explainer.mp4',
+    poster: '/videos/atlas-explainer-poster.jpg',
+    desc: 'Hele historien på under to minutter: det levende kort, de personlige forløb, coachen — og hvordan I måler virkningen.',
+    featured: true,
+  },
+  {
+    id: 'platform',
+    title: 'Sådan virker platformen',
+    duration: '1:29',
+    src: '/videos/platform-da.mp4',
+    poster: '/videos/platform-da-poster.jpg',
+    desc: 'En rundvisning i Atlas Individuel, Atlas Teams, coachen og APV — fra måling til indsigt til handling.',
+  },
+  {
+    id: 'roi',
+    title: 'Hvad koster stress?',
+    duration: '1:12',
+    src: '/videos/roi-da.mp4',
+    poster: '/videos/roi-da-poster.jpg',
+    desc: 'Regn jeres eget tal ud — sygefravær, tabt produktivitet og personaleomsætning — og se, hvad forebyggelse er værd.',
+  },
+];
+
+const featured = videos.find(v => v.featured);
+const rest = videos.filter(v => !v.featured);
+---
+
+<Base title="Film — Atlas | Well at Work" description="Se Atlas i brug: korte film om det levende kort, de personlige forløb, coachen og hvad stress koster.">
+  <Navbar />
+  <main>
+    <section class="section section--beige film-head">
+      <div class="container">
+        <p class="eyebrow">Se Atlas i brug</p>
+        <h1 class="section-title">Film</h1>
+        <p class="film-head__sub">
+          Hellere se end læse? Her er Atlas fortalt kort. Vi føjer flere film til over tid.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <figure class="film-featured">
+          <VideoPlayer src={featured.src} poster={featured.poster} label={`Afspil: ${featured.title}`} />
+          <figcaption class="film-meta">
+            <div class="film-meta__head">
+              <h2 class="film-title">{featured.title}</h2>
+              <span class="film-duration">{featured.duration}</span>
+            </div>
+            <p class="film-desc">{featured.desc}</p>
+          </figcaption>
+        </figure>
+
+        <div class="film-grid">
+          {rest.map(v => (
+            <figure class="film-card">
+              <VideoPlayer src={v.src} poster={v.poster} label={`Afspil: ${v.title}`} />
+              <figcaption class="film-meta">
+                <div class="film-meta__head">
+                  <h2 class="film-title film-title--sm">{v.title}</h2>
+                  <span class="film-duration">{v.duration}</span>
+                </div>
+                <p class="film-desc">{v.desc}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy">
+      <div class="container" style="text-align:center;">
+        <h2 class="film-cta-title">Vil I se det med jeres egne tal?</h2>
+        <p class="film-cta-sub">Book en demo — så viser vi, hvad én kortlægning kan afdække hos jer.</p>
+        <a href="/#kontakt" class="btn btn--white">Book en demo</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .film-head {
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .film-head__sub {
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    opacity: 0.85;
+    max-width: 560px;
+  }
+
+  .film-featured {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .film-meta__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .film-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-h2);
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .film-title--sm {
+    font-size: 1.3rem;
+  }
+
+  .film-duration {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--copper);
+    background: var(--coral-soft);
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+
+  .film-desc {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    opacity: 0.82;
+    margin-top: 0.6rem;
+  }
+
+  .film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .film-cta-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-h1);
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .film-cta-sub {
+    font-size: var(--text-body-lg);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+</style>

@@ -14,14 +14,20 @@ const dashboards = [
   {
     title: 'Medarbejderen',
     description: 'Personlig feedback, motivationsprofil, kognitive styrker og skræddersyede mikro-øvelser baseret på individuelle resultater.',
+    img: '/images/screenshots/medarbejder-hjem.webp',
+    alt: 'Medarbejderens app — personlig forside med Atlas og hurtige handlinger',
   },
   {
     title: 'HR & Ledere',
-    description: 'Datadrevet overblik over teams, tidlige faresignaler, evaluering af tiltag og konkrete anbefalinger til forebyggende indsatser.',
+    description: 'Teamdynamik på tværs af organisationen: tillid, konflikthåndtering og forpligtelse — altid aggregeret og anonymiseret.',
+    img: '/images/screenshots/atlas-teams.webp',
+    alt: 'Atlas Teams — teamdynamik på tværs af organisationen',
   },
   {
     title: 'Ledelsen',
     description: 'Strategisk overblik, prioriterede indsatsområder, dokumenteret effekt af initiativer og benchmark mod tidligere målinger.',
+    img: '/images/screenshots/org-overblik.webp',
+    alt: 'Organisationsoverblik — aggregeret trivselsdata for hele organisationen',
   },
 ];
 
@@ -36,7 +42,7 @@ const features = [
   },
   {
     title: 'Interventioner der virker',
-    text: 'Evidensbaserede mikro-øvelser designet af forfatter og interventionsdesigner Lisa Beuschau. Personlige programmer der møder medarbejderen, hvor de er — ikke generiske tips.',
+    text: 'Evidensbaserede mikro-øvelser designet af forfatter og Head of Interventions Lisa Beuschau. Personlige programmer der møder medarbejderen, hvor de er — ikke generiske tips.',
   },
   {
     title: 'Vi gør psykologer mere effektive',
@@ -99,8 +105,8 @@ const features = [
         <div class="platform-dashboards">
           {dashboards.map(db => (
             <div class="platform-dashboard">
-              <div class="platform-dashboard__preview" aria-hidden="true">
-                <span>Dashboard</span>
+              <div class="platform-dashboard__preview">
+                <img src={db.img} alt={db.alt} loading="lazy" />
               </div>
               <h3 class="platform-dashboard__title">{db.title}</h3>
               <p class="platform-dashboard__desc">{db.description}</p>
@@ -224,19 +230,20 @@ const features = [
   .platform-dashboard__preview {
     width: 100%;
     aspect-ratio: 16 / 10;
-    background: var(--blush);
-    border: 2px dashed var(--lavender);
+    background: var(--warm-white);
+    border: 1px solid var(--border-warm);
     border-radius: var(--card-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(45, 46, 90, 0.08);
     margin-bottom: 1.25rem;
   }
 
-  .platform-dashboard__preview span {
-    font-size: var(--text-small);
-    color: var(--text-muted);
-    font-weight: 500;
+  .platform-dashboard__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
   }
 
   .platform-dashboard__title {

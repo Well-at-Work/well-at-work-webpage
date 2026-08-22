@@ -1,0 +1,282 @@
+---
+import { terrainRings } from '../lib/terrain.js';
+
+// Soft terrain behind the network of areas
+const calmZone = terrainRings({ seed: 21, cx: 175, cy: 130, rMax: 95, rings: 3, points: 9, wobble: 0.4, rMinFrac: 0.4 });
+const pressZone = terrainRings({ seed: 65, cx: 330, cy: 300, rMax: 105, rings: 3, points: 9, wobble: 0.36, rMinFrac: 0.4 });
+// Areas of the map (nodes) — psychology + work environment
+const nodes = [
+  { id: 'krav',   x: 300, y: 88,  w: 66,  label: 'Krav',        dot: '#d85a30', tx: '#a8401c' },
+  { id: 'res',    x: 128, y: 118, w: 118, label: 'Ressourcer',  dot: '#7fae8f', tx: '#2d2e5a' },
+  { id: 'mot',    x: 212, y: 218, w: 112, label: 'Motivation',  dot: '#7f96cc', tx: '#2d2e5a' },
+  { id: 'energi', x: 388, y: 196, w: 82,  label: 'Energi',      dot: '#d9a441', tx: '#2d2e5a' },
+  { id: 'pers',   x: 110, y: 322, w: 118, label: 'Arbejdsstil', dot: '#b093c3', tx: '#2d2e5a' },
+  { id: 'eng',    x: 318, y: 352, w: 128, label: 'Engagement',  dot: '#7fae8f', tx: '#2d2e5a' },
+];
+
+// Connections between areas (the actual "map"). c = center of a node pill.
+const c = id => {
+  const n = nodes.find(n => n.id === id);
+  return { x: n.x + n.w / 2, y: n.y + 15 };
+};
+const links = [
+  { a: 'krav', b: 'energi', color: '#d85a30', w: 3.2, o: 0.55 },
+  { a: 'res',  b: 'mot',    color: '#7fae8f', w: 3.2, o: 0.6 },
+  { a: 'mot',  b: 'eng',    color: '#7fae8f', w: 2.4, o: 0.5 },
+  { a: 'krav', b: 'mot',    color: '#c96f43', w: 1.8, o: 0.4 },
+  { a: 'pers', b: 'mot',    color: '#b093c3', w: 1.8, o: 0.45 },
+  { a: 'res',  b: 'pers',   color: '#8fae94', w: 1.4, o: 0.35 },
+];
+---
+
+<section class="section section--beige" id="kortet">
+  <div class="container mapsec__grid">
+    <div class="mapsec__text">
+      <p class="eyebrow">Grundlaget</p>
+      <h2 class="section-title">To slags data.<br />Ét kort.</h2>
+      <p class="mapsec__signature">I får ikke en karakter. I får et kort.</p>
+      <p class="mapsec__lead">
+        Atlas har to halvdele. <strong>Spørgsmålene</strong> fanger det, man selv kan mærke.
+        <strong>Opgaverne</strong> fanger det, man ikke selv kan se — tidlige signaler og
+        skjulte mønstre. Tilsammen tegner de et kort over, hvordan krav, ressourcer,
+        motivation og energi hænger sammen hos netop jer.
+      </p>
+      <ul class="mapsec__points">
+        <li>
+          <strong>Sammenhænge, ikke kun tal.</strong> Kortet viser, hvordan områderne
+          påvirker hinanden — hvad der driver hvad.
+        </li>
+        <li>
+          <strong>Skjult information træder frem.</strong> To medarbejdere med samme
+          stressniveau kan have helt forskellige mønstre bag — og brug for helt
+          forskellig hjælp.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mapsec__visual">
+      <div class="mapsec__inputs">
+        <figure class="mapsec__phone mapsec__phone--a">
+          <img src="/images/screenshots/atlas-spoergsmaal.webp"
+               alt="Atlas i appen — spørgsmål om arbejdsmiljø" loading="lazy" />
+          <figcaption><strong>Spørgsmål</strong>Det, man fortæller</figcaption>
+        </figure>
+        <figure class="mapsec__phone mapsec__phone--b">
+          <img src="/images/screenshots/atlas-opgave-ansigt.webp"
+               alt="Atlas i appen — aflæsning af ansigtsudtryk" loading="lazy" />
+          <figcaption><strong>Opgaver</strong>Det, adfærden viser</figcaption>
+        </figure>
+      </div>
+
+      <div class="mapsec__mapwrap">
+        <svg class="mapsec__map" viewBox="0 0 520 460" role="img"
+             aria-label="Illustration: spørgsmål og opgaver tegner tilsammen et kort over sammenhængene mellem krav, ressourcer, motivation, energi, arbejdsstil og engagement — og et skjult mønster træder frem">
+          <defs>
+            <filter id="pillshadow" x="-20%" y="-50%" width="140%" height="220%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#2d2e5a" flood-opacity="0.13"/>
+            </filter>
+          </defs>
+
+          <!-- terrain -->
+          {calmZone.map((d, i) => (
+            <path d={d} fill={i === 0 ? '#e3ecdf' : 'none'} fill-opacity="0.4"
+                  stroke="#8fae94" stroke-width="1" stroke-opacity={0.2 + i * 0.08}/>
+          ))}
+          {pressZone.map((d, i) => (
+            <path d={d} fill={i === 0 ? '#f6e3d8' : 'none'} fill-opacity="0.35"
+                  stroke="#d85a30" stroke-width="1" stroke-opacity={0.16 + i * 0.07}/>
+          ))}
+
+          <!-- data flowing in from the two halves -->
+          <g fill="none" stroke="#c96f43" stroke-width="2" stroke-opacity="0.5"
+             stroke-linecap="round" stroke-dasharray="0.1 7">
+            <path d="M -4 120 C 60 130, 100 150, 148 190"/>
+            <path d="M -4 330 C 60 320, 100 290, 150 252"/>
+          </g>
+
+          <!-- connections between areas -->
+          <g fill="none" stroke-linecap="round">
+            {links.map(l => (
+              <line x1={c(l.a).x} y1={c(l.a).y} x2={c(l.b).x} y2={c(l.b).y}
+                    stroke={l.color} stroke-width={l.w} stroke-opacity={l.o}/>
+            ))}
+            <line x1={c('energi').x} y1={c('energi').y} x2={c('eng').x} y2={c('eng').y}
+                  stroke="#d85a30" stroke-width="2.6" stroke-opacity="0.75" stroke-dasharray="7 6"/>
+          </g>
+
+          <!-- area nodes -->
+          <g font-family="Poppins, sans-serif" font-size="14" font-weight="500">
+            {nodes.map(n => (
+              <g filter="url(#pillshadow)">
+                <rect x={n.x} y={n.y} width={n.w} height="30" rx="15"
+                      fill="#fffdf9" stroke="#eadfd0" stroke-width="1"/>
+                <circle cx={n.x + 16} cy={n.y + 15} r="3.8" fill={n.dot}/>
+                <text x={n.x + 27} y={n.y + 19.5} fill={n.tx}>{n.label}</text>
+              </g>
+            ))}
+          </g>
+
+          <!-- the hidden pattern, revealed -->
+          <g font-family="Poppins, sans-serif" filter="url(#pillshadow)">
+            <rect x="345" y="256" width="140" height="44" rx="12"
+                  fill="#fffdf9" stroke="#eecfbf" stroke-width="1.2"/>
+            <text x="361" y="274" font-size="11" letter-spacing="1.5" fill="#a8401c" font-weight="600">SKJULT MØNSTER</text>
+            <text x="361" y="291" font-size="12.5" fill="#2d2e5a" font-weight="500">Bekymring</text>
+          </g>
+        </svg>
+        <p class="mapsec__caption">
+          Kortet viser sammenhængene — og mønstre, som ingen af de to datakilder kan se alene.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mapsec__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.3fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+
+  .mapsec__signature {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+
+  .mapsec__lead {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .mapsec__lead strong {
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .mapsec__points li {
+    position: relative;
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    opacity: 0.88;
+  }
+
+  .mapsec__points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--copper);
+    font-weight: 600;
+  }
+
+  .mapsec__visual {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  .mapsec__inputs {
+    position: relative;
+    flex-shrink: 0;
+    width: 276px;
+    height: 500px;
+  }
+
+  .mapsec__phone {
+    position: absolute;
+    width: 150px;
+    margin: 0;
+    background: var(--warm-white);
+    border: 1px solid var(--border-warm);
+    border-radius: 18px;
+    padding: 0.4rem;
+    box-shadow: 0 12px 30px rgba(45, 46, 90, 0.14);
+  }
+
+  .mapsec__phone--a { top: 0; left: 0; }
+
+  .mapsec__phone--b {
+    top: 150px;
+    left: 126px;
+    z-index: 2;
+    box-shadow: 0 18px 42px rgba(45, 46, 90, 0.22);
+  }
+
+  .mapsec__phone img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .mapsec__phone figcaption {
+    font-size: 0.66rem;
+    line-height: 1.3;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.45rem;
+  }
+
+  .mapsec__phone figcaption strong {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .mapsec__mapwrap {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mapsec__map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .mapsec__caption {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 920px) {
+    .mapsec__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mapsec__visual {
+      flex-direction: column;
+    }
+
+    .mapsec__inputs {
+      position: static;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .mapsec__phone,
+    .mapsec__phone--a,
+    .mapsec__phone--b {
+      position: static;
+      width: min(150px, 40%);
+    }
+  }
+</style>

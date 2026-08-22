@@ -1,0 +1,97 @@
+---
+interface Props {
+  src: string;
+  poster: string;
+  label?: string;
+}
+const { src, poster, label = 'Afspil film' } = Astro.props;
+---
+
+<div class="vp" data-vp>
+  <img class="vp__poster" src={poster} alt="" loading="lazy" />
+  <button class="vp__play" type="button" aria-label={label}>
+    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+      <path d="M8 5.5 19 12 8 18.5 Z" fill="#2d2e5a" />
+    </svg>
+  </button>
+  <video class="vp__video" preload="none" playsinline controls poster={poster} data-src={src}>
+    <source src={src} type="video/mp4" />
+    Din browser kan ikke afspille video.
+  </video>
+</div>
+
+<style>
+  .vp {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-warm);
+    box-shadow: 0 18px 48px rgba(45, 46, 90, 0.14);
+    background: var(--parchment);
+  }
+
+  .vp__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vp__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    background: #000;
+  }
+
+  .vp.is-playing .vp__video {
+    display: block;
+  }
+
+  .vp.is-playing .vp__poster,
+  .vp.is-playing .vp__play {
+    display: none;
+  }
+
+  .vp__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: rgba(255, 252, 246, 0.92);
+    box-shadow: 0 10px 30px rgba(45, 46, 90, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .vp__play svg {
+    margin-left: 4px;
+  }
+
+  .vp__play:hover {
+    transform: scale(1.06);
+    background: #fff;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-vp]').forEach((vp) => {
+    const btn = vp.querySelector('.vp__play') as HTMLButtonElement | null;
+    const video = vp.querySelector('.vp__video') as HTMLVideoElement | null;
+    if (!btn || !video) return;
+    btn.addEventListener('click', () => {
+      vp.classList.add('is-playing');
+      video.play();
+    });
+  });
+</script>

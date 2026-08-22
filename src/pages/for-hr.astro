@@ -41,27 +41,6 @@ const practical = [
   },
 ];
 
-const pricing = [
-  {
-    tier: 'Basis',
-    price: '300 kr.',
-    note: 'per medarbejder/år',
-    features: ['Kognitive tests', 'Selvrapportering', 'Personlig feedback til medarbejdere'],
-  },
-  {
-    tier: 'Standard',
-    price: '365 kr.',
-    note: 'per medarbejder/år',
-    features: ['Alt i Basis', 'HR-dashboard', 'Lederrapporter', 'Workshops'],
-    highlighted: true,
-  },
-  {
-    tier: 'Premium',
-    price: '550 kr.',
-    note: 'per medarbejder/år',
-    features: ['Alt i Standard', 'Prioriteret support', 'Ekstra kvartalsmøder', 'Volumenrabat ved 500+'],
-  },
-];
 ---
 
 <Base
@@ -136,9 +115,10 @@ const pricing = [
             <path d="M0 32V19.2C0 8.533 5.867 2.133 17.6 0l2.133 3.733C13.6 5.333 10.4 9.067 9.6 16H18V32H0ZM22 32V19.2C22 8.533 27.867 2.133 39.6 0L41.733 3.733C35.6 5.333 32.4 9.067 31.6 16H40V32H22Z" fill="currentColor"/>
           </svg>
           <blockquote class="quote-text">
-            Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt, som det ellers ville tage mig dage at indsamle.
+            Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt fra Well at Works banebrydende organisationsdata,
+            som det ellers ville tage mig dage at indsamle gennem observationer og medarbejderinterviews.
           </blockquote>
-          <cite class="quote-cite">— Helge Larsen, Organisationspsykolog, FranQ</cite>
+          <cite class="quote-cite">— Helge Larsen, ejer, FRANQ ApS</cite>
           <p class="quote-note">
             Bemærk: Vi erstatter ikke psykologen. Vi giver psykologen et bedre grundlag — og I bruger færre timer på diagnostik og flere på intervention.
           </p>
@@ -146,31 +126,7 @@ const pricing = [
       </div>
     </section>
 
-    <!-- Section 5: Priser -->
-    <section class="section section--white">
-      <div class="container">
-        <h2 class="section-title">Priser</h2>
-        <p class="section-subtitle">Alle pakker inkluderer kognitive tests, selvrapportering og personlig feedback til medarbejdere. Volumenrabat for 500+ medarbejdere.</p>
-        <div class="pricing-grid">
-          {pricing.map(plan => (
-            <div class={`pricing-card${plan.highlighted ? ' pricing-card--highlighted' : ''}`}>
-              <h3 class="pricing-tier">{plan.tier}</h3>
-              <p class="pricing-price">{plan.price}</p>
-              <p class="pricing-note">{plan.note}</p>
-              <ul class="pricing-features">
-                {plan.features.map(f => (
-                  <li class="pricing-feature">
-                    <span class="pricing-check" aria-hidden="true">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
+    
     <!-- CTA -->
     <section class="section section--navy">
       <div class="container" style="text-align:center;">

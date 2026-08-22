@@ -1,0 +1,79 @@
+<section class="section section--beige" id="apv">
+  <div class="container apv__grid">
+    <div class="apv__inner">
+      <h2 class="section-title">
+        APV'en ender næsten altid i en handlingsplan, ingen følger.<br />
+        Hos os følger handlingen af sig selv.
+      </h2>
+      <p class="apv__text">
+        Det svære ved en APV er ikke at lave den — det er handlingsplanen. Og den havner som
+        regel i en skuffe. Med Atlas kommer den næsten af sig selv: kortlægningen peger på
+        årsagerne, og forløbene og coachen <em>er</em> de konkrete handlinger — for den enkelte
+        og for teamet. Byg og send APV'en direkte i appen på minutter, eller tag jeres
+        eksisterende resultater med ind.
+      </p>
+      <p class="apv__signature">APV'en bliver ikke et dokument. Den bliver første skridt i en forandring.</p>
+    </div>
+    <figure class="apv__shot">
+      <img
+        src="/images/screenshots/apv-runder.webp"
+        alt="APV-runder i platformen — en afsluttet runde med 100% svarprocent"
+        loading="lazy"
+      />
+      <figcaption>APV'en bor samme sted som resten af kortet.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .apv__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .apv__shot img {
+    width: 100%;
+    display: block;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--border-warm);
+    box-shadow: 0 14px 40px rgba(45, 46, 90, 0.1);
+  }
+
+  .apv__shot figcaption {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+
+  @media (max-width: 860px) {
+    .apv__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .apv__inner {
+    max-width: 780px;
+  }
+
+  .apv__text {
+    font-size: var(--text-body-lg);
+    line-height: 1.75;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .apv__text em {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .apv__signature {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--navy);
+  }
+</style>

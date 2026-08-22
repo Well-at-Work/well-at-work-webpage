@@ -11,18 +11,24 @@ const navLinks = [
   },
   { label: 'Forskning', href: '/forskning' },
   { label: 'Resultater', href: '/resultater' },
+  { label: 'Film', href: '/film' },
   { label: 'Om os', href: '/om-os' },
-  { label: 'Priser', href: '/priser' },
 ];
 ---
 
 <nav class="navbar" id="navbar">
   <div class="navbar__inner container">
     <a href="/" class="navbar__logo" aria-label="Well at Work — forside">
-      <svg class="navbar__logo-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-        <path d="M4 20 Q8 10, 16 16 Q24 22, 28 12" stroke="#5c3048" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <svg class="navbar__logo-icon" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+        <g fill="none" stroke="#2d2e5a" stroke-width="3" stroke-linecap="round">
+          <path d="M7 24 A 12 12 0 0 1 13 7"/>
+          <path d="M11 19 A 5 5 0 0 1 14.5 14.5"/>
+          <path d="M19 6 A 11 11 0 0 1 26 13"/>
+          <path d="M27 17 A 11 11 0 0 1 17 26"/>
+          <path d="M20.5 24 A 4 4 0 0 1 24.5 20.5"/>
+        </g>
       </svg>
-      <span class="navbar__logo-text">Well at Work</span>
+      <span class="navbar__logo-text">well at work</span>
     </a>
 
     <div class="navbar__links" id="nav-links">
@@ -87,8 +93,10 @@ const navLinks = [
   }
 
   .navbar__logo-text {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    font-size: 1.15rem;
     color: var(--navy);
   }
 

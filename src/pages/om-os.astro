@@ -5,42 +5,49 @@ import Footer from '../components/Footer.astro';
 
 const team = [
   {
-    name: 'Nikolas Nemeth',
+    name: 'Svend Aage Kirk',
     title: 'CEO',
+    bio: '40+ års erfaring med international forretningsudvikling, salg, strategi og vækst på tværs af brancher.',
+    image: '/images/people/svend-aage-kirk.webp',
+    imagePosition: 'center',
+  },
+  {
+    name: 'Nikolas Nemeth',
+    title: 'Head of Public Sector Relations',
     bio: '15+ års erfaring med strategi, offentlige anliggender og organisationsudvikling.',
+    image: '/images/people/nikolas-nemeth.jpg',
+    imagePosition: '66% center',
   },
   {
     name: 'Kim Mouridsen',
     title: 'CTO & medstifter',
     bio: 'Professor i neurovidenskab, Aarhus Universitet. 20+ forskningsmæssige priser. 13 millioner brugere på tværs af tidligere platforme. FDA-godkendte medicinsk AI-løsninger (Cercare Medical, Mindway AI). Tidligere forsker i Karl Fristons laboratorium, University College London.',
-  },
-  {
-    name: 'Kenneth Kjær Jensen',
-    title: 'CTO',
-    bio: 'PhD i matematik og økonomi. Specialiseret i AI, algoritmeudvikling og dataanalyse.',
+    image: undefined,
+    imagePosition: 'center',
   },
   {
     name: 'Lisa Beuschau',
-    title: 'Interventionsdesigner',
+    title: 'Head of Interventions',
     bio: 'Forfatter til "1-Minut Metoden." Designer af evidensbaserede mikro-øvelser og personlige interventionsprogrammer.',
+    image: '/images/people/lisa-beuschau.webp',
+    imagePosition: 'center',
   },
   {
     name: 'Helge Larsen',
     title: 'Organisationspsykolog',
     bio: 'Specialiseret i arbejdspladstrivsel, organisatorisk forandring og ledelsesrådgivning.',
+    image: '/images/people/helge-larsen.png',
+    imagePosition: 'center',
   },
 ];
 
 const board = [
   {
     name: 'Niels Ankerstjerne',
-    role: 'DLA Piper, VC/PE',
-    focus: 'Juridisk og corporate governance',
-  },
-  {
-    name: 'Bjarne Schøn',
-    role: 'Microsoft, Hasbro, Nilfisk',
-    focus: 'Corporate innovation og skalering',
+    role: 'Bestyrelsesformand · Partner, DLA Piper',
+    focus: 'VC/PE · Juridisk og corporate governance',
+    image: '/images/people/niels-ankerstjerne.jpg',
+    imagePosition: 'center 18%',
   },
 ];
 ---
@@ -64,9 +71,21 @@ const board = [
         <div class="om-team">
           {team.map(person => (
             <article class="om-person">
-              <div class="om-person__avatar" aria-hidden="true">
-                <span>{person.name.split(' ').map(n => n[0]).join('')}</span>
-              </div>
+              {person.image ? (
+                <img
+                  class="om-person__avatar"
+                  src={person.image}
+                  alt={`Portræt af ${person.name}`}
+                  loading="lazy"
+                  width="96"
+                  height="96"
+                  style={person.imagePosition ? `object-position:${person.imagePosition}` : undefined}
+                />
+              ) : (
+                <div class="om-person__avatar om-person__avatar--fallback" aria-hidden="true">
+                  <span>{person.name.split(' ').map(n => n[0]).join('')}</span>
+                </div>
+              )}
               <h3 class="om-person__name">{person.name}</h3>
               <p class="om-person__title">{person.title}</p>
               <p class="om-person__bio">{person.bio}</p>
@@ -82,9 +101,21 @@ const board = [
         <div class="om-board">
           {board.map(member => (
             <article class="om-board-card">
-              <div class="om-board-card__avatar" aria-hidden="true">
-                <span>{member.name.split(' ').map(n => n[0]).join('')}</span>
-              </div>
+              {member.image ? (
+                <img
+                  class="om-board-card__avatar"
+                  src={member.image}
+                  alt={`Portræt af ${member.name}`}
+                  loading="lazy"
+                  width="96"
+                  height="96"
+                  style={`object-position:${member.imagePosition}`}
+                />
+              ) : (
+                <div class="om-board-card__avatar om-board-card__avatar--fallback" aria-hidden="true">
+                  <span>{member.name.split(' ').map(n => n[0]).join('')}</span>
+                </div>
+              )}
               <h3 class="om-board-card__name">{member.name}</h3>
               <p class="om-board-card__role">{member.role}</p>
               <p class="om-board-card__focus">{member.focus}</p>
@@ -150,11 +181,16 @@ const board = [
   }
 
   .om-person__avatar {
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     background-color: var(--navy-dark);
     margin: 0 auto 1.25rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .om-person__avatar--fallback {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,11 +242,15 @@ const board = [
   }
 
   .om-board-card__avatar {
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     background-color: var(--steel-blue);
     margin: 0 auto 1rem;
+    object-fit: cover;
+  }
+
+  .om-board-card__avatar--fallback {
     display: flex;
     align-items: center;
     justify-content: center;

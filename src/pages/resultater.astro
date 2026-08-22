@@ -5,47 +5,36 @@ import Footer from '../components/Footer.astro';
 
 const testimonials = [
   {
-    quote: 'Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt, som det ellers ville tage mig dage at indsamle.',
+    quote: 'Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt fra Well at Works banebrydende organisationsdata, som det ellers ville tage mig dage at indsamle gennem observationer og medarbejderinterviews.',
     name: 'Helge Larsen',
-    role: 'Organisationspsykolog, FranQ',
+    role: 'Ejer, FRANQ ApS',
+    image: '/images/people/helge-larsen.png',
   },
   {
-    quote: 'Med 60% udbrændthed blandt tandlæger vidste vi, at vi havde brug for noget mere end traditionelle trivselsmålinger. Partnerskabet med Well at Work har ført til, at vores medlemmer nu indgår bilaterale aftaler.',
+    quote: 'Vores egne undersøgelser viser, at 60 % af alle tandlæger har oplevet udbrændthed eller manglende arbejdsglæde inden for de seneste seks måneder. Som reaktion på disse resultater valgte vi at indgå et partnerskab med Well at Work i testfasen af deres teknologi. I dag har nogle af vores medlemmer fra testperioden allerede indgået bilaterale aftaler med Well at Work, og vi ser frem til at kunne udbrede deres innovative well-being-målinger til flere af vores medlemmer.',
     name: 'Noa Jankovic',
     role: 'Vicedirektør, Tandlægeforeningen',
+    image: '/images/people/noa-jankovic.jpg',
   },
   {
-    quote: 'Well at Work gav os et helt nyt grundlag for at forstå, hvad der virkelig foregår i organisationen — og handlekraft til at gøre noget ved det. Vi har forlænget vores samarbejde efter den indledende kriseindsats.',
+    quote: 'I kølvandet på en række sager om dårlige psykiske arbejdsvilkår i vores politiske sekretariat hyrede jeg som konstitueret sekretariatschef Well at Work og en organisationspsykolog ind til at hjælpe os med at forbedre trivslen. Vi har efterfølgende besluttet at forlænge samarbejdet.',
     name: 'Morten E. G. J. Brautsch',
     role: 'Særlig rådgiver for udenrigsministeren',
+    image: '/images/people/morten-brautsch.jpg',
   },
   {
-    quote: 'Med 130 ansatte i omsorgssektoren havde vi brug for et værktøj, der kunne give os indsigt på tværs af teams — ikke bare individuelle samtaler. Well at Work leverede præcis det.',
-    name: 'Pia Saaby Sørensen',
-    role: 'PS Contact, 130 ansatte',
-  },
-  {
-    quote: 'Som ingeniørvirksomhed med 125 medarbejdere var trivsel ikke noget, vi traditionelt målte på. Well at Work viste os, hvad vi ikke vidste — og gav os konkrete redskaber til at handle.',
+    quote: 'Som direktør for Danmarks største bestyrelsesnetværk ser jeg frem til at kunne tilbyde mine medlemmer adgang til Well at Works banebrydende tilgang til at optimere både medarbejder- og ledertrivsel. Deres teknologi identificerer ikke kun stress, men optimerer også produktiviteten og gør det muligt at handle proaktivt, hvilket sikrer sundere og mere engagerede medarbejdere og ledere – til gavn for bundlinjen.',
     name: 'Henrik Nielsen',
-    role: 'Stiesdal, 125 ansatte',
+    role: 'Direktør, Asnet',
+    image: '/images/people/henrik-nielsen.png',
   },
 ];
 
 const stories = [
   {
     client: 'Tandlægeforeningen',
-    headline: 'Fra 60% udbrændthed til bilateral aftale',
-    text: 'Tandlægeforeningen opdagede, at 60% af danske tandlæger viste tegn på udbrændthed. Et pilotprojekt med Well at Work gav dybere indsigt end traditionelle målinger — og førte til, at medlemmer nu indgår bilaterale aftaler om løbende trivselsmåling.',
-  },
-  {
-    client: 'Colosseum Dental',
-    headline: '30+ klinikker i Danmark — pathway til 650+ i EU',
-    text: 'Efter succesfuld implementering på tværs af 30+ danske klinikker baner Colosseum Dental vejen for udrulning til 650+ klinikker i Europa. Well at Work skalerer med dem.',
-  },
-  {
-    client: 'Stiesdal',
-    headline: 'Pilotprojekt i en ingeniørvirksomhed med 125 ansatte',
-    text: 'Stiesdal — kendt for innovation inden for vedvarende energi — brugte Well at Work til at kortlægge trivsel og kognitive mønstre blandt 125 medarbejdere. Indsigten skabte grundlag for målrettede organisatoriske forandringer.',
+    headline: 'Fra bekymrende trivselsdata til bilaterale aftaler',
+    text: 'Tandlægeforeningens egne undersøgelser viste, at 60 % af alle tandlæger havde oplevet udbrændthed eller manglende arbejdsglæde inden for de seneste seks måneder. Et partnerskab med Well at Work i teknologiens testfase har siden ført til, at nogle medlemmer har indgået bilaterale aftaler.',
   },
   {
     client: 'Moderaterne',
@@ -56,9 +45,8 @@ const stories = [
 
 const logos = [
   'Tandlægeforeningen',
-  'Colosseum Dental',
-  'Stiesdal',
-  'Velliv',
+  'Asnet',
+  'Aparta',
   'PS Contact',
   'Moderaterne',
 ];
@@ -82,7 +70,20 @@ const logos = [
         <div class="resultater-testimonials">
           {testimonials.map(t => (
             <article class="resultater-card">
-              <div class="resultater-card__avatar" aria-hidden="true"></div>
+              {t.image ? (
+                <img
+                  class="resultater-card__avatar"
+                  src={t.image}
+                  alt={`Portræt af ${t.name}`}
+                  loading="lazy"
+                  width="72"
+                  height="72"
+                />
+              ) : (
+                <div class="resultater-card__avatar resultater-card__avatar--fallback" aria-hidden="true">
+                  {t.name.split(' ').map(part => part[0]).join('')}
+                </div>
+              )}
               <blockquote class="resultater-card__quote">
                 <p>&ldquo;{t.quote}&rdquo;</p>
               </blockquote>
@@ -167,11 +168,22 @@ const logos = [
   }
 
   .resultater-card__avatar {
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     background-color: var(--lavender);
+    object-fit: cover;
+    object-position: center;
     flex-shrink: 0;
+  }
+
+  .resultater-card__avatar--fallback {
+    display: grid;
+    place-items: center;
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
 
   .resultater-card__quote p {
