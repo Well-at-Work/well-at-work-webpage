@@ -63,14 +63,13 @@ const morph = {
             <circle class="redraw__dot" cx="205" cy="92" r="4.5" fill="#d85a30"/>
           </svg>
 
-          <div class="redraw__handling" data-redraw-handling aria-hidden="true">
-            <svg viewBox="0 0 44 20" width="40" height="18" fill="none" stroke="#3d5138" stroke-width="1.8" stroke-linecap="round">
-              <path d="M2 10 H 38 M32 4 38 10 32 16"/>
-            </svg>
-            <span>handling</span>
-          </div>
-
           <figcaption>
+            <span class="redraw__handling" data-redraw-handling aria-hidden="true">
+              <svg viewBox="0 0 44 20" width="40" height="18" fill="none" stroke="#3d5138" stroke-width="1.8" stroke-linecap="round">
+                <path d="M2 10 H 38 M32 4 38 10 32 16"/>
+              </svg>
+              <span>handling</span>
+            </span>
             <span class="redraw__state redraw__state--before" data-redraw-before>
               Måling 1 <span class="redraw__tag redraw__tag--coral">højt pres</span>
             </span>
@@ -191,9 +190,12 @@ const morph = {
         dot.setAttribute('fill', lerpColor(data.dotBefore, data.dotAfter, t));
         dot.setAttribute('r', (4.5 - 0.5 * t).toFixed(1));
       }
-      if (handling) handling.style.opacity = String(Math.sin(t * Math.PI).toFixed(3));
-      if (beforeCap) beforeCap.style.opacity = String((1 - t).toFixed(3));
-      if (afterCap) afterCap.style.opacity = String(t.toFixed(3));
+      if (handling) {
+        const h = t > 0.32 && t < 0.68 ? Math.sin((t - 0.32) / 0.36 * Math.PI) : 0;
+        handling.style.opacity = String(h.toFixed(3));
+      }
+      if (beforeCap) beforeCap.style.opacity = t < 0.38 ? '1' : '0';
+      if (afterCap) afterCap.style.opacity = t > 0.62 ? '1' : '0';
       panel.classList.toggle('redraw__panel--after', t > 0.55);
     }
 
@@ -267,20 +269,35 @@ const morph = {
     border-color: #cfe0d4;
   }
 
-  .redraw__panel svg {
+  .redraw__panel > svg {
     width: 100%;
     height: auto;
     max-height: min(42vh, 360px);
     display: block;
   }
 
-  .redraw__handling {
+  .redraw__panel figcaption {
+    position: relative;
+    min-height: 2.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-top: 0.4rem;
+  }
+
+  .redraw__handling,
+  .redraw__state {
+    position: absolute;
+    inset: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.2rem;
-    height: 2.4rem;
+    gap: 0.6rem;
+  }
+
+  .redraw__handling {
+    flex-direction: column;
+    gap: 0.15rem;
     font-size: 0.62rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -289,29 +306,7 @@ const morph = {
     opacity: 0;
   }
 
-  .redraw__panel figcaption {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 1.8rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--navy);
-    margin-top: 0.4rem;
-  }
-
-  .redraw__state {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    transition: opacity 0.05s linear;
-  }
-
   .redraw__state--after {
-    position: absolute;
-    inset: 0;
     opacity: 0;
   }
 
@@ -449,6 +444,6 @@ const morph = {
     }
     .redraw__handling { display: none; }
     .redraw__state--before { display: none; }
-    .redraw__state--after { position: static; opacity: 1; }
+    .redraw__state--after { position: absolute; opacity: 1; }
   }
 </style>
