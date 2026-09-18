@@ -1,309 +1,75 @@
 ---
-const navLinks = [
-  {
-    label: 'Platform',
-    href: '/platform',
-    children: [
-      { label: 'For ledelsen', href: '/for-ledelsen' },
-      { label: 'For HR', href: '/for-hr' },
-      { label: 'For medarbejdere', href: '/for-medarbejdere' },
-    ],
-  },
-  { label: 'Forskning', href: '/forskning' },
-  { label: 'Resultater', href: '/resultater' },
-  { label: 'Film', href: '/film' },
-  { label: 'Om os', href: '/om-os' },
+const path = Astro.url.pathname;
+const groups = [
+  { label: 'Platform', href: '/platform', children: [
+    { label: 'Hele platformen', href: '/platform' },
+    { label: 'Ledelsescoach', href: '/platform#ledelsescoach' },
+    { label: 'Personlige forløb', href: '/platform#personlige-forloeb' },
+    { label: 'APV', href: '/platform#apv' },
+    { label: 'Atlas Individual', href: '/platform#atlas-individual' },
+    { label: 'Atlas Teams', href: '/platform#atlas-teams' },
+    { label: 'Analyse og rapportering', href: '/platform#rapportering' },
+  ]},
+  { label: 'Løsninger', href: '/for-hr', children: [
+    { label: 'For HR', href: '/for-hr' },
+    { label: 'For ledelsen', href: '/for-ledelsen' },
+    { label: 'For medarbejdere', href: '/for-medarbejdere' },
+  ]},
 ];
 ---
-
-<nav class="navbar" id="navbar">
-  <div class="navbar__inner container">
-    <a href="/" class="navbar__logo" aria-label="Well at Work — forside">
-      <svg class="navbar__logo-icon" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
-        <g fill="none" stroke="#2d2e5a" stroke-width="3" stroke-linecap="round">
-          <path d="M7 24 A 12 12 0 0 1 13 7"/>
-          <path d="M11 19 A 5 5 0 0 1 14.5 14.5"/>
-          <path d="M19 6 A 11 11 0 0 1 26 13"/>
-          <path d="M27 17 A 11 11 0 0 1 17 26"/>
-          <path d="M20.5 24 A 4 4 0 0 1 24.5 20.5"/>
-        </g>
-      </svg>
-      <span class="navbar__logo-text">well at work</span>
-    </a>
-
-    <div class="navbar__links" id="nav-links">
-      {navLinks.map(link => (
-        link.children ? (
-          <div class="navbar__dropdown">
-            <a href={link.href} class="navbar__link navbar__link--has-dropdown">
-              {link.label}
-              <svg class="navbar__chevron" viewBox="0 0 12 8" width="10" height="10" aria-hidden="true">
-                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <div class="navbar__dropdown-menu">
-              {link.children.map(child => (
-                <a href={child.href} class="navbar__dropdown-item">{child.label}</a>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <a href={link.href} class="navbar__link">{link.label}</a>
-        )
-      ))}
-      <a href="#kontakt" class="btn btn--primary navbar__mobile-cta">Book demo</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Hovednavigation">
+    <a class="brand" href="/" aria-label="Well at Work — forside"><img src="/images/brand/mark.png" alt="" width="36" height="36" /><span>well at work</span></a>
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <div class="nav-menu" id="primary-menu">
+      {groups.map(group => <details class="nav-group"><summary>{group.label}<span aria-hidden="true">⌄</span></summary><div class="nav-dropdown">{group.children.map(link => <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>)}</div></details>)}
+      <a href="/resultater" aria-current={path === '/resultater' ? 'page' : undefined}>Kunder</a>
+      <a href="/forskning" aria-current={path === '/forskning' ? 'page' : undefined}>Forskning</a>
+      <a href="/om-os" aria-current={path === '/om-os' ? 'page' : undefined}>Om os</a>
+      <a href="/#kontakt" class="btn btn--primary nav-cta">Book en demo <span aria-hidden="true">↗</span></a>
     </div>
-
-    <a href="#kontakt" class="btn btn--primary navbar__cta">Book demo</a>
-
-    <button class="navbar__hamburger" id="nav-toggle" aria-label="Åbn menu" aria-expanded="false">
-      <span class="navbar__hamburger-line"></span>
-      <span class="navbar__hamburger-line"></span>
-      <span class="navbar__hamburger-line"></span>
-    </button>
-  </div>
-</nav>
-
+  </nav>
+</header>
 <style>
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--warm-beige);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .navbar--scrolled {
-    box-shadow: 0 2px 12px rgba(47, 47, 85, 0.08);
-  }
-
-  .navbar__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 72px;
-    gap: 2rem;
-  }
-
-  .navbar__logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-shrink: 0;
-  }
-
-  .navbar__logo-text {
-    font-family: var(--font-body);
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    font-size: 1.15rem;
-    color: var(--navy);
-  }
-
-  .navbar__links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .navbar__link {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--navy);
-    transition: color 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .navbar__link:hover {
-    color: var(--plum);
-  }
-
-  .navbar__cta {
-    font-size: 0.9rem;
-    padding: 10px 24px;
-    flex-shrink: 0;
-  }
-
-  .navbar__mobile-cta {
-    display: none;
-  }
-
-  /* Dropdown */
-  .navbar__dropdown {
-    position: relative;
-  }
-
-  .navbar__link--has-dropdown {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  .navbar__chevron {
-    transition: transform 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .navbar__dropdown:hover .navbar__chevron,
-  .navbar__dropdown:focus-within .navbar__chevron {
-    transform: rotate(180deg);
-  }
-
-  .navbar__dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-top: 0.75rem;
-    min-width: 190px;
-    z-index: 100;
-  }
-
-  .navbar__dropdown-menu::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0.75rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--white);
-    border-radius: var(--card-radius);
-    box-shadow: 0 8px 24px rgba(47, 47, 85, 0.12);
-    border: 1px solid var(--border-light);
-    z-index: -1;
-  }
-
-  .navbar__dropdown:hover .navbar__dropdown-menu,
-  .navbar__dropdown:focus-within .navbar__dropdown-menu {
-    display: block;
-  }
-
-  .navbar__dropdown-item {
-    display: block;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--navy);
-    white-space: nowrap;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-
-  .navbar__dropdown-item:hover {
-    background: var(--warm-beige);
-    color: var(--plum);
-  }
-
-  .navbar__hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 32px;
-    height: 32px;
-    padding: 4px;
-  }
-
-  .navbar__hamburger-line {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--navy);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .navbar__links {
-      display: none;
-      position: absolute;
-      top: 72px;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      background-color: var(--warm-beige);
-      padding: 1.5rem var(--container-padding) 2rem;
-      gap: 1.25rem;
-      box-shadow: 0 8px 16px rgba(47, 47, 85, 0.08);
-    }
-
-    .navbar__links--open {
-      display: flex;
-    }
-
-    .navbar__link {
-      font-size: 1.05rem;
-    }
-
-    .navbar__cta {
-      display: none;
-    }
-
-    .navbar__mobile-cta {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 0.95rem;
-    }
-
-    .navbar__hamburger {
-      display: flex;
-    }
-
-    /* Animated X */
-    .navbar__hamburger--open .navbar__hamburger-line:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .navbar__hamburger--open .navbar__hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .navbar__hamburger--open .navbar__hamburger-line:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Dropdown on mobile: show sub-links inline below parent */
-    .navbar__dropdown-menu {
-      display: block;
-      position: static;
-      transform: none;
-      box-shadow: none;
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      padding-left: 1rem;
-      margin-top: -0.5rem;
-    }
-
-    .navbar__dropdown-item {
-      font-size: 0.95rem;
-      padding: 0.4rem 0;
-      color: var(--text-muted);
-    }
-
-    .navbar__dropdown-item:hover {
-      background: transparent;
-      color: var(--plum);
-    }
-
-    .navbar__chevron {
-      display: none;
-    }
-  }
+.site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--border); }
+.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.brand { display: flex; align-items: center; gap: .65rem; flex-shrink: 0; color: var(--plum); }
+.brand span { font-size: 1.65rem; font-weight: 500; letter-spacing: -.055em; }
+.brand img { width: 35px; height: 35px; }
+.nav-menu { display: flex; align-items: center; gap: 1.65rem; font-size: .9rem; font-weight: 550; }
+.nav-menu > a:not(.btn):hover, summary:hover { color: var(--plum); }
+.nav-menu a[aria-current='page'] { color: var(--plum); text-decoration: underline; text-underline-offset: 6px; }
+.nav-cta { margin-left: .5rem; font-size: .85rem; padding: 12px 19px; }
+.nav-cta span { margin-left: .8rem; }
+.nav-group { position: relative; }
+summary { list-style: none; display: flex; align-items: center; gap: .45rem; cursor: pointer; padding: 1rem 0; }
+summary::-webkit-details-marker { display: none; }
+summary span { font-size: 1rem; }
+.nav-dropdown { position: absolute; top: calc(100% + .3rem); left: -1.25rem; min-width: 235px; padding: .6rem; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 40px #30213814; }
+.nav-dropdown a { display: block; padding: .6rem .8rem; border-radius: 5px; }
+.nav-dropdown a:hover { background: var(--plum-soft); color: var(--plum); }
+.menu-toggle { display: none; }
+@media(max-width: 1000px) {
+.nav { min-height: 74px; }
+.menu-toggle { display: flex; align-items: center; gap: .8rem; padding: .7rem 0 .7rem .7rem; font-size: .9rem; }
+.menu-lines { width: 19px; height: 10px; border-block: 2px solid var(--plum); }
+.nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 1.5rem 1.5rem; background: white; border-bottom: 1px solid var(--border); max-height: calc(100dvh - 74px); overflow-y: auto; }
+.nav-menu.is-open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.nav-menu > a { padding: .85rem 0; }
+.nav-menu .nav-cta { margin: 1rem 0 0; padding: .9rem; }
+.nav-dropdown { position: static; box-shadow: none; border: 0; padding: 0 .5rem .5rem; }
+summary { justify-content: space-between; }
+.brand span { font-size: 1.5rem; }
+}
 </style>
-
 <script>
-  const navbar = document.getElementById('navbar');
-  const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-
-  window.addEventListener('scroll', () => {
-    navbar?.classList.toggle('navbar--scrolled', window.scrollY > 10);
-  });
-
-  toggle?.addEventListener('click', () => {
-    const isOpen = links?.classList.toggle('navbar__links--open');
-    toggle.classList.toggle('navbar__hamburger--open', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
-  });
+const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+const menu = document.querySelector<HTMLElement>('.nav-menu');
+const groups = document.querySelectorAll<HTMLDetailsElement>('.nav-group');
+function closeMenu() { menu?.classList.remove('is-open'); toggle?.setAttribute('aria-expanded', 'false'); groups.forEach(group => group.open = false); }
+toggle?.addEventListener('click', () => { const open = menu?.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(!!open)); });
+groups.forEach(group => group.addEventListener('toggle', () => { if (group.open) groups.forEach(other => { if (other !== group) other.open = false; }); }));
+document.addEventListener('click', event => { if (event.target instanceof Element && !event.target.closest('.site-header')) closeMenu(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') { const active = document.activeElement; const parent = active?.closest('details'); closeMenu(); if (parent) parent.querySelector('summary')?.focus(); else if (active && menu?.contains(active)) toggle?.focus(); } });
+menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 </script>

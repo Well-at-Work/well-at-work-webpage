@@ -1,48 +1,11 @@
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <svg class="footer__logo-icon" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
-        <g fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="3" stroke-linecap="round">
-          <path d="M7 24 A 12 12 0 0 1 13 7"/>
-          <path d="M19 6 A 11 11 0 0 1 26 13"/>
-          <path d="M27 17 A 11 11 0 0 1 17 26"/>
-        </g>
-      </svg>
-      <span class="footer__brand-name">well at work</span>
-    </div>
-    <p class="footer__copy">Indsigt med respekt for mennesker · &copy; {new Date().getFullYear()} Well at Work</p>
-  </div>
-</footer>
-
+<footer class="footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="/"><img src="/images/brand/mark.png" width="30" height="30" alt="" /><span>well at work</span></a><p>Trivsel. Udvikling. Sammen.</p><nav aria-label="Footernavigation"><a href="/platform">Platform</a><a href="/forskning">Forskning</a><a href="/om-os">Om os</a><a href="/film">Film</a><a href="mailto:info@bewellatwork.dk">Kontakt</a></nav></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Well at Work</span><a href="/platform#privatliv">Privatliv i platformen</a><span>Udviklet i Danmark</span></div></div></footer>
 <style>
-  .footer {
-    background-color: var(--navy-deep);
-    padding: 2rem 0;
-  }
-
-  .footer__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer__brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .footer__brand-name {
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  .footer__copy {
-    font-size: var(--text-small);
-    color: rgba(255, 255, 255, 0.4);
-  }
+.footer { padding: 3rem 0 1.5rem; background: white; }
+.footer-top { display: flex; align-items: center; gap: 2rem; padding-bottom: 2.5rem; }
+.footer-brand { display: flex; align-items: center; gap: .6rem; color: var(--plum); font-size: 1.45rem; letter-spacing: -.055em; font-weight: 500; }
+.footer-top > p { font-size: .78rem; color: var(--text-muted); }
+.footer-top nav { display: flex; gap: 1.4rem; margin-left: auto; font-size: .8rem; }
+.footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--text-muted); font-size: .7rem; }
+@media(max-width:850px) { .footer-top { flex-wrap: wrap; gap: 1rem 2rem; } .footer-top nav { width: 100%; margin: 1rem 0 0; flex-wrap: wrap; } .footer-bottom { flex-wrap: wrap; } }
 </style>

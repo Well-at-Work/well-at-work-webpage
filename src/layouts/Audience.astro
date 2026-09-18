@@ -1,0 +1,16 @@
+---
+import Base from './Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Contact from '../components/Contact.astro';
+interface Props { title: string; label: string; heading: string; description: string; benefits: { title: string; text: string }[]; }
+const { title, label, heading, description, benefits } = Astro.props;
+---
+<Base title={`${title} | Well at Work`} description={description}><Navbar /><main id="main-content"><section class="page-hero"><div class="container"><p class="eyebrow">{label}</p><h1>{heading}</h1><p class="section-subtitle">{description}</p><a href="/#kontakt" class="btn btn--primary">Book en demo ↗</a><a href="/platform" class="text-link">Se platformen</a></div></section><section class="section section--beige"><div class="container"><div class="benefits-grid">{benefits.map((benefit, index) => <article><span class="benefit-number">0{index + 1}</span><h2>{benefit.title}</h2><p>{benefit.text}</p></article>)}</div></div></section><slot /><Contact /></main><Footer /></Base>
+<style>
+.benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; }
+.benefit-number { display: block; color: var(--plum); font-size: .75rem; margin-bottom: 1.4rem; }
+h2 { font-size: 1.45rem; letter-spacing: var(--heading-spacing); line-height: 1.2; font-weight: 600; margin-bottom: 1rem; }
+.benefits-grid p { font-size: .93rem; line-height: 1.8; color: var(--text-muted); }
+@media(max-width:700px) { .benefits-grid { grid-template-columns: 1fr; gap: 2rem; } }
+</style>

@@ -11,16 +11,16 @@ const videos = [
     duration: '1:18',
     src: '/videos/atlas-explainer.mp4',
     poster: '/videos/atlas-explainer-poster.jpg',
-    desc: 'Hele historien på under to minutter: det levende kort, de personlige forløb, coachen — og hvordan I måler virkningen.',
-    featured: true,
+    desc: 'En tidligere introduktion til Atlas-konceptet, personlige forløb og coaching.',
   },
   {
     id: 'platform',
+    featured: true,
     title: 'Sådan virker platformen',
     duration: '1:29',
     src: '/videos/platform-da.mp4',
     poster: '/videos/platform-da-poster.jpg',
-    desc: 'En rundvisning i Atlas Individuel, Atlas Teams, coachen og APV — fra måling til indsigt til handling.',
+    desc: 'En rundvisning i Atlas Individual, Atlas Teams, coachen og APV — fra måling til indsigt til handling.',
   },
   {
     id: 'roi',
@@ -36,15 +36,15 @@ const featured = videos.find(v => v.featured);
 const rest = videos.filter(v => !v.featured);
 ---
 
-<Base title="Film — Atlas | Well at Work" description="Se Atlas i brug: korte film om det levende kort, de personlige forløb, coachen og hvad stress koster.">
+<Base title="Film om platformen | Well at Work" description="Se film om Well at Work-platformen, Atlas-produkterne og arbejdet med trivsel.">
   <Navbar />
-  <main>
-    <section class="section section--beige film-head">
+  <main id="main-content">
+    <section class="page-hero film-head">
       <div class="container">
-        <p class="eyebrow">Se Atlas i brug</p>
+        <p class="eyebrow">SE PLATFORMEN I BRUG</p>
         <h1 class="section-title">Film</h1>
         <p class="film-head__sub">
-          Hellere se end læse? Her er Atlas fortalt kort. Vi føjer flere film til over tid.
+          Få et indblik i platformen og baggrunden for vores arbejde med trivsel.
         </p>
       </div>
     </section>
@@ -81,8 +81,8 @@ const rest = videos.filter(v => !v.featured);
 
     <section class="section section--navy">
       <div class="container" style="text-align:center;">
-        <h2 class="film-cta-title">Vil I se det med jeres egne tal?</h2>
-        <p class="film-cta-sub">Book en demo — så viser vi, hvad én kortlægning kan afdække hos jer.</p>
+        <h2 class="film-cta-title">Vil I se mulighederne for jer?</h2>
+        <p class="film-cta-sub">Book en demo af personlige forløb, ledelsescoaching og den samlede platform.</p>
         <a href="/#kontakt" class="btn btn--white">Book en demo</a>
       </div>
     </section>

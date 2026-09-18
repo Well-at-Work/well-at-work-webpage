@@ -1,77 +1,17 @@
-<section class="section section--white" id="trovaerdighed">
-  <div class="container">
-    <h2 class="section-title">Bygget af et team, der har gjort det før —<br />og med respekt for den enkelte.</h2>
-    <p class="section-subtitle">
-      Samme team står bag <strong>Cercare Medical</strong> (AI-beslutningsstøtte på 120+ hospitaler
-      i 18 lande — CE-mærket og FDA-godkendt) og <strong>Mindway AI</strong> (beskytter 15 mio.+
-      brugere på fire kontinenter). Forankret i neurovidenskab fra Aarhus Universitet
-      og University College London.
-    </p>
-
-    <div class="trust__grid">
-      <div class="card trust__exp">
-        <h3 class="card-title">Cercare Medical</h3>
-        <p class="trust__meta">Medicinsk AI · 2013–</p>
-        <p class="card-text">120+ hospitaler · 18 lande · CE-mærket &amp; FDA-godkendt · 90+ fagfællebedømte publikationer.</p>
-      </div>
-      <div class="card trust__exp">
-        <h3 class="card-title">Mindway AI</h3>
-        <p class="trust__meta">Forbrugerbeskyttelse · 2019–</p>
-        <p class="card-text">15 mio.+ beskyttede brugere · 61 jurisdiktioner · 4 kontinenter.</p>
-      </div>
-      <div class="card trust__privacy">
-        <h3 class="card-title">Indsigt — ikke overvågning.</h3>
-        <p class="card-text" style="margin-bottom: 0.9rem;">Atlas læser ikke mails, kalendere eller chats.</p>
-        <ul class="trust__list">
-          <li>Den enkeltes svar er kun den enkeltes.</li>
-          <li>Ledelsen ser kun anonymiserede mønstre — minimum 5 personer.</li>
-          <li>Alle data opbevares i EU. Ingen personhenførbare oplysninger sendes til AI.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
+<section class="section trust-section"><div class="container"><div class="quote-layout"><div class="quote-profile"><img src="/images/people/helge-larsen.png" alt="Helge Larsen" width="92" height="92" loading="lazy" /><strong>Helge Larsen</strong><span>Organisationspsykolog<br />Ejer, FRANQ ApS</span></div><div><p class="eyebrow">FRA INDSIGT TIL DET FAGLIGE ARBEJDE</p><blockquote>“Som organisationspsykolog kan jeg på få minutter opnå samme dybe indsigt fra Well at Works banebrydende organisationsdata, som det ellers ville tage mig dage at indsamle gennem observationer og medarbejderinterviews.”</blockquote><a href="/resultater" class="text-link">Mød vores kunder og samarbejdspartnere</a></div></div><div class="trust-points"><article><span class="trust-number">01</span><h3>Faglighed som fundament</h3><p>Udviklet med erfaring fra neurovidenskab, organisationspsykologi og anvendt AI.</p><a href="/forskning" class="text-link">Vores faglige grundlag</a></article><article><span class="trust-number">02</span><h3>Plads til det personlige</h3><p>Medarbejderens eget forløb og organisationens samlede overblik har forskellige formål og adgange.</p><a href="/platform#privatliv" class="text-link">Læs om privatliv</a></article><article><span class="trust-number">03</span><h3>Mennesker bag teknologien</h3><p>Et dansk team, der arbejder for at gøre viden om trivsel brugbar i hverdagen.</p><a href="/om-os" class="text-link">Mød teamet</a></article></div></div></section>
 <style>
-  .trust__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1.4fr;
-    gap: var(--card-gap);
-  }
-
-  .trust__meta {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--copper);
-    margin-bottom: 0.75rem;
-  }
-
-  .trust__privacy {
-    border-color: #cfe0d4;
-  }
-
-  .trust__list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.55rem;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    opacity: 0.88;
-  }
-
-  .trust__list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--sage-deep);
-    font-weight: 600;
-  }
-
-  @media (max-width: 900px) {
-    .trust__grid {
-      grid-template-columns: 1fr;
-    }
-  }
+.trust-section { background: #faf8fb; }
+.quote-layout { display: grid; grid-template-columns: 200px 1fr; gap: 3.5rem; max-width: 1010px; margin: auto; }
+.quote-profile img { width: 86px; height: 86px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+.quote-profile strong { display: block; font-size: .87rem; }
+.quote-profile span { display: block; font-size: .76rem; color: var(--text-muted); line-height: 1.65; margin-top: .3rem; }
+blockquote { font-size: clamp(1.15rem,2vw,1.6rem); line-height: 1.55; letter-spacing: -.02em; color: var(--plum); margin-bottom: 1.5rem; }
+.quote-layout .eyebrow { font-size: .61rem; }
+.quote-layout .text-link { font-size: .8rem; }
+.trust-points { border-top: 1px solid var(--border); padding-top: 2.8rem; margin-top: 4rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; }
+.trust-number { display: block; color: var(--plum); font-size: .7rem; margin-bottom: .9rem; }
+.trust-points h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -.02em; margin-bottom: .8rem; }
+.trust-points p { color: var(--text-muted); font-size: .86rem; line-height: 1.7; margin-bottom: 1rem; }
+.trust-points .text-link { font-size: .8rem; }
+@media(max-width:650px) { .quote-layout { grid-template-columns: 1fr; gap: 1.5rem; } .quote-profile { display: grid; grid-template-columns: 64px 1fr; column-gap: 15px; align-items: center; } .quote-profile img { width: 64px; height: 64px; grid-row: span 2; margin: 0; } .quote-profile span { margin: 0; } .trust-points { grid-template-columns: 1fr; gap: 2rem; } }
 </style>

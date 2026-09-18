@@ -1,0 +1,660 @@
+---
+const chapters = [
+  {
+    start: 0,
+    end: 0.16,
+    eyebrow: 'Atlas, fra Well at Work',
+    title: 'Andre måler trivsel.\nVi forbedrer den.',
+    body: 'De fleste værktøjer stopper ved målingen. Atlas går videre: hver medarbejder får et personligt forløb, hver leder en coach, og I kan måle virkningen.',
+  },
+  {
+    start: 0.16,
+    end: 0.34,
+    eyebrow: 'Kortet',
+    title: 'To slags data.\nÉt kort.',
+    body: 'Spørgsmålene fanger det, man selv kan mærke. Opgaverne fanger det, man ikke selv kan se. Tilsammen tegner de, hvordan krav, ressourcer, motivation og energi hænger sammen hos jer.',
+    tags: ['Sammenhænge, ikke kun tal', 'Skjulte mønstre træder frem'],
+  },
+  {
+    start: 0.34,
+    end: 0.52,
+    eyebrow: 'For hver medarbejder',
+    title: 'Et personligt forløb.',
+    body: 'Tilpasset egne resultater, ikke one-size-fits-all. Atlas viser, hvor presset bygger sig op, og hjælper den enkelte med at handle på det.',
+  },
+  {
+    start: 0.52,
+    end: 0.68,
+    eyebrow: 'For hver leder',
+    title: 'En coach.',
+    body: 'Fra tal til den rigtige samtale, trin for trin. Anonymiseret: mønstre, ikke personer. Konkrete næste skridt, tilpasset netop dette team.',
+  },
+  {
+    start: 0.68,
+    end: 0.84,
+    eyebrow: 'Forandringen',
+    title: 'Kortet tegner sig om,\nfordi I handlede.',
+    body: 'Når I ændrer noget i virkeligheden, tegner Atlas kortet om ved næste måling, så I kan se, om det virkede.',
+  },
+  {
+    start: 0.84,
+    end: 1.01,
+    eyebrow: 'Næste skridt',
+    title: 'Se jeres egen organisation\npå kortet.',
+    body: 'Book en demo. Vi viser, hvad én kortlægning kan afdække, og hvordan I kommer fra indsigt til handling.',
+    cta: true,
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atlas fra Well at Work: et levende kort over jeres organisation, og hjælpen til at ændre det."
+    />
+    <title>Atlas, et levende kort | Well at Work</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#efter">Spring animationen over</a>
+
+    <header class="chrome">
+      <a class="wordmark" href="/" aria-label="Well at Work, forside">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M7 24 A 12 12 0 0 1 13 7"></path>
+            <path d="M11 19 A 5 5 0 0 1 14.5 14.5"></path>
+            <path d="M19 6 A 11 11 0 0 1 26 13"></path>
+            <path d="M27 17 A 11 11 0 0 1 17 26"></path>
+            <path d="M20.5 24 A 4 4 0 0 1 24.5 20.5"></path>
+          </g>
+        </svg>
+        <span>well at work</span>
+      </a>
+      <nav class="chrome__nav">
+        <a href="/">Det nuværende site</a>
+        <a class="chrome__demo" href="mailto:info@bewellatwork.dk?subject=Book%20en%20demo">Book en demo</a>
+      </nav>
+    </header>
+
+    <div class="cinematic" data-cinematic>
+      <div class="cinematic__track" data-track>
+        <div class="cinematic__sticky">
+          <img
+            class="cinematic__poster"
+            src="/videos/atlas-cinematic-poster.jpg"
+            alt=""
+            width="1920"
+            height="1080"
+          />
+          <video
+            class="cinematic__film"
+            muted
+            playsinline
+            preload="auto"
+            poster="/videos/atlas-cinematic-poster.jpg"
+            aria-hidden="true"
+          >
+            <source src="/videos/atlas-cinematic-mobile.mp4" media="(max-width: 720px)" type="video/mp4" />
+            <source src="/videos/atlas-cinematic.mp4" type="video/mp4" />
+          </video>
+          <div class="cinematic__veil" aria-hidden="true"></div>
+
+          <div class="cinematic__copy">
+            {chapters.map((chapter, i) => (
+              <article
+                class:list={['chapter', { 'is-active': i === 0 }]}
+                data-chapter
+                data-start={chapter.start}
+                data-end={chapter.end}
+              >
+                <p class="chapter__eyebrow">{chapter.eyebrow}</p>
+                {i === 0 ? (
+                  <h1 class="chapter__title" set:html={chapter.title.replace(/\n/g, '<br />')} />
+                ) : (
+                  <h2 class="chapter__title" set:html={chapter.title.replace(/\n/g, '<br />')} />
+                )}
+                <p class="chapter__body">{chapter.body}</p>
+                {chapter.tags && (
+                  <ul class="chapter__tags">
+                    {chapter.tags.map((tag) => <li>{tag}</li>)}
+                  </ul>
+                )}
+                {chapter.cta && (
+                  <a class="chapter__cta" href="mailto:info@bewellatwork.dk?subject=Book%20en%20demo">
+                    Book en demo
+                    <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </article>
+            ))}
+          </div>
+
+          <div class="cinematic__rail" aria-hidden="true">
+            <div class="cinematic__rail-fill" data-rail></div>
+          </div>
+          <p class="cinematic__hint">Scroll for at tegne kortet</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="after" id="efter">
+      <div class="after__inner">
+        <p class="after__eyebrow">Hvorfor Atlas</p>
+        <h2>At måle er nemt. At ændre noget er svært, og det er kun der, det tæller.</h2>
+        <ul class="after__proof">
+          <li>
+            <strong>Cercare Medical</strong>
+            Medicinsk AI på 120+ hospitaler i 18 lande. CE-mærket og FDA-godkendt.
+          </li>
+          <li>
+            <strong>Mindway AI</strong>
+            Beskytter 15 mio.+ brugere i 61 jurisdiktioner.
+          </li>
+          <li>
+            <strong>Indsigt, ikke overvågning</strong>
+            Atlas læser ikke mails, kalendere eller chats. Data bor i EU.
+          </li>
+        </ul>
+        <a class="after__mail" href="mailto:info@bewellatwork.dk">info@bewellatwork.dk</a>
+      </div>
+    </section>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --navy: #2d2e5a;
+    --navy-void: #121326;
+    --copper: #c96f43;
+    --coral: #d85a30;
+    --sage: #7fae8f;
+    --parchment: #faf4ea;
+    --muted: rgba(250, 244, 234, 0.72);
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-body: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--parchment);
+    background: var(--navy-void);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 40;
+    padding: 0.6rem 1rem;
+    background: var(--parchment);
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .skip:focus {
+    top: 1rem;
+  }
+
+  .chrome {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem clamp(1.2rem, 4vw, 2.5rem);
+    background: linear-gradient(to bottom, rgba(18, 19, 38, 0.72), transparent);
+    pointer-events: none;
+  }
+
+  .chrome a {
+    pointer-events: auto;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--parchment);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
+  }
+
+  .chrome__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+  }
+
+  .chrome__nav a:not(.chrome__demo) {
+    opacity: 0.78;
+  }
+
+  .chrome__nav a:not(.chrome__demo):hover {
+    opacity: 1;
+  }
+
+  .chrome__demo {
+    padding: 0.55rem 1rem;
+    border: 1px solid rgba(250, 244, 234, 0.35);
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  .chrome--light {
+    background: rgba(250, 244, 234, 0.92);
+    color: var(--navy);
+    backdrop-filter: blur(10px);
+  }
+
+  .chrome--light .chrome__demo {
+    border-color: var(--navy);
+  }
+
+  .chrome--light .chrome__demo:hover {
+    background: var(--navy);
+    color: var(--parchment);
+    border-color: var(--navy);
+  }
+
+  .cinematic {
+    position: relative;
+  }
+
+  .cinematic__sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+    background: var(--navy-void);
+  }
+
+  .cinematic__track {
+    height: 520vh;
+  }
+
+  .cinematic__poster,
+  .cinematic__film {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+  }
+
+  .cinematic__film {
+    opacity: 0;
+  }
+
+  .cinematic.is-ready .cinematic__film {
+    opacity: 1;
+  }
+
+  .cinematic__veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(18, 19, 38, 0.62) 0%, rgba(18, 19, 38, 0.18) 48%, rgba(18, 19, 38, 0.08) 100%),
+      linear-gradient(to top, rgba(18, 19, 38, 0.42), transparent 32%);
+    pointer-events: none;
+  }
+
+  .cinematic__copy {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    align-items: center;
+    padding: clamp(5.5rem, 12vh, 8rem) clamp(1.4rem, 5vw, 5rem) 4.5rem;
+    pointer-events: none;
+  }
+
+  .chapter {
+    grid-area: 1 / 1;
+    max-width: min(34rem, 92vw);
+    transform: translateY(14px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  }
+
+  .chapter.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .chapter__eyebrow {
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 1rem;
+  }
+
+  .chapter__title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.15rem;
+  }
+
+  .chapter__body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 32rem;
+  }
+
+  .chapter__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.35rem;
+    list-style: none;
+  }
+
+  .chapter__tags li {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid rgba(127, 174, 143, 0.45);
+    border-radius: 999px;
+    color: var(--sage);
+  }
+
+  .chapter__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.6rem;
+    padding: 0.95rem 1.5rem;
+    background: var(--parchment);
+    color: var(--navy);
+    font-weight: 500;
+    border-radius: 999px;
+    pointer-events: auto;
+  }
+
+  .chapter__cta:hover {
+    background: #fff;
+  }
+
+  .cinematic__rail {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: min(38vh, 280px);
+    background: rgba(250, 244, 234, 0.18);
+    border-radius: 2px;
+    z-index: 3;
+  }
+
+  .cinematic__rail-fill {
+    width: 100%;
+    height: 0%;
+    background: var(--copper);
+    border-radius: inherit;
+  }
+
+  .cinematic__hint {
+    position: absolute;
+    left: 50%;
+    bottom: 1.4rem;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 244, 234, 0.55);
+    transition: opacity 0.4s ease;
+  }
+
+  .cinematic.is-scrolled .cinematic__hint {
+    opacity: 0;
+  }
+
+  .after {
+    position: relative;
+    z-index: 4;
+    background: var(--parchment);
+    color: var(--navy);
+    padding: clamp(4.5rem, 10vw, 7.5rem) clamp(1.4rem, 5vw, 5rem);
+  }
+
+  .after__inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .after__eyebrow {
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 1rem;
+  }
+
+  .after h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+    line-height: 1.2;
+    max-width: 18ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .after__proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  .after__proof li {
+    padding: 1.4rem 1.3rem;
+    background: #fffcf6;
+    border: 1px solid #ebdfce;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(45, 46, 90, 0.82);
+  }
+
+  .after__proof strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 0.45rem;
+  }
+
+  .after__mail {
+    font-weight: 500;
+    color: var(--navy);
+    border-bottom: 1px solid var(--copper);
+    padding-bottom: 0.12rem;
+  }
+
+  .cinematic.is-reduced .cinematic__film,
+  .cinematic.is-reduced .cinematic__hint,
+  .cinematic.is-reduced .cinematic__rail {
+    display: none;
+  }
+
+  .cinematic.is-reduced .cinematic__track {
+    height: auto;
+  }
+
+  .cinematic.is-reduced .cinematic__sticky {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .cinematic.is-reduced .cinematic__copy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+
+  .cinematic.is-reduced .chapter {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 800px) {
+    .after__proof {
+      grid-template-columns: 1fr;
+    }
+
+    .cinematic__rail {
+      display: none;
+    }
+
+    .chapter__title {
+      font-size: clamp(1.85rem, 8vw, 2.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chapter {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-cinematic]');
+  if (root instanceof HTMLElement) {
+    const video = root.querySelector('video');
+    const track = root.querySelector('[data-track]');
+    const rail = root.querySelector('[data-rail]');
+    const chapters = [...root.querySelectorAll('[data-chapter]')];
+    const chrome = document.querySelector('.chrome');
+    const after = document.getElementById('efter');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduced || !(video instanceof HTMLVideoElement) || !(track instanceof HTMLElement)) {
+      root.classList.add('is-reduced');
+      if (video instanceof HTMLVideoElement) {
+        video.removeAttribute('src');
+        video.querySelectorAll('source').forEach((source) => source.remove());
+        video.load();
+      }
+    } else {
+      video.pause();
+      video.muted = true;
+      video.playsInline = true;
+
+      let duration = 0;
+      let ticking = false;
+
+      const apply = () => {
+        ticking = false;
+        const range = Math.max(1, track.offsetHeight - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, -track.getBoundingClientRect().top / range));
+
+        if (duration > 0 && !video.seeking) {
+          const next = progress * (duration - 0.08);
+          if (Math.abs(video.currentTime - next) > 0.03) {
+            video.currentTime = next;
+          }
+        }
+
+        if (rail instanceof HTMLElement) {
+          rail.style.height = `${progress * 100}%`;
+        }
+
+        root.classList.toggle('is-scrolled', progress > 0.04);
+        if (chrome instanceof HTMLElement && after instanceof HTMLElement) {
+          chrome.classList.toggle('chrome--light', after.getBoundingClientRect().top < 72);
+        }
+
+        chapters.forEach((el) => {
+          if (!(el instanceof HTMLElement)) return;
+          const start = Number(el.dataset.start);
+          const end = Number(el.dataset.end);
+          el.classList.toggle('is-active', progress >= start && progress < end);
+        });
+      };
+
+      const onMeta = () => {
+        duration = video.duration || 0;
+        root.classList.add('is-ready');
+        apply();
+      };
+
+      if (video.readyState >= 1) onMeta();
+      video.addEventListener('loadedmetadata', onMeta);
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(apply);
+          }
+        },
+        { passive: true },
+      );
+
+      window.addEventListener('resize', apply, { passive: true });
+      apply();
+    }
+  }
+</script>

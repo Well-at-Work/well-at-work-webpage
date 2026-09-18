@@ -1,280 +1,34 @@
-<section class="section section--white" id="forbedringen">
-  <div class="container">
-    <h2 class="section-title" style="text-align:center;">Vi udvikler jeres ledere og medarbejdere.</h2>
-    <p class="section-subtitle" style="text-align:center; margin-left:auto; margin-right:auto;">
-      Sådan gør vi. For hver leder en coach — for hver medarbejder et personligt forløb.
-    </p>
-
-    <div class="impr__grid">
-      <!-- Leder · header + coach phone -->
-      <div class="impr__card">
-        <div class="impr__card-head">
-          <span class="impr__pill impr__pill--green">For hver leder</span>
-          <h3 class="impr__title">En Coach</h3>
-        </div>
-        <div class="impr__phone" role="img" aria-label="Coach'en i appen — en samtale, der oversætter teamets mønstre til handling">
-          <div class="impr__phone-notch" aria-hidden="true"></div>
-          <div class="impr__chat">
-            <p class="impr__chat-top">Teamrådgiver</p>
-            <div class="impr__bubble impr__bubble--coach">Dit team scorer højt på tillid, men lavere på forpligtelse. Hvornår mærker du det tydeligst?</div>
-            <div class="impr__bubble impr__bubble--lead">Typisk når vi skal beslutte noget på tværs.</div>
-            <div class="impr__bubble impr__bubble--coach">Det mønster viser sig ofte, før stress gør. Skal vi tage tre konkrete skridt til næste møde?</div>
-            <div class="impr__chat-input"><span>Skriv en besked …</span><span class="impr__chat-send" aria-hidden="true">↑</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Leder · bullets (far left on desktop) -->
-      <ul class="impr__list impr__list--leder">
-        <li>Fra tal til den rigtige samtale — trin for trin.</li>
-        <li>Forankret i anerkendt teampsykologi.</li>
-        <li>Konkrete næste skridt, tilpasset netop dette team.</li>
-        <li>Anonymiseret — mønstre, ikke personer.</li>
-      </ul>
-
-      <!-- Medarbejder · header + forløb phone -->
-      <div class="impr__card">
-        <div class="impr__card-head">
-          <span class="impr__pill impr__pill--blue">For hver medarbejder</span>
-          <h3 class="impr__title">Personlige forløb</h3>
-        </div>
-        <div class="impr__phone">
-          <div class="impr__phone-notch" aria-hidden="true"></div>
-          <img src="/images/screenshots/medarbejder-forloeb.webp"
-               alt="Medarbejderens app — et personligt 14-dages forløb, Stabil vækst" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- Medarbejder · bullets (far right on desktop) -->
-      <ul class="impr__list impr__list--medarb">
-        <li>Tilpasset dine egne resultater — ikke one-size-fits-all.</li>
-        <li>Korte, evidensbaserede øvelser, designet af psykologer.</li>
-        <li>En fast rytme — små skridt bliver til varige vaner.</li>
-        <li>Helt privat. Altid frivilligt.</li>
-      </ul>
-    </div>
+---
+import TrackPreview from './TrackPreview.astro';
+import CoachPreview from './CoachPreview.astro';
+import { Image } from 'astro:assets';
+import breathingRoom from '../assets/editorial/breathing-room-v2.png';
+---
+<section class="section interventions" id="indsatser"><div class="container">
+  <div class="everyday-intro">
+    <div class="section-intro"><p class="eyebrow">HJÆLP, DER BLIVER EN DEL AF HVERDAGEN</p><h2 class="section-title">Udvikling sker mellem målingerne og møderne.</h2><p class="section-subtitle">Giv mennesker konkrete redskaber til at komme videre. Med støtte til både medarbejderen og den, der leder teamet.</p></div>
+    <figure class="everyday-photo">
+      <Image src={breathingRoom} alt="En kvinde med et afslappet smil i en lys gårdhave." widths={[480, 800, 1344]} sizes="(max-width: 800px) 92vw, 50vw" format="webp" quality={85} loading="lazy" decoding="async" />
+    </figure>
   </div>
-</section>
-
+  <div class="split intervention-row"><div class="track-stage"><TrackPreview /></div><div class="intervention-copy"><span class="feature-label feature-label--green">FOR MEDARBEJDERNE</span><h3>Små skridt.<br />En stærkere hverdag.</h3><p>Et personligt forløb tager afsæt i medarbejderens egen situation. Korte øvelser hjælper med at skabe gode vaner, finde energi og styrke trivslen.</p><ul class="feature-list"><li>Et forløb tilpasset den enkeltes resultater</li><li>Praktiske øvelser, der passer ind i arbejdsdagen</li><li>Et personligt rum til refleksion og udvikling</li></ul><a href="/platform#personlige-forloeb" class="text-link">Se de personlige forløb</a></div></div>
+  <div class="split intervention-row leader-row"><div class="intervention-copy"><span class="feature-label">FOR LEDERNE</span><h3>Støtte til de samtaler,<br />der flytter et team.</h3><p>Ledelse bliver konkret i hverdagen. AI-coachen bruger indsigt i teamet til at hjælpe lederen med at reflektere, forberede samtaler og finde næste skridt.</p><ul class="feature-list"><li>Coaching med kontekst fra Atlas Teams</li><li>Sparring om samarbejde og fælles retning</li><li>Konkrete handlinger at tage med tilbage til teamet</li></ul><a href="/platform#ledelsescoach" class="text-link">Mød ledelsescoachen</a></div><div class="coach-stage"><CoachPreview /></div></div>
+</div></section>
 <style>
-  /* Butterfly: bullets · coach · forløb · bullets — phones grouped in the centre. */
-  .impr__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto minmax(0, 1fr);
-    align-items: center;
-    gap: clamp(1.25rem, 3vw, 2.75rem);
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-
-  .impr__card {
-    width: 232px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .impr__card-head {
-    text-align: center;
-    margin-bottom: 1.1rem;
-  }
-
-  .impr__pill {
-    display: inline-block;
-    font-size: 0.74rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 4px 15px;
-    border-radius: 999px;
-    margin-bottom: 0.6rem;
-  }
-
-  .impr__pill--blue { background: #e4ecfa; color: #1f5298; }
-  .impr__pill--green { background: var(--sage-soft); color: var(--sage-deep); }
-
-  .impr__title {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 1.6rem;
-    color: var(--navy);
-    line-height: 1.15;
-  }
-
-  /* Shared phone frame */
-  .impr__phone {
-    position: relative;
-    flex-shrink: 0;
-    width: 232px;
-    aspect-ratio: 300 / 600;
-    background: var(--warm-white);
-    border: 1px solid var(--border-warm);
-    border-radius: 34px;
-    padding: 1.1rem 0.7rem 0.7rem;
-    box-shadow: 0 20px 44px rgba(45, 46, 90, 0.14);
-    overflow: hidden;
-  }
-
-  .impr__phone-notch {
-    width: 74px;
-    height: 7px;
-    border-radius: 5px;
-    background: var(--parchment-deep);
-    margin: 0 auto 0.7rem;
-  }
-
-  .impr__phone img {
-    width: 100%;
-    height: calc(100% - 1.4rem);
-    display: block;
-    border-radius: 20px;
-    object-fit: cover;
-    object-position: top;
-  }
-
-  /* Coach chat */
-  .impr__chat {
-    height: calc(100% - 1.4rem);
-    background: var(--parchment);
-    border-radius: 20px;
-    padding: 0.8rem 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .impr__chat-top {
-    text-align: center;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-warm);
-    margin-bottom: 0.2rem;
-  }
-
-  .impr__bubble {
-    font-size: 0.76rem;
-    line-height: 1.4;
-    padding: 0.55rem 0.7rem;
-    border-radius: 14px;
-    max-width: 88%;
-  }
-
-  .impr__bubble--coach {
-    background: var(--warm-white);
-    border: 1px solid var(--border-warm);
-    color: var(--navy);
-    border-bottom-left-radius: 4px;
-    align-self: flex-start;
-  }
-
-  .impr__bubble--lead {
-    background: var(--navy);
-    color: #fff;
-    border-bottom-right-radius: 4px;
-    align-self: flex-end;
-  }
-
-  .impr__chat-input {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--warm-white);
-    border: 1px solid var(--border-warm);
-    border-radius: 999px;
-    padding: 0.5rem 0.55rem 0.5rem 0.85rem;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
-
-  .impr__chat-send {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    flex-shrink: 0;
-  }
-
-  /* Bullet lists sit in the flexible outer columns, hugging their phone */
-  .impr__list {
-    max-width: 290px;
-  }
-
-  .impr__list--leder {
-    order: -1;
-    justify-self: end;
-  }
-
-  .impr__list--medarb {
-    justify-self: start;
-  }
-
-  .impr__list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.7rem;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: var(--navy);
-    opacity: 0.9;
-  }
-
-  .impr__list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--sage-deep);
-    font-weight: 600;
-  }
-
-  /* Medium: two persona pairs stacked (phone | bullets), consistent direction */
-  @media (max-width: 1024px) {
-    .impr__grid {
-      grid-template-columns: auto minmax(0, 1fr);
-      justify-content: center;
-      align-items: center;
-      gap: 2.75rem 1.75rem;
-      max-width: 660px;
-    }
-
-    .impr__list--leder {
-      order: 0;
-    }
-
-    .impr__list--leder,
-    .impr__list--medarb {
-      justify-self: start;
-      max-width: 300px;
-    }
-  }
-
-  /* Mobile: everything stacks, phone above its bullets */
-  @media (max-width: 560px) {
-    .impr__grid {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      gap: 1.4rem;
-      max-width: 340px;
-    }
-
-    .impr__card {
-      margin-top: 1.6rem;
-    }
-
-    .impr__grid > .impr__card:first-child {
-      margin-top: 0;
-    }
-
-    .impr__list--leder,
-    .impr__list--medarb {
-      justify-self: center;
-      max-width: none;
-      width: 100%;
-    }
-  }
+.interventions { padding-bottom: 5rem; }
+.everyday-intro { display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: clamp(2rem,5vw,5rem); margin-bottom: 4rem; }
+.section-intro { max-width: 510px; margin-bottom: 0; }
+.everyday-photo img { width: 100%; height: auto; aspect-ratio: 1.6; object-fit: cover; object-position: 65% 45%; border-radius: 12px; }
+.intervention-row { margin-top: 3rem; gap: clamp(2rem,7vw,7rem); }
+.intervention-row + .intervention-row { margin-top: 6rem; }
+.track-stage { padding: 35px 40px; background: transparent; }
+.coach-stage { padding: 35px 25px; background: transparent; }
+.feature-label { display: inline-block; color: var(--plum); background: var(--plum-soft); border-radius: 4px; padding: 6px 10px; font-size: .62rem; letter-spacing: .08em; font-weight: 700; margin-bottom: 1.3rem; }
+.feature-label--green { color: var(--green); background: var(--green-soft); }
+.intervention-copy h3 { font-size: clamp(1.9rem,3.1vw,2.8rem); line-height: 1.14; letter-spacing: var(--heading-spacing); font-weight: 600; margin-bottom: 1.2rem; }
+.intervention-copy > p { color: var(--text-muted); font-size: .98rem; line-height: 1.8; }
+.feature-list { font-size: .87rem; gap: .85rem; }
+.text-link { font-size: .9rem; }
+@media(max-width:800px) { .everyday-intro { grid-template-columns: 1fr; gap: 1.75rem; margin-bottom: 3rem; } .section-intro { max-width: 620px; } .intervention-row { gap: 2rem; } .intervention-row > .intervention-copy { order: -1; } .track-stage, .coach-stage { padding: 25px; } .intervention-row + .intervention-row { margin-top: 4rem; } }
+@media(max-width:400px) { .track-stage, .coach-stage { padding: 15px; } }
 </style>

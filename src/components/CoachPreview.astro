@@ -1,0 +1,59 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<div class:list={['coach-preview', { 'coach-preview--compact': compact }]}>
+  <div class="coach-top"><div class="coach-identity"><img src="/images/brand/mark.png" width="28" height="28" alt="" /><div><strong>Din ledelsescoach</strong><span>Et næste skridt for dit team</span></div></div><span class="ai-label">AI-coach</span></div>
+  <div class="coach-body">
+    <div class="team-context"><div class="context-heading"><span class="context-symbol" aria-hidden="true"><i></i><i></i><i></i></span><p class="context-label">Med afsæt i jeres teamindsigt</p></div><div class="context-focus"><span>I fokus</span><strong>Fælles retning</strong><span class="context-source">Atlas Teams</span></div></div>
+    <div class="chat-user">Hvordan får jeg teamet til at prioritere sammen?</div>
+    <div class="chat-reply"><span class="coach-avatar" aria-hidden="true">w</span><div><span class="reply-label">DIN COACH</span><p>Gør plads til det vigtigste.</p><span class="reply-support">Start med én fælles prioritet — og aftal, hvad der kan vente.</span></div></div>
+    <details class="coach-next"><summary><span class="next-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><span class="next-copy"><span class="next-eyebrow">TIL NÆSTE TEAMMØDE</span><strong>Find jeres fælles prioritet</strong><span class="next-prompt">Se mødeøvelsen</span></span><span class="next-toggle" aria-hidden="true">+</span></summary><div class="meeting-exercise"><ol><li>Hvad er vigtigst at lykkes med lige nu?</li><li>Hvilke opgaver kan vente?</li><li>Hvem tager ansvar for næste skridt?</li></ol><p>Afslut med én aftale, I kan følge op på.</p></div></details>
+  </div>
+  <div class="coach-bottom"><span>Illustrativt samtaleeksempel</span></div>
+</div>
+<style>
+.coach-preview { background: white; border: 1px solid #ddd6da; border-radius: 16px; box-shadow: 0 2px 5px #45203704; overflow: hidden; text-align: left; }
+.coach-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 23px; border-bottom: 1px solid #e7e8ea; gap: 12px; }
+.coach-identity { display: flex; gap: 12px; align-items: center; }
+.coach-identity img { width: 28px; height: 28px; flex-shrink: 0; }
+.coach-identity strong { display: block; font-size: .9rem; color: var(--ink); }
+.coach-identity span { display: block; font-size: .7rem; color: var(--text-muted); margin-top: 1px; }
+.ai-label { background: white; color: var(--text-muted); border: 1px solid #dcdde0; border-radius: 4px; padding: 3px 7px; font-size: .62rem; font-weight: 650; white-space: nowrap; }
+.coach-body { padding: 22px 23px; }
+.team-context { border-bottom: 1px solid var(--border); padding-bottom: 17px; margin-bottom: 21px; }
+.context-heading { display: flex; align-items: center; gap: 8px; }
+.context-label { color: var(--text-muted); font-size: .64rem; }
+.context-symbol { display: flex; gap: 2px; align-items: end; height: 14px; }
+.context-symbol i { width: 3px; height: 7px; background: var(--plum); border-radius: 2px; }
+.context-symbol i:nth-child(2) { height: 14px; }
+.context-symbol i:nth-child(3) { height: 10px; }
+.context-focus { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.context-focus > span:first-child { font-size: .6rem; color: var(--text-muted); }
+.context-focus strong { font-size: .78rem; font-weight: 600; color: var(--plum); }
+.context-source { margin-left: auto; color: var(--text-muted); font-size: .57rem; }
+.chat-user { margin-left: 52px; background: #f3f0ed; color: var(--ink); padding: 13px 17px; border-radius: 12px 12px 3px 12px; font-size: .86rem; line-height: 1.55; }
+.chat-reply { display: flex; align-items: flex-start; gap: 11px; margin-top: 22px; font-size: .84rem; line-height: 1.65; }
+.coach-avatar { width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: var(--plum); color: white; display: grid; place-items: center; font-size: .9rem; }
+.reply-label { color: var(--plum); font-size: .54rem; letter-spacing: .09em; font-weight: 700; }
+.chat-reply p { font-size: 1.02rem; font-weight: 650; margin: 3px 0 5px; line-height: 1.35; }
+.reply-support { color: var(--text-muted); font-size: .78rem; line-height: 1.6; display: block; }
+.coach-next { background: #faf6ef; border: 1px solid #eadac5; border-radius: 10px; margin: 21px 0 0 37px; color: var(--ink); }
+.coach-next summary { display: flex; align-items: center; gap: 12px; padding: 16px 13px; list-style: none; cursor: pointer; }
+.coach-next summary::-webkit-details-marker { display: none; }
+.next-icon { color: var(--bronze); flex-shrink: 0; }
+.next-icon svg { width: 25px; height: 30px; stroke: currentColor; stroke-width: 1.4; }
+.next-copy { flex: 1; }
+.next-eyebrow { display: block; color: #805126; font-size: .5rem; font-weight: 700; letter-spacing: .08em; }
+.coach-next strong { display: block; font-size: .78rem; margin-top: 3px; line-height: 1.4; }
+.next-prompt { display: block; font-size: .65rem; color: #805126; margin-top: 5px; }
+.next-toggle { font-size: 1.25rem; color: var(--bronze); }
+.coach-next[open] .next-toggle { transform: rotate(45deg); }
+.coach-next summary:hover .next-prompt { text-decoration: underline; text-underline-offset: 3px; }
+.meeting-exercise { border-top: 1px solid #eadac5; padding: 13px 17px 17px; font-size: .77rem; }
+.meeting-exercise ol { list-style: decimal; padding-left: 1.1rem; }
+.meeting-exercise li + li { margin-top: 7px; }
+.meeting-exercise p { color: #805126; font-size: .69rem; margin-top: 12px; }
+.coach-bottom { display: flex; justify-content: space-between; align-items: center; padding: 10px 23px; background: white; color: var(--text-muted); border-top: 1px solid #e7e8ea; font-size: .63rem; }
+@media(max-width: 480px) { .coach-top, .coach-body { padding: 18px; } .chat-user { margin-left: 18px; } .coach-next { margin-left: 0; } .ai-label { display: none; } }
+</style>

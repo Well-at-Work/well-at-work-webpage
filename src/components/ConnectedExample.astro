@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import feelingHeard from '../assets/editorial/feeling-heard.png';
+
+const steps = [
+  { label: 'FORSTÅ', title: 'Få øje på behovet', text: 'Teamindsigten giver et fælles udgangspunkt for at tale om retning og samarbejde.' },
+  { label: 'STØT LEDEREN', title: 'Tag den rigtige samtale', text: 'Lederen bruger coachen til at forberede en samtale om fælles prioriteter og ansvar.' },
+  { label: 'STØT MEDARBEJDEREN', title: 'Giv plads til udvikling', text: 'Medarbejderen arbejder med øvelser i sit eget forløb, tilpasset sin individuelle vurdering.' },
+  { label: 'FØLG OP', title: 'Lær af indsatsen', text: 'HR og ledelsen følger den samlede udvikling, drøfter erfaringerne og bruger dem til at kvalificere næste indsats.' },
+];
+---
+<section class="section example-section" id="faelles-retning"><div class="container">
+  <div class="example-heading">
+    <figure class="example-photo">
+      <Image src={feelingHeard} alt="To kolleger lytter og taler sammen ved et bord med en åben notesbog." widths={[480, 800, 1024]} sizes="(max-width: 800px) 92vw, 46vw" format="webp" quality={85} loading="lazy" decoding="async" />
+    </figure>
+    <div class="example-copy"><p class="eyebrow">SÅDAN HÆNGER DET SAMMEN</p><h2 class="section-title">Mange opgaver.<br />Brug for en fælles retning.</h2><p class="example-description">Et eksempel på, hvordan I kan arbejde med den samme udfordring på flere niveauer — med respekt for den enkeltes private forløb.</p></div>
+  </div>
+  <div class="example-steps">{steps.map((step, i) => <article><div class="step-top"><span class="step-number">0{i + 1}</span><span class="step-line" aria-hidden="true"></span></div><p class="step-label">{step.label}</p><h3>{step.title}</h3><p>{step.text}</p></article>)}</div><p class="example-note">Illustrativt forløb. Individuelle behov og indsatser varierer.</p></div></section>
+<style>
+.example-heading { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: clamp(2rem,5vw,5rem); margin-bottom: 3rem; }
+.example-description { color: var(--text-muted); font-size: .95rem; line-height: 1.8; }
+.example-photo img { width: 100%; height: auto; aspect-ratio: 1.5; object-fit: cover; border-radius: 12px; }
+.example-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.6rem; }
+.step-top { display: flex; align-items: center; gap: 14px; margin-bottom: 1.4rem; }
+.step-number { font-size: .8rem; color: var(--plum); background: var(--plum-soft); width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; }
+.step-line { height: 1px; background: var(--border); flex: 1; }
+.step-label { font-size: .59rem !important; color: var(--plum) !important; font-weight: 700; letter-spacing: .07em; margin-bottom: .65rem; }
+.example-steps h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: var(--heading-spacing); margin-bottom: .8rem; }
+.example-steps article > p { color: var(--text-muted); font-size: .85rem; line-height: 1.75; }
+.example-note { margin-top: 2rem; font-size: .68rem; color: var(--text-muted); }
+@media(max-width:800px) { .example-heading { grid-template-columns: 1fr; gap: 1.75rem; } .example-copy { order: -1; } .example-steps { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media(max-width:480px) { .example-steps { grid-template-columns: 1fr; gap: 1.8rem; } .step-top { margin-bottom: .8rem; } }
+</style>

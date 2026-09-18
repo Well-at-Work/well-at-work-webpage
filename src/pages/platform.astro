@@ -2,288 +2,40 @@
 import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const steps = [
-  { number: '01', title: 'Mål', description: 'Subjektive spørgsmål + objektive kognitive tests. 300+ variable. 15 minutter. Medarbejderen oplever det som en engagerende oplevelse — ikke et spørgeskema.' },
-  { number: '02', title: 'Forstå', description: 'Algoritmer identificerer tidlige mønstre, skjulte kognitive markører, motivationsprofiler og personlighedstyper. Indsigt der ligger langt ud over, hvad selvrapportering kan afdække.' },
-  { number: '03', title: 'Handl', description: 'Skræddersyede interventioner til medarbejder, team og organisation. Fra personlige mikro-øvelser til strategiske anbefalinger for ledelsen.' },
-  { number: '04', title: 'Følg op', description: 'Kvartalsvise målinger. Evaluér indsatser. Justér kursen. Dokumentér effekt over tid — og vis ROI til bestyrelsen.' },
-];
-
-const dashboards = [
-  {
-    title: 'Medarbejderen',
-    description: 'Personlig feedback, motivationsprofil, kognitive styrker og skræddersyede mikro-øvelser baseret på individuelle resultater.',
-    img: '/images/screenshots/medarbejder-hjem.webp',
-    alt: 'Medarbejderens app — personlig forside med Atlas og hurtige handlinger',
-  },
-  {
-    title: 'HR & Ledere',
-    description: 'Teamdynamik på tværs af organisationen: tillid, konflikthåndtering og forpligtelse — altid aggregeret og anonymiseret.',
-    img: '/images/screenshots/atlas-teams.webp',
-    alt: 'Atlas Teams — teamdynamik på tværs af organisationen',
-  },
-  {
-    title: 'Ledelsen',
-    description: 'Strategisk overblik, prioriterede indsatsområder, dokumenteret effekt af initiativer og benchmark mod tidligere målinger.',
-    img: '/images/screenshots/org-overblik.webp',
-    alt: 'Organisationsoverblik — aggregeret trivselsdata for hele organisationen',
-  },
-];
-
-const features = [
-  {
-    title: 'Dobbelt måling',
-    text: 'Kombination af selvrapportering og kognitive spil giver et komplet billede. Spørgsmål fanger den bevidste oplevelse — kognitive tests afslører det, hjernen ved, men medarbejderen ikke fortæller.',
-  },
-  {
-    title: 'Fra data til handling',
-    text: '300+ variable omsættes til konkrete anbefalinger via vores algoritmer. Ikke rå data — men prioriterede handlinger tilpasset jeres organisations kontekst.',
-  },
-  {
-    title: 'Interventioner der virker',
-    text: 'Evidensbaserede mikro-øvelser designet af forfatter og Head of Interventions Lisa Beuschau. Personlige programmer der møder medarbejderen, hvor de er — ikke generiske tips.',
-  },
-  {
-    title: 'Vi gør psykologer mere effektive',
-    text: 'Well at Work erstatter ikke jeres organisationspsykolog — vi giver dem superkræfter. Minutter i stedet for dage til dyb indsigt. Augmentation, ikke erstatning.',
-  },
+import Contact from '../components/Contact.astro';
+import PlatformOverview from '../components/PlatformOverview.astro';
+import CoachPreview from '../components/CoachPreview.astro';
+import TrackPreview from '../components/TrackPreview.astro';
+const dataProducts = [
+  { id: 'apv', label: 'ARBEJDSMILJØ', title: 'APV', text: 'Saml arbejdet med arbejdspladsvurderingen. Opret runder, invitér medarbejdere og få overblik over svar og resultater som grundlag for den videre indsats.', image: '/images/screenshots/apv-runder.webp', alt: 'APV-runder i Well at Work', features: ['Spørgeskemaer og målgrupper', 'Overblik over besvarelser og resultater', 'Et fælles grundlag for opfølgning'] },
+  { id: 'atlas-individual', label: 'DEN ENKELTE MEDARBEJDER', title: 'Atlas Individual', text: 'Kombinér medarbejderens egen oplevelse med kognitive opgaver. Indsigt i trivsel, ressourcer og motivation danner grundlag for et personligt forløb.', image: '/images/screenshots/atlas-spoergsmaal.webp', alt: 'Spørgsmål i Atlas Individual', features: ['Selvrapportering og kognitive opgaver', 'Individuelle resultater og refleksion', 'Grundlag for et tilpasset forløb'] },
+  { id: 'atlas-teams', label: 'SAMARBEJDE OG LEDELSE', title: 'Atlas Teams', text: 'Skab et fælles udgangspunkt for at udvikle teamet. Teamets samlede besvarelser og lederens perspektiv giver kontekst til coaching om samarbejde og ledelse.', image: '/images/screenshots/atlas-teams.webp', alt: 'Teamindsigt i Atlas Teams', features: ['Teamets og lederens perspektiver', 'Indsigt i samarbejde og teamdynamik', 'Kontekst til ledelsescoachen'] },
 ];
 ---
-
-<Base title="Platform — Well at Work" description="Sådan virker Well at Work: fra kognitive tests og selvrapportering til handlingsbare anbefalinger for medarbejder, HR og ledelse.">
-  <Navbar />
-  <main>
-    <section class="section section--beige">
-      <div class="container" style="text-align:center;">
-        <h1 class="section-title">Sådan virker det</h1>
-        <p class="section-subtitle">
-          Well at Work er den centrale motor, der forbinder måling, indsigt, handling og opfølgning i ét samlet system — ikke endnu et fragmenteret værktøj.
-        </p>
-      </div>
-    </section>
-
-    <section class="section section--white">
-      <div class="container">
-        <h2 class="section-title">Fire trin — fra data til dokumenteret effekt</h2>
-        <div class="platform-pipeline">
-          {steps.map((step, i) => (
-            <div class="platform-step">
-              <span class="platform-step__number">{step.number}</span>
-              <h3 class="platform-step__title">{step.title}</h3>
-              <p class="platform-step__desc">{step.description}</p>
-              {i < steps.length - 1 && <div class="platform-step__connector" aria-hidden="true" />}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--beige">
-      <div class="container">
-        <h2 class="section-title">Hvad der gør os anderledes</h2>
-        <p class="section-subtitle">
-          Ikke endnu en survey — men et integreret system der kombinerer neurovidenskab med organisationspsykologi.
-        </p>
-        <div class="card-grid">
-          {features.map(feature => (
-            <article class="card">
-              <h3 class="card-title">{feature.title}</h3>
-              <p class="card-text">{feature.text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--white">
-      <div class="container">
-        <h2 class="section-title">Indsigt tilpasset hvert niveau</h2>
-        <p class="section-subtitle">
-          Tre dashboards — hver designet til den kontekst, modtageren arbejder i.
-        </p>
-        <div class="platform-dashboards">
-          {dashboards.map(db => (
-            <div class="platform-dashboard">
-              <div class="platform-dashboard__preview">
-                <img src={db.img} alt={db.alt} loading="lazy" />
-              </div>
-              <h3 class="platform-dashboard__title">{db.title}</h3>
-              <p class="platform-dashboard__desc">{db.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--beige">
-      <div class="container">
-        <h2 class="section-title">Datasikkerhed & GDPR</h2>
-        <div class="platform-gdpr">
-          <div class="card">
-            <h3 class="card-title">GDPR-kompatibelt fra dag ét</h3>
-            <p class="card-text">
-              Alle data behandles i overensstemmelse med GDPR. Individuelle resultater er kun tilgængelige for medarbejderen selv.
-              Ledelse og HR modtager kun aggregerede indsigter — aldrig personhenførbare data.
-            </p>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Sikker databehandling</h3>
-            <p class="card-text">
-              Data krypteres under overførsel og opbevaring. Vores infrastruktur er bygget med samme sikkerhedsprincipper
-              som teamets FDA-godkendte medicinsk AI-løsninger.
-            </p>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Fuld gennemsigtighed</h3>
-            <p class="card-text">
-              Medarbejdere informeres altid om, hvad der måles, og hvordan data bruges. Ingen skjulte metrikker.
-              Tillid er fundamentet for valid data.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--navy">
-      <div class="container" style="text-align:center;">
-        <h2 style="font-family:var(--font-heading);font-size:var(--text-h1);margin-bottom:1rem;">Se platformen i aktion</h2>
-        <p style="max-width:600px;margin:0 auto 2rem;opacity:0.85;line-height:1.7;">
-          Book en demo og oplev, hvordan 15 minutters test kan give jeres organisation et helt nyt grundlag for trivsel og performance.
-        </p>
-        <a href="/#kontakt" class="btn btn--white">Book demo</a>
-      </div>
-    </section>
-  </main>
-  <Footer />
-</Base>
-
+<Base title="Platform til trivsel, coaching og APV | Well at Work" description="Udforsk personlige forløb, ledelsescoach, APV, Atlas Individual, Atlas Teams og rapportering. Én platform til målrettede indsatser og opfølgning."><Navbar /><main id="main-content">
+<section class="page-hero"><div class="container"><p class="eyebrow">WELL AT WORK PLATFORMEN</p><h1>Det hele hænger sammen.<br /><span style="color:var(--plum)">Det gør jeres indsats også.</span></h1><p class="section-subtitle">Giv medarbejdere og ledere støtte med afsæt i deres hverdag. Saml indsigt, personlige forløb, coaching og opfølgning i én platform.</p><a href="/#kontakt" class="btn btn--primary">Book en demo ↗</a><a href="#ledelsescoach" class="text-link">Se mulighederne</a></div></section>
+<section class="section" id="ledelsescoach"><div class="container split"><div><p class="eyebrow">LEDELSESCOACH</p><h2 class="section-title">Et sted at vende<br />det svære i ledelse.</h2><p class="section-subtitle">AI-coachen tager afsæt i teamets samlede resultater og lederens perspektiv. Brug den til at undersøge en udfordring, forberede en samtale og finde en handling at prøve.</p><ul class="feature-list"><li>Coaching med kontekst fra Atlas Teams</li><li>Refleksion over samarbejde, tillid og retning</li><li>Konkrete næste skridt i lederens hverdag</li></ul><a href="/for-ledelsen" class="text-link">For ledere og ledelse</a></div><div class="coach-frame"><CoachPreview /></div></div></section>
+<section class="section section--beige" id="personlige-forloeb"><div class="container split"><div class="track-stage"><TrackPreview /></div><div><p class="eyebrow">PERSONLIGE FORLØB</p><h2 class="section-title">Støtte med afsæt<br />i den enkelte.</h2><p class="section-subtitle">Efter sin individuelle vurdering kan medarbejderen starte et tilpasset forløb. Korte øvelser og refleksioner hjælper med at arbejde med trivsel og vaner over 14 dage.</p><ul class="feature-list"><li>Forløb valgt ud fra individuelle resultater</li><li>Øvelser i blandt andet energi, pauser og ressourcer</li><li>Personlig opfølgning på gennemførte aktiviteter</li></ul><a href="/for-medarbejdere" class="text-link">For medarbejdere</a></div></div></section>
+<PlatformOverview />
+<section class="section"><div class="container"><div class="section-intro"><p class="eyebrow">INDSIGTEN BAG STØTTEN</p><h2 class="section-title">Forstå mennesker.<br />Forstå arbejdspladsen.</h2><p class="section-subtitle">Tre perspektiver hjælper jer med at vælge relevante indsatser for den enkelte, teamet og organisationen.</p></div><div class="data-products">{dataProducts.map(product => <article class="data-product" id={product.id}><div class="data-image"><img src={product.image} alt={product.alt} loading="lazy" /></div><p class="eyebrow">{product.label}</p><h3>{product.title}</h3><p>{product.text}</p><ul class="feature-list">{product.features.map(feature => <li>{feature}</li>)}</ul></article>)}</div></div></section>
+<section class="section section--beige" id="rapportering"><div class="container"><div class="split report-intro"><div><p class="eyebrow">ANALYSE & RAPPORTERING</p><h2 class="section-title">Overblik til at prioritere.<br />Indsigt til at følge op.</h2></div><p class="section-subtitle">Se samlede mønstre på tværs af organisationen og følg udviklingen over tid. Brug rapporterne til at drøfte indsatser, prioritere ressourcer og tage erfaringerne med ind i næste skridt.</p></div><div class="product-frame"><img src="/images/screenshots/org-overblik.webp" width="1600" height="1000" alt="Organisationsoverblik med aggregerede resultater i Well at Work" loading="lazy" /></div><p class="product-caption">Eksempel fra platformen. Resultater og visninger afhænger af jeres datagrundlag.</p><div class="learning-direction"><h3>Støtte, der lærer, hvad der hjælper jer.</h3><p>Vi arbejder hen imod en platform, der bruger erfaringer fra indsatser og opfølgning til løbende at gøre anbefalingerne mere relevante for medarbejderen og teamet.</p></div></div></section>
+<section class="section" id="privatliv"><div class="container split"><div><p class="eyebrow">PRIVATLIV I PLATFORMEN</p><h2 class="section-title">Plads til ærlighed.<br />Respekt for den enkelte.</h2></div><div class="prose"><p>Medarbejderen arbejder med sine egne resultater og sit personlige forløb. HR og ledelsen bruger samlede indsigter til arbejdet med organisationen.</p><p>Teamindsigt til coachen bygger på aggregerede besvarelser. Der kræves mindst fem respondenter, før teamets samlede scorer er tilgængelige.</p><p>På en demo gennemgår vi, hvem der har adgang til hvilke oplysninger, og hvordan platformen passer til jeres organisation.</p><a href="/#kontakt" class="text-link" style="margin-top:1.5rem">Tal med os om data og adgang</a></div></div></section>
+<Contact /></main><Footer /></Base>
 <style>
-  /* Pipeline */
-  .platform-pipeline {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    margin: 3rem 0;
-    position: relative;
-  }
-
-  .platform-step {
-    flex: 1;
-    text-align: center;
-    padding: 0 1.25rem;
-    position: relative;
-    max-width: 280px;
-  }
-
-  .platform-step__number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: var(--blush);
-    border: 2px solid var(--lavender);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 1rem;
-  }
-
-  .platform-step__title {
-    font-family: var(--font-heading);
-    font-size: var(--text-h3);
-    color: var(--forest-green);
-    margin-bottom: 0.5rem;
-  }
-
-  .platform-step__desc {
-    font-size: var(--text-small);
-    color: var(--navy);
-    line-height: 1.6;
-  }
-
-  .platform-step__connector {
-    position: absolute;
-    top: 24px;
-    right: -2px;
-    width: calc(100% - 96px);
-    height: 2px;
-    background-color: var(--lavender);
-    transform: translateX(calc(50% + 48px));
-    pointer-events: none;
-  }
-
-  /* Dashboards */
-  .platform-dashboards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-    gap: var(--card-gap);
-  }
-
-  .platform-dashboard {
-    text-align: center;
-  }
-
-  .platform-dashboard__preview {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: var(--warm-white);
-    border: 1px solid var(--border-warm);
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    box-shadow: 0 10px 28px rgba(45, 46, 90, 0.08);
-    margin-bottom: 1.25rem;
-  }
-
-  .platform-dashboard__preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-
-  .platform-dashboard__title {
-    font-family: var(--font-heading);
-    font-size: var(--text-h3);
-    color: var(--forest-green);
-    margin-bottom: 0.5rem;
-  }
-
-  .platform-dashboard__desc {
-    font-size: var(--text-body);
-    color: var(--navy);
-    line-height: 1.7;
-    max-width: 380px;
-    margin: 0 auto;
-  }
-
-  /* GDPR grid */
-  .platform-gdpr {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-    gap: var(--card-gap);
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 768px) {
-    .platform-pipeline {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .platform-step {
-      max-width: 400px;
-      padding: 0;
-    }
-
-    .platform-step__connector {
-      display: none;
-    }
-  }
+.coach-frame { padding: 28px; }
+.track-stage { padding: 20px; }
+.data-products { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+.data-product { scroll-margin-top: 110px; }
+.data-image { height: 215px; border-radius: 12px; overflow: hidden; background: var(--surface); padding: 12px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+.data-image img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 5px; }
+.data-product .eyebrow { font-size: .6rem; margin-bottom: .6rem; }
+.data-product h3 { font-size: 1.6rem; font-weight: 600; letter-spacing: var(--heading-spacing); margin-bottom: 1rem; }
+.data-product > p:not(.eyebrow) { font-size: .9rem; color: var(--text-muted); line-height: 1.75; }
+.data-product .feature-list { font-size: .78rem; }
+.learning-direction { max-width: 740px; border-left: 2px solid var(--bronze); padding-left: 20px; margin-top: 2.5rem; }
+.learning-direction h3 { color: var(--plum); font-size: 1.2rem; font-weight: 600; margin-bottom: .6rem; }
+.learning-direction p { color: var(--text-muted); font-size: .9375rem; line-height: 1.75; }
+.report-intro { margin-bottom: 2rem; }
+.report-intro .section-subtitle { margin: 0; }
+@media(max-width:800px) { .data-products { grid-template-columns: 1fr; gap: 2.5rem; } .data-image { height: 280px; } #personlige-forloeb .split > div:last-child { order: -1; } }
 </style>
