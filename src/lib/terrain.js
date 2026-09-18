@@ -1,7 +1,8 @@
 /**
  * Seeded organic terrain generator for the Atlas map graphics.
  * Produces nested, non-crossing contour rings (topographic style)
- * at build time — no client JS.
+ * at build time. lerpPath() interpolates two homologous path strings
+ * on the client for the Redraw scroll-morph.
  */
 
 /** Deterministic PRNG (mulberry32). */
@@ -87,4 +88,21 @@ export function flowLine({ seed = 1, y, width, amp = 10, segments = 5 }) {
     py = ny;
   }
   return d;
+}
+
+/**
+ * Interpolate two homologous SVG path `d` strings (same commands / point count).
+ * Used to morph terrainRings() output between two measurements.
+ */
+export function lerpPath(a, b, t) {
+  if (t <= 0) return a;
+  if (t >= 1) return b;
+  const numsB = b.match(/-?\d*\.?\d+/g);
+  if (!numsB) return a;
+  let i = 0;
+  return a.replace(/-?\d*\.?\d+/g, (n) => {
+    const end = numsB[i++];
+    if (end == null) return n;
+    return (Number(n) + (Number(end) - Number(n)) * t).toFixed(1);
+  });
 }
