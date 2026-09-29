@@ -1,4 +1,5 @@
 ---
+import { customers } from '../data/customers';
 import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -17,9 +18,9 @@ const testimonials = [
     image: '/images/people/noa-jankovic.jpg',
   },
   {
-    quote: 'I kølvandet på en række sager om dårlige psykiske arbejdsvilkår i vores politiske sekretariat hyrede jeg som konstitueret sekretariatschef Well at Work og en organisationspsykolog ind til at hjælpe os med at forbedre trivslen. Vi har efterfølgende besluttet at forlænge samarbejdet.',
+    quote: 'I kølvandet på en række sager om dårlige psykiske arbejdsvilkår i vores politiske sekretariat, hyrede jeg som konstitueret sekretariatschef Well at Work og en organisationspsykolog ind til at hjælpe os med at forbedre trivslen. Vi har efterfølgende besluttet at forlænge samarbejdet.',
     name: 'Morten E. G. J. Brautsch',
-    role: 'Særlig rådgiver for udenrigsministeren',
+    role: 'Tidligere sekretariatschef og nuværende gruppeformand for Moderaterne',
     image: '/images/people/morten-brautsch.jpg',
   },
   {
@@ -27,6 +28,12 @@ const testimonials = [
     name: 'Henrik Nielsen',
     role: 'Direktør, Asnet',
     image: '/images/people/henrik-nielsen.png',
+  },
+  {
+    quote: 'Som et bureau, der arbejder med skarpe deadlines i forbindelse med store events, kan vores medarbejdere opleve perioder med spidsbelastning. Derfor er det en stor hjælp, at vi med Well at Works teknologi kan opnå datadrevne indsigter som et beslutningsunderstøttende værktøj til løbende at optimere vores medarbejderes trivsel.',
+    name: 'Daniel Toghill',
+    role: 'CEO, NusNus',
+    image: '/images/people/daniel-toghill.png',
   },
 ];
 
@@ -41,14 +48,6 @@ const stories = [
     headline: 'Fra kriseindsats til udvidet partnerskab',
     text: 'Moderaternes partisekretariat henvendte sig til Well at Work i forbindelse med en krisesituation. Den indledende indsats var så værdifuld, at samarbejdet blev udvidet til et løbende partnerskab om trivsel og organisationsudvikling.',
   },
-];
-
-const logos = [
-  'Tandlægeforeningen',
-  'Asnet',
-  'Aparta',
-  'PS Contact',
-  'Moderaterne',
 ];
 ---
 
@@ -128,7 +127,7 @@ const logos = [
       <div class="container">
         <p class="resultater-logos__label">Kunder og samarbejdspartnere</p>
         <div class="resultater-logos__strip">
-          {logos.map(name => (
+          {customers.map(name => (
             <span class="resultater-logos__item">{name}</span>
           ))}
         </div>

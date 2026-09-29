@@ -19,13 +19,6 @@ const team = [
     imagePosition: '66% center',
   },
   {
-    name: 'Kim Mouridsen',
-    title: 'CTO & medstifter',
-    bio: 'Professor i neurovidenskab, Aarhus Universitet. 20+ forskningsmæssige priser. 13 millioner brugere på tværs af tidligere platforme. FDA-godkendte medicinsk AI-løsninger (Cercare Medical, Mindway AI). Tidligere forsker i Karl Fristons laboratorium, University College London.',
-    image: undefined,
-    imagePosition: 'center',
-  },
-  {
     name: 'Lisa Beuschau',
     title: 'Head of Interventions',
     bio: 'Forfatter til "1-Minut Metoden." Designer af evidensbaserede mikro-øvelser og personlige interventionsprogrammer.',
@@ -49,6 +42,14 @@ const board = [
     image: '/images/people/niels-ankerstjerne.jpg',
     imagePosition: 'center 18%',
   },
+  {
+    name: 'Kim Mouridsen',
+    role: 'Professor',
+    focus: 'Professor i neurovidenskab, Aarhus Universitet. Mere end 20 forsknings- og erhvervspriser. 13 millioner brugere på tværs af tidligere platforme. FDA-godkendte medicinske AI-løsninger og prisvindende løsninger til forbrugerbeskyttelse. Tidligere ved Harvard Medical School og University College London.',
+    image: undefined,
+    imagePosition: 'center',
+  },
+
 ];
 ---
 
@@ -96,7 +97,7 @@ const board = [
 
     <section class="section section--beige">
       <div class="container">
-        <h2 class="section-title">Bestyrelse</h2>
+        <h2 class="section-title" id="bestyrelse">Bestyrelse</h2>
         <div class="om-board">
           {board.map(member => (
             <article class="om-board-card">
@@ -277,6 +278,7 @@ const board = [
   }
 
   .om-board-card__focus {
+    line-height: 1.7;
     font-size: var(--text-small);
     color: var(--navy);
     font-weight: 500;

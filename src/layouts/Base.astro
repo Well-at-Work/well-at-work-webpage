@@ -1,4 +1,8 @@
 ---
+import { localeFor, routeFor } from '../i18n/routes';
+const locale = localeFor(Astro.url.pathname);
+const route = routeFor(Astro.url.pathname);
+const origin = Astro.site ?? Astro.url;
 interface Props {
   title?: string;
   description?: string;
@@ -11,12 +15,18 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="da">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    {route && <>
+      <link rel="canonical" href={new URL(route[locale], origin).href} />
+      <link rel="alternate" hreflang="da" href={new URL(route.da, origin).href} />
+      <link rel="alternate" hreflang="en" href={new URL(route.en, origin).href} />
+      <link rel="alternate" hreflang="x-default" href={new URL(route.da, origin).href} />
+    </>}
 
     <link rel="icon" type="image/png" href="/images/brand/mark.png" />
 
@@ -24,7 +34,7 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="da_DK" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'da_DK'} />
     <meta property="og:site_name" content="Well at Work" />
     <meta property="og:image" content={new URL('/og.png', Astro.site ?? Astro.url).href} />
     <meta property="og:image:alt" content="Well at Work — personlige forløb, ledelsescoaching og fælles overblik" />

@@ -1,5 +1,7 @@
 ---
-const path = Astro.url.pathname;
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { routeFor } from '../i18n/routes';
+const path = routeFor(Astro.url.pathname)?.da ?? Astro.url.pathname;
 const groups = [
   { label: 'Platform', href: '/platform', children: [
     { label: 'Hele platformen', href: '/platform' },
@@ -10,7 +12,7 @@ const groups = [
     { label: 'Atlas Teams', href: '/platform#atlas-teams' },
     { label: 'Analyse og rapportering', href: '/platform#rapportering' },
   ]},
-  { label: 'Løsninger', href: '/for-hr', children: [
+  { label: 'For hvem', href: '/for-hr', children: [
     { label: 'For HR', href: '/for-hr' },
     { label: 'For ledelsen', href: '/for-ledelsen' },
     { label: 'For medarbejdere', href: '/for-medarbejdere' },
@@ -20,7 +22,6 @@ const groups = [
 <header class="site-header">
   <nav class="container nav" aria-label="Hovednavigation">
     <a class="brand" href="/" aria-label="Well at Work — forside"><img src="/images/brand/mark.png" alt="" width="36" height="36" /><span>well at work</span></a>
-    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
     <div class="nav-menu" id="primary-menu">
       {groups.map(group => <details class="nav-group"><summary>{group.label}<span aria-hidden="true">⌄</span></summary><div class="nav-dropdown">{group.children.map(link => <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>{link.label}</a>)}</div></details>)}
       <a href="/resultater" aria-current={path === '/resultater' ? 'page' : undefined}>Kunder</a>
@@ -28,15 +29,17 @@ const groups = [
       <a href="/om-os" aria-current={path === '/om-os' ? 'page' : undefined}>Om os</a>
       <a href="/#kontakt" class="btn btn--primary nav-cta">Book en demo <span aria-hidden="true">↗</span></a>
     </div>
+    <LanguageSwitcher />
+    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
   </nav>
 </header>
 <style>
 .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.97); border-bottom: 1px solid var(--border); }
-.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; }
 .brand { display: flex; align-items: center; gap: .65rem; flex-shrink: 0; color: var(--plum); }
 .brand span { font-size: 1.65rem; font-weight: 500; letter-spacing: -.055em; }
 .brand img { width: 35px; height: 35px; }
-.nav-menu { display: flex; align-items: center; gap: 1.65rem; font-size: .9rem; font-weight: 550; }
+.nav-menu { margin-left: auto; display: flex; align-items: center; gap: 1.65rem; font-size: .9rem; font-weight: 550; }
 .nav-menu > a:not(.btn):hover, summary:hover { color: var(--plum); }
 .nav-menu a[aria-current='page'] { color: var(--plum); text-decoration: underline; text-underline-offset: 6px; }
 .nav-cta { margin-left: .5rem; font-size: .85rem; padding: 12px 19px; }
@@ -49,17 +52,26 @@ summary span { font-size: 1rem; }
 .nav-dropdown a { display: block; padding: .6rem .8rem; border-radius: 5px; }
 .nav-dropdown a:hover { background: var(--plum-soft); color: var(--plum); }
 .menu-toggle { display: none; }
-@media(max-width: 1000px) {
-.nav { min-height: 74px; }
+@media(max-width: 1120px) {
+.nav { min-height: 74px; gap: .8rem; }
+.nav :global(.language-switch) { margin-left: auto; }
 .menu-toggle { display: flex; align-items: center; gap: .8rem; padding: .7rem 0 .7rem .7rem; font-size: .9rem; }
 .menu-lines { width: 19px; height: 10px; border-block: 2px solid var(--plum); }
-.nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 1.5rem 1.5rem; background: white; border-bottom: 1px solid var(--border); max-height: calc(100dvh - 74px); overflow-y: auto; }
+.nav-menu { margin-left: 0; display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1rem 1.5rem 1.5rem; background: white; border-bottom: 1px solid var(--border); max-height: calc(100dvh - 74px); overflow-y: auto; }
 .nav-menu.is-open { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
 .nav-menu > a { padding: .85rem 0; }
 .nav-menu .nav-cta { margin: 1rem 0 0; padding: .9rem; }
 .nav-dropdown { position: static; box-shadow: none; border: 0; padding: 0 .5rem .5rem; }
 summary { justify-content: space-between; }
 .brand span { font-size: 1.5rem; }
+}
+@media(max-width: 480px) {
+.nav { gap: .5rem; }
+.brand span { font-size: 1.2rem; }
+.brand img { width: 28px; height: 28px; }
+.brand { gap: .45rem; }
+.menu-toggle { min-width: 36px; min-height: 44px; padding: .5rem; justify-content: center; }
+.menu-toggle > span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 }
 </style>
 <script>
