@@ -51,3 +51,10 @@ export function translateHtml(html: string, path: string): string {
   if (missing.size) throw new Error(`Missing English translations on ${path}:\n${[...missing].join('\n')}`);
   return serialize(document);
 }
+
+// Look up a reviewed English string for server-side data that bypasses the HTML translator,
+// such as JSON-LD. Falls back to the Danish text so a missing entry never breaks a build.
+export function t(text: string, locale: 'da' | 'en'): string {
+  if (locale !== 'en') return text;
+  return dictionary[normalise(text)] ?? text;
+}

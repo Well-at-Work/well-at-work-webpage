@@ -1,4 +1,4 @@
-@font-face { font-family: 'DM Sans'; src: url('/fonts/DM-Sans.ttf') format('truetype'); font-style: normal; font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/DM-Sans.woff2') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
 :root {
   --ink: #292330;
   --plum: #602b49;

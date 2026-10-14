@@ -3,6 +3,10 @@ import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import VideoPlayer from '../components/VideoPlayer.astro';
+import { localeFor } from '../i18n/routes';
+import { t } from '../i18n/translate';
+const locale = localeFor(Astro.url.pathname);
+const origin = Astro.site ?? Astro.url;
 
 const videos = [
   {
@@ -32,11 +36,23 @@ const videos = [
   },
 ];
 
+const isoDuration = (d: string) => { const [m, s] = d.split(':').map(Number); return `PT${m}M${s}S`; };
+const schema = videos.map(v => ({
+  '@type': 'VideoObject',
+  name: t(v.title, locale),
+  description: t(v.desc, locale),
+  thumbnailUrl: new URL(v.poster, origin).href,
+  contentUrl: new URL(v.src, origin).href,
+  uploadDate: '2026-08-22',
+  duration: isoDuration(v.duration),
+  inLanguage: 'da-DK',
+  publisher: { '@id': `${new URL('/', origin).href}#organization` },
+}));
 const featured = videos.find(v => v.featured);
 const rest = videos.filter(v => !v.featured);
 ---
 
-<Base title="Film om platformen | Well at Work" description="Se film om Well at Work-platformen, Atlas-produkterne og arbejdet med trivsel.">
+<Base title="Film om platformen | Well at Work" description="Se film om Well at Work-platformen, Atlas-produkterne og arbejdet med trivsel." schema={schema}>
   <Navbar />
   <main id="main-content">
     <section class="page-hero film-head">

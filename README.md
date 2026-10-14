@@ -1,43 +1,24 @@
-# Astro Starter Kit: Minimal
+# Well at Work website
+
+Static marketing site for [bewellatwork.dk](https://www.bewellatwork.dk), built with Astro and hosted on Firebase Hosting (project `wa-w-test-bizrfn`, which despite the name serves production).
+
+## Develop
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev          # http://localhost:4321
+npm run build        # builds Danish and English pages into dist/
+npm run check:languages   # validates built pages, metadata and language pairs
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Danish pages live in `src/pages/`; English pages under `src/pages/en/` reuse them and are translated at build time from `src/i18n/en.json`. See `src/i18n/README.md`.
 
-## 🚀 Project Structure
+## Deploy
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run build && npm run check:languages && firebase deploy --only hosting
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+`astro.config.mjs` sets the production `site` URL, which drives canonical, hreflang, Open Graph and sitemap URLs. The sitemap is generated at `/sitemap-index.xml` and referenced from `public/robots.txt`. Cache headers for hashed assets, fonts and media are set in `firebase.json`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+After deploying, confirm `https://www.bewellatwork.dk/sitemap-index.xml` resolves and that Google Search Console has the sitemap submitted.
