@@ -10,6 +10,7 @@
     "check:languages": "node scripts/check-languages.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.17.1",
     "parse5": "^7.3.0"
   }

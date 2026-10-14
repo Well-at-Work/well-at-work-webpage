@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Siden blev ikke fundet | Well at Work" description="Siden findes ikke. Gå til forsiden eller se platformen." noindex>
+  <Navbar />
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">404</p>
+        <h1>Siden blev ikke fundet.</h1>
+        <p class="section-subtitle">Adressen findes ikke, eller siden er flyttet. Gå til forsiden, eller se, hvad platformen kan.</p>
+        <a href="/" class="btn btn--primary">Til forsiden</a>
+        <a href="/platform" class="text-link">Se platformen</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

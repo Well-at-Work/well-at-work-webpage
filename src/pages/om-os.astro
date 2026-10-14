@@ -2,6 +2,10 @@
 import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { localeFor } from '../i18n/routes';
+import { t } from '../i18n/translate';
+const locale = localeFor(Astro.url.pathname);
+const origin = Astro.site ?? Astro.url;
 
 const team = [
   {
@@ -51,9 +55,14 @@ const board = [
   },
 
 ];
+const orgId = `${new URL('/', origin).href}#organization`;
+const schema = [
+  ...team.map(p => ({ '@type': 'Person', name: p.name, jobTitle: t(p.title, locale), description: t(p.bio, locale), worksFor: { '@id': orgId }, ...(p.image ? { image: new URL(p.image, origin).href } : {}) })),
+  ...board.map(p => ({ '@type': 'Person', name: p.name, jobTitle: t(p.role, locale), description: t(p.focus, locale), affiliation: { '@id': orgId }, ...(p.image ? { image: new URL(p.image, origin).href } : {}) })),
+];
 ---
 
-<Base title="Om os — Well at Work" description="Mød teamet bag Well at Work — grundlagt i neurovidenskab, bygget til at skabe reel forandring i organisationers trivsel.">
+<Base title="Om os — Well at Work" description="Mød teamet bag Well at Work — grundlagt i neurovidenskab, bygget til at skabe reel forandring i organisationers trivsel." schema={schema}>
   <Navbar />
   <main id="main-content">
     <section class="page-hero">

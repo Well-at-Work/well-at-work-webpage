@@ -1,17 +1,61 @@
 ---
 import { localeFor, routeFor } from '../i18n/routes';
+import { t } from '../i18n/translate';
 const locale = localeFor(Astro.url.pathname);
 const route = routeFor(Astro.url.pathname);
 const origin = Astro.site ?? Astro.url;
 interface Props {
   title?: string;
   description?: string;
+  /** Keep a page out of search results (prototypes, error pages). */
+  noindex?: boolean;
+  /** Extra JSON-LD objects for this page, merged into one @graph with the site-wide Organization and WebSite. */
+  schema?: Record<string, unknown>[];
 }
 
 const {
   title = 'Trivsel og ledelsesudvikling i én platform | Well at Work',
-  description = 'Personlige forløb til medarbejderne. AI-coaching til lederne. Well at Work samler APV, individ- og teamindsigt, coaching og opfølgning i én platform.'
+  description = 'Personlige forløb til medarbejderne. AI-coaching til lederne. Well at Work samler APV, individ- og teamindsigt, coaching og opfølgning i én platform.',
+  noindex = false,
+  schema = [],
 } = Astro.props;
+
+const siteUrl = new URL('/', origin).href;
+const pageUrl = route ? new URL(route[locale], origin).href : new URL(Astro.url.pathname, origin).href;
+const ogImage = new URL('/og.jpg', origin).href;
+const orgDescription = t('Well at Work samler trivselsmåling, APV, personlige forløb og AI-coaching til ledere i én platform, udviklet i Danmark med afsæt i neurovidenskab og organisationspsykologi.', locale);
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: 'Well at Work',
+    url: siteUrl,
+    logo: { '@type': 'ImageObject', url: new URL('/images/brand/mark.png', origin).href },
+    email: 'info@bewellatwork.dk',
+    description: orgDescription,
+    address: { '@type': 'PostalAddress', addressCountry: 'DK' },
+    areaServed: 'DK',
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}#website`,
+    name: 'Well at Work',
+    url: siteUrl,
+    inLanguage: ['da-DK', 'en-GB'],
+    publisher: { '@id': `${siteUrl}#organization` },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': pageUrl,
+    url: pageUrl,
+    name: t(title, locale),
+    description: t(description, locale),
+    inLanguage: locale === 'en' ? 'en-GB' : 'da-DK',
+    isPartOf: { '@id': `${siteUrl}#website` },
+  },
+  ...schema,
+];
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 ---
 
 <!DOCTYPE html>
@@ -21,6 +65,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex" />}
     {route && <>
       <link rel="canonical" href={new URL(route[locale], origin).href} />
       <link rel="alternate" hreflang="da" href={new URL(route.da, origin).href} />
@@ -30,16 +75,20 @@ const {
 
     <link rel="icon" type="image/png" href="/images/brand/mark.png" />
 
-    <link rel="preload" href="/fonts/DM-Sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/DM-Sans.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'da_DK'} />
     <meta property="og:site_name" content="Well at Work" />
-    <meta property="og:image" content={new URL('/og.png', Astro.site ?? Astro.url).href} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
     <meta property="og:image:alt" content="Well at Work — personlige forløb, ledelsescoaching og fælles overblik" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={new URL('/og.png', Astro.site ?? Astro.url).href} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Gå til indhold</a>
