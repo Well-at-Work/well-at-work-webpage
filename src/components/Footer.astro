@@ -1,11 +1,15 @@
-<footer class="footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="/"><img src="/images/brand/mark.png" width="30" height="30" alt="" /><span>well at work</span></a><p>Trivsel. Udvikling. Sammen.</p><nav aria-label="Footernavigation"><a href="/platform">Platform</a><a href="/for-hr">For HR</a><a href="/for-ledelsen">For ledelsen</a><a href="/for-medarbejdere">For medarbejdere</a><a href="/resultater">Kunder</a><a href="/forskning">Forskning</a><a href="/om-os">Om os</a><a href="/film">Film</a><a href="mailto:info@bewellatwork.dk">Kontakt</a></nav></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Well at Work</span><a href="/platform#privatliv">Privatliv i platformen</a><span>Udviklet i Danmark</span></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="/"><img src="/images/brand/mark.png" width="30" height="30" alt="" /><span>well at work</span></a><p>Trivsel. Udvikling. Sammen.</p><nav aria-label="Footernavigation"><a href="/platform">Platform</a><a href="/for-hr">For HR</a><a href="/for-ledelsen">For ledelsen</a><a href="/for-medarbejdere">For medarbejdere</a><a href="/resultater">Kunder</a><a href="/forskning">Forskning</a><a href="/om-os">Om os</a><a href="/film">Film</a><a href="mailto:info@bewellatwork.dk">Kontakt</a></nav></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Well at Work</span><a href="/platform#privatliv">Privatliv i platformen</a><span class="footer-right"><span>Udviklet i Danmark</span><a class="footer-social" href="https://www.linkedin.com/company/be-well-at-work" target="_blank" rel="noopener" aria-label="Well at Work på LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></span></div></div></footer>
 <style>
 .footer { padding: 3rem 0 1.5rem; background: white; }
 .footer-top { display: flex; align-items: center; gap: 2rem; padding-bottom: 2.5rem; }
 .footer-brand { display: flex; align-items: center; gap: .6rem; color: var(--plum); font-size: 1.45rem; letter-spacing: -.055em; font-weight: 500; }
 .footer-top > p { font-size: .78rem; color: var(--text-muted); }
-.footer-top nav { display: flex; gap: 1.4rem; margin-left: auto; font-size: .8rem; }
+.footer-top nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-left: auto; font-size: .8rem; }
+.footer-top nav a { white-space: nowrap; }
 .footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.25rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--text-muted); font-size: .7rem; }
+.footer-right { display: flex; align-items: center; gap: 1rem; }
+.footer-social { display: inline-flex; color: var(--text-muted); }
+.footer-social:hover { color: var(--plum); }
 @media(max-width:850px) { .footer-top { flex-wrap: wrap; gap: 1rem 2rem; } .footer-top nav { width: 100%; margin: 1rem 0 0; flex-wrap: wrap; } .footer-bottom { flex-wrap: wrap; } }
 </style>
