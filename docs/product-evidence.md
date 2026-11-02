@@ -25,3 +25,12 @@ General research is explicitly distinguished from product-effect validation. Rem
 - Current source review confirms assessment-based track assignment, stored exercise responses/completion, and organization reporting. `ProgramService.completeDay` advances the program; this is not evidence of automatic outcome-based intervention selection.
 - Automatic learning from intervention outcomes has not been established by this bounded review. Public wording therefore identifies it as an ambition: “Vores ambition: Støtte, der lærer, hvad der hjælper jer.” The platform reporting section explains the direction without presenting it as a shipped feature.
 - The existing hero and intervention-first narrative are preserved. Follow-up copy describes people using experience to inform next steps. No claim of unique technology, proven causal effect, or an already-operational self-improving recommendation engine is added.
+
+## Leadership motivation and research — 2026-11-02
+
+- The leadership page now links the Jobindex/Megafon job-change finding to practical support for leaders: 19% cite dissatisfaction with their immediate manager, compared with 17% citing pay. This describes reported reasons for changing jobs, not an annual resignation rate or a causal effect of coaching. Source: https://nyheder.tv2.dk/business/2026-10-30-danske-arbejdspladser-dumper-i-ledelse (read 2026-11-02).
+- Leadership/wellbeing associations: Montano, Schleu & Hüffmeier (2023), https://doi.org/10.1177/15480518221114854. Correlational evidence is described as associations.
+- Leadership development design: Lacerenza et al. (2017), https://pubmed.ncbi.nlm.nih.gov/28749153/. Practice, feedback and needs assessment inform the rationale; the research also supports facilitated face-to-face delivery and does not validate automated coaching.
+- Coaching outcomes: De Haan & Nilsson (2023), https://doi.org/10.5465/amle.2022.0107. The research page reports the moderate pooled effect with publication-bias and self-report qualifications.
+- AI-specific evidence is presented as mixed, with both Terblanche et al. (2022), https://pubmed.ncbi.nlm.nih.gov/35727801/, and De Haan, Terblanche & Nowack (2026), https://doi.org/10.1080/13678868.2026.2633990. Neither establishes outcomes for Well at Work. No product-specific retention, wellbeing or ROI claim is added.
+- Danish copy and corresponding English translations are updated together.
